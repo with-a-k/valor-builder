@@ -6,12 +6,11 @@ import AttributeView from './AttributeView';
 const CharacterAttributesView = (props) => {
   return (
     <div>
-      <p>This (CharacterAttributesView) is still being built out.</p>
       <div className="masterControls">
-      <AttributeInput
-        attributeName="Level"
-        attributeValue={props.characterAttributes.level}
-        changeAttribute={props.handleLevelChange}/>
+        <AttributeInput
+          attributeName="Level"
+          attributeValue={props.characterAttributes.level}
+          changeAttribute={props.handleLevelChange}/>
       </div>
       <div className="baseControls">
         <AttributeInput
@@ -43,70 +42,70 @@ const CharacterAttributesView = (props) => {
       <div className="activeAttributes">
         <AttributeView
           attributeName="Muscle"
-          attributeValue={props.muscle}/>
+          attributeValue={props.characterAttributes.muscle}/>
         <AttributeView
           attributeName="Dexterity"
-          attributeValue={props.dexterity}/>
+          attributeValue={props.characterAttributes.dexterity}/>
         <AttributeView
           attributeName="Aura"
-          attributeValue={props.aura}/>
+          attributeValue={props.characterAttributes.aura}/>
         <AttributeView
           attributeName="Intuition"
-          attributeValue={props.intuition}/>
+          attributeValue={props.characterAttributes.intuition}/>
         <AttributeView
           attributeName="Resolve"
-          attributeValue={props.resolve}/>
+          attributeValue={props.characterAttributes.resolve}/>
       </div>
       <div className="attackScores">
-      <AttributeView
-        attributeName="Strength Attack"
-        attributeValue={props.strengthAttack}/>
-      <AttributeView
-        attributeName="Agility Attack"
-        attributeValue={props.agilityAttack}/>
-      <AttributeView
-        attributeName="Spirit Attack"
-        attributeValue={props.spiritAttack}/>
-      <AttributeView
-        attributeName="Mind Attack"
-        attributeValue={props.mindAttack}/>
-      <AttributeView
-        attributeName="Damage Increment"
-        attributeValue={props.damageIncrement}/>
+        <AttributeView
+          attributeName="Strength Attack"
+          attributeValue={props.characterAttributes.strengthAttack}/>
+        <AttributeView
+          attributeName="Agility Attack"
+          attributeValue={props.characterAttributes.agilityAttack}/>
+        <AttributeView
+          attributeName="Spirit Attack"
+          attributeValue={props.characterAttributes.spiritAttack}/>
+        <AttributeView
+          attributeName="Mind Attack"
+          attributeValue={props.characterAttributes.mindAttack}/>
+        <AttributeView
+          attributeName="Damage Increment"
+          attributeValue={props.characterAttributes.damageIncrement}/>
       </div>
       <div className="healthAttributes">
         <AttributeView
           attributeName="Max Health"
-          attributeValue={props.maxHealth}/>
+          attributeValue={props.characterAttributes.maxHealth}/>
         <AttributeView
           attributeName="Health Increment"
-          attributeValue={props.healthIncrement}/>
+          attributeValue={props.characterAttributes.healthIncrement}/>
         <AttributeView
           attributeName="Critical Health"
-          attributeValue={props.criticalHealth}/>
+          attributeValue={props.characterAttributes.criticalHealth}/>
         <AttributeView
           attributeName="Defense"
-          attributeValue={props.defense}/>
+          attributeValue={props.characterAttributes.defense}/>
         <AttributeView
           attributeName="Resistance"
-          attributeValue={props.resistance}/>
+          attributeValue={props.characterAttributes.resistance}/>
       </div>
       <div className="staminaAndMetaAttributes">
         <AttributeView
           attributeName="Max Stamina"
-          attributeValue={props.maxStamina}/>
+          attributeValue={props.characterAttributes.maxStamina}/>
         <AttributeView
           attributeName="Stamina Increment"
-          attributeValue={props.staminaIncrement}/>
+          attributeValue={props.characterAttributes.staminaIncrement}/>
         <AttributeView
           attributeName="Movement"
-          attributeValue={props.movement}/>
+          attributeValue={props.characterAttributes.move}/>
         <AttributeView
           attributeName="Max Skill Points"
-          attributeValue={props.skillPoints}/>
+          attributeValue={props.characterAttributes.skillPoints}/>
         <AttributeView
           attributeName="Max Technique Points"
-          attributeValue={props.techPoints}/>
+          attributeValue={props.characterAttributes.techPoints}/>
       </div>
     </div>
   )
@@ -119,7 +118,27 @@ CharacterAttributesView.propTypes = {
     agility: PropTypes.number.isRequired,
     spirit: PropTypes.number.isRequired,
     mind: PropTypes.number.isRequired,
-    guts: PropTypes.number.isRequired
+    guts: PropTypes.number.isRequired,
+    muscle: PropTypes.number.isRequired,
+    dexterity: PropTypes.number.isRequired,
+    aura: PropTypes.number.isRequired,
+    intuition: PropTypes.number.isRequired,
+    resolve: PropTypes.number.isRequired,
+    strengthAttack: PropTypes.number.isRequired,
+    agilityAttack: PropTypes.number.isRequired,
+    spiritAttack: PropTypes.number.isRequired,
+    mindAttack: PropTypes.number.isRequired,
+    damageIncrement: PropTypes.number.isRequired,
+    maxHealth: PropTypes.number.isRequired,
+    healthIncrement: PropTypes.number.isRequired,
+    criticalHealth: PropTypes.number.isRequired,
+    defense: PropTypes.number.isRequired,
+    resistance: PropTypes.number.isRequired,
+    maxStamina: PropTypes.number.isRequired,
+    staminaIncrement: PropTypes.number.isRequired,
+    move: PropTypes.number.isRequired,
+    skillPoints: PropTypes.number.isRequired,
+    techPoints: PropTypes.number.isRequired
   })
 };
 

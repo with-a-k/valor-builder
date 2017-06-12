@@ -15,7 +15,7 @@ AttributeInput.propTypes = {
   attributeName: PropTypes.string.isRequired,
   attributeValue: PropTypes.number.isRequired,
   changeAttribute: PropTypes.func.isRequired,
-  maxValue: PropTypes.number.isRequired
+  maxValue: PropTypes.number
 };
 
 export default AttributeInput;

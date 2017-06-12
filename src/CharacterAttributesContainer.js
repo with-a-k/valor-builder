@@ -46,6 +46,8 @@ class CharacterAttributesContainer extends Component {
   }
 
   objectify() {
+    var maxHealth = this.naturalMaxHealth();
+    var maxStamina = this.naturalMaxStamina();
     return {
       name : this.props.name,
       level : this.props.level,
@@ -64,12 +66,12 @@ class CharacterAttributesContainer extends Component {
       agilityAttack : this.naturalAttackScore(this.props.agility),
       spiritAttack : this.naturalAttackScore(this.props.spirit),
       mindAttack : this.naturalAttackScore(this.props.mind),
-      maxHealth : this.naturalMaxHealth(),
-      healthIncrement : (this.naturalMaxHealth() / 5),
-      criticalHealth : (this.naturalMaxHealth() * 2 / 5),
+      maxHealth : maxHealth,
+      healthIncrement : maxHealth / 5,
+      criticalHealth : maxHealth * 2 / 5,
       damageIncrement : this.naturalDamageIncrement(),
-      maxStamina : this.naturalMaxStamina(),
-      staminaIncrement : (Math.ceil(this.naturalMaxStamina() / 5)),
+      maxStamina : maxStamina,
+      staminaIncrement : (Math.ceil(maxStamina / 5)),
       move : this.naturalMovement(),
       defense : this.naturalDefense(),
       resistance : this.naturalResistance(),
@@ -79,8 +81,6 @@ class CharacterAttributesContainer extends Component {
   }
 
   render() {
-    var maxHealth = this.naturalMaxHealth();
-    var maxStamina = this.naturalMaxStamina();
     return <CharacterAttributesView
             characterAttributes = {this.objectify()}
             handleStrengthChange = {this.props.handleStrengthChange}
@@ -88,27 +88,7 @@ class CharacterAttributesContainer extends Component {
             handleSpiritChange = {this.props.handleSpiritChange}
             handleMindChange = {this.props.handleMindChange}
             handleGutsChange = {this.props.handleGutsChange}
-            handleLevelChange = {this.props.handleLevelChange}
-            muscle = {this.naturalActiveAttribute(this.props.strength)}
-            dexterity = {this.naturalActiveAttribute(this.props.agility)}
-            aura = {this.naturalActiveAttribute(this.props.spirit)}
-            intuition = {this.naturalActiveAttribute(this.props.mind)}
-            resolve = {this.naturalActiveAttribute(this.props.guts)}
-            strengthAttack = {this.naturalAttackScore(this.props.strength)}
-            agilityAttack = {this.naturalAttackScore(this.props.agility)}
-            spiritAttack = {this.naturalAttackScore(this.props.spirit)}
-            mindAttack = {this.naturalAttackScore(this.props.mind)}
-            damageIncrement = {this.naturalDamageIncrement()}
-            maxHealth = {maxHealth}
-            healthIncrement = {maxHealth / 5}
-            criticalHealth = {maxHealth * 2/5}
-            defense = {this.naturalDefense()}
-            resistance = {this.naturalResistance()}
-            maxStamina = {maxStamina}
-            staminaIncrement = {Math.ceil(maxStamina / 5)}
-            movement = {this.naturalMovement()}
-            skillPoints = {this.baseSkillPoints()}
-            techPoints = {this.naturalTechniquePoints()}/>;
+            handleLevelChange = {this.props.handleLevelChange}/>;
   }
 }
 
