@@ -49,6 +49,7 @@ class CharacterBuilder extends Component {
         cost: Integer - The amount of SP it uses.
         tags: [String] - A series of identifiers that help the skill API figure out what to show.
           List of tags:
+          -- "Categorization Tags (let the user choose whether to include)" --
           * Flaw: This Skill gives you extra SP, but is a drawback. The book keeps Flaws and Skills separate, but...
           * Passive: This Skill is always in effect. The book uses the term "Permanent" for these.
           * Situational: This Skill's effects are conditional.
@@ -56,8 +57,10 @@ class CharacterBuilder extends Component {
           * Reaction: This Skill provides an option in combat to be used during others' turns.
           * Challenge: This Skill is useful for Challenge Scenes only.
           * Overdrive: This Skill adds to the character's Overdrive options.
+          -- "Include These Only For Techniques" --
           * Weaken: This Skill can't be attached to a character directly; it must be attached to a Technique.
           * Boost: This Skill can't be attached to a character directly; it must be attached to a Technique.
+          -- "Include These If The Character Doesn't Have One With This Tag Already" --
           * MaxHP: For "Tough" and "Fragile" only, as these passive skills affect Max HP and are mutually exclusive.
           * MaxST: For "Tireless" and "Lack of Control" only, as these passive skills affect Max Stamina and are mutually exclusive.
           * Defense: For "Iron Defense" and "Weak Defender" only, as these passive skills affect Defense and are mutually exclusive.
@@ -66,9 +69,13 @@ class CharacterBuilder extends Component {
           * EnergyAttack: For "Energy Attacker" and "Weak Energy Attacker" only, as these passive skills affect Spirit Attack and Mind Attack and are mutually exclusive.
           * Move: For "Sprinter" and "Slow" only, as these passive skills affect Movement and are mutually exclusive.
           * StartingValor: For "Bravado" and "Weak-Willed" only, as these passive skills affect the amount of Valor a character has at the start of combat.
-          * Knockout: For "Despair" and "Revenge" only, as these situational skills
+          * Knockout: For "Despair" and "Revenge" only, as these situational skills respond to party members being knocked out in opposite ways.
+          -- "Include These Only If The Character Has A Skill With The Same Name As This Tag" --
           * [Name of another skill]: For skills such as Dark Healing that require other skills.
+            Jump, Swift Step, Counterattack, Malevolent Entity, and Companion are some skills that are prerequisites and would have a tag named for them.
+          -- "Other" --
           * NPC: This Skill is not available to players; is_npc must be true for it to show up.
+          * Plural: This Skill can be taken multiple times, and ignores the check for "does the character already have this?".
         levelProgression:  String - Either "Fixed", "Slow", or "Fast".
         level: Integer - What level the skill is. Fixed Skills stay at Level 99.
         effect: String - What effect the Skill has on the attached character.

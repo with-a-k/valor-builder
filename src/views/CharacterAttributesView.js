@@ -8,44 +8,99 @@ const CharacterAttributesView = (props) => {
     <div>
       <p>This (CharacterAttributesView) is still being built out.</p>
       <div className="baseControls">
-        Attribute Inputs for Strength, Agility, Spirit, Mind, and Guts.
         <AttributeInput
-          attributeName="strength"
+          attributeName="Strength"
           attributeValue={props.characterAttributes.strength}
           changeAttribute={props.handleStrengthChange}
           maxValue={props.level + 7}/>
         <AttributeInput
-          attributeName="agility"
+          attributeName="Agility"
           attributeValue={props.characterAttributes.agility}
           changeAttribute={props.handleAgilityChange}
           maxValue={props.level + 7}/>
         <AttributeInput
-          attributeName="spirit"
+          attributeName="Spirit"
           attributeValue={props.characterAttributes.spirit}
           changeAttribute={props.handleSpiritChange}
           maxValue={props.level + 7}/>
         <AttributeInput
-          attributeName="mind"
+          attributeName="Mind"
           attributeValue={props.characterAttributes.mind}
           changeAttribute={props.handleMindChange}
           maxValue={props.level + 7}/>
         <AttributeInput
-          attributeName="guts"
+          attributeName="Guts"
           attributeValue={props.characterAttributes.guts}
           changeAttribute={props.handleGutsChange}
           maxValue={props.level + 7}/>
       </div>
       <div className="activeAttributes">
-        Attribute Views for Muscle, Dexterity, Aura, Intuition, and Resolve.
+        <AttributeView
+          attributeName="Muscle"
+          attributeValue={props.muscle}/>
+        <AttributeView
+          attributeName="Dexterity"
+          attributeValue={props.dexterity}/>
+        <AttributeView
+          attributeName="Aura"
+          attributeValue={props.aura}/>
+        <AttributeView
+          attributeName="Intuition"
+          attributeValue={props.intuition}/>
+        <AttributeView
+          attributeName="Resolve"
+          attributeValue={props.resolve}/>
       </div>
       <div className="attackScores">
-        Attribute Views for Strength Attack, etc. and Damage Increment.
+      <AttributeView
+        attributeName="Strength Attack"
+        attributeValue={props.strengthAttack}/>
+      <AttributeView
+        attributeName="Agility Attack"
+        attributeValue={props.agilityAttack}/>
+      <AttributeView
+        attributeName="Spirit Attack"
+        attributeValue={props.spiritAttack}/>
+      <AttributeView
+        attributeName="Mind Attack"
+        attributeValue={props.mindAttack}/>
+      <AttributeView
+        attributeName="Damage Increment"
+        attributeValue={props.damageIncrement}/>
       </div>
       <div className="healthAttributes">
-        Attribute Views for Max Health, Health Increment, Critical Health, Defense, and Resistance.
+        <AttributeView
+          attributeName="Max Health"
+          attributeValue={props.maxHealth}/>
+        <AttributeView
+          attributeName="Health Increment"
+          attributeValue={props.healthIncrement}/>
+        <AttributeView
+          attributeName="Critical Health"
+          attributeValue={props.criticalHealth}/>
+        <AttributeView
+          attributeName="Defense"
+          attributeValue={props.defense}/>
+        <AttributeView
+          attributeName="Resistance"
+          attributeValue={props.resistance}/>
       </div>
       <div className="staminaAndMetaAttributes">
-        Attribute Views for Max Stamina, Stamina Increment, Movement, Max SP, and Max TP.
+        <AttributeView
+          attributeName="Max Stamina"
+          attributeValue={props.maxStamina}/>
+        <AttributeView
+          attributeName="Stamina Increment"
+          attributeValue={props.staminaIncrement}/>
+        <AttributeView
+          attributeName="Movement"
+          attributeValue={props.movement}/>
+        <AttributeView
+          attributeName="Max Skill Points"
+          attributeValue={props.skillPoints}/>
+        <AttributeView
+          attributeName="Max Technique Points"
+          attributeValue={props.techPoints}/>
       </div>
     </div>
   )
