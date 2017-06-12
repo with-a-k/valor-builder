@@ -15,30 +15,28 @@ class CharacterBuilder extends Component {
       is_npc: false,
       //This flag affects whether or not NPC-only Skills and Modifiers will show up in the skill selector.
       //Masters, Swarms, and Flunkies should always have is_npc set to true.
-      character_attributes: {
-        //Level and the five Base Attributes are the only things that will be top-level for now.
-        //When Techniques are implemented, they will need the Active Attributes, Attack values,
-        //Damage Increment (Reposition, etc.), and Health Increment (Ultimate Health Limit).
-        level: 1,
-        strength: 1,
-        agility: 1,
-        spirit: 1,
-        mind: 1,
-        guts: 1,
-        //This Skill Bonuses sub-object holds static values that come from attribute-increasing Passive Skills.
-        //Some of these skills have a diametrically opposed Flaw, but not all.
-        skillBonuses: {
-          balancedFighter: false, //from the "Balanced Fighter" skill
-          maxHealth: 0, //from the "Tough" or "Fragile" skills
-          maxStamina: 0, //from the "Tireless" or "Lack of Control" skills
-          physicalAttack: 0, //from the "Physical Attacker" or "Weak Physical Attacker" skills
-          energyAttack: 0, //from the "Energy Attacker" or "Weak Energy Attacker" skills
-          defense: 0, //from the "Iron Defense" or "Weak Defender" skills
-          resistance: 0, //from the "Resistant" or "Energy Vulnerability" skills
-          movement: 0, //from the "Sprinter" or "Slow" skills
-          techniquePoints: 0, //from the "Versatile Fighter" skill
-          damageIncrement: 0, //from the "Improved Damage Increment" skill
-        }
+      //Level and the five Base Attributes are the only things that will be top-level for now.
+      //When Techniques are implemented, they will need the Active Attributes, Attack values,
+      //Damage Increment (Reposition, etc.), and Health Increment (Ultimate Health Limit).
+      level: 1,
+      strength: 1,
+      agility: 1,
+      spirit: 1,
+      mind: 1,
+      guts: 1,
+      //This Skill Bonuses sub-object holds static values that come from attribute-increasing Passive Skills.
+      //Some of these skills have a diametrically opposed Flaw, but not all.
+      skillBonuses: {
+        balancedFighter: false, //from the "Balanced Fighter" skill
+        maxHealth: 0, //from the "Tough" or "Fragile" skills
+        maxStamina: 0, //from the "Tireless" or "Lack of Control" skills
+        physicalAttack: 0, //from the "Physical Attacker" or "Weak Physical Attacker" skills
+        energyAttack: 0, //from the "Energy Attacker" or "Weak Energy Attacker" skills
+        defense: 0, //from the "Iron Defense" or "Weak Defender" skills
+        resistance: 0, //from the "Resistant" or "Energy Vulnerability" skills
+        movement: 0, //from the "Sprinter" or "Slow" skills
+        techniquePoints: 0, //from the "Versatile Fighter" skill
+        damageIncrement: 0, //from the "Improved Damage Increment" skill
       },
       //Skills and Techniques must be chosen and built out respectively.
       skills: [],
@@ -103,55 +101,68 @@ class CharacterBuilder extends Component {
         }
       */
     }
-    console.log(this.state.character_attributes.strength);
+  }
+
+  handleLevelChange(event) {
+    var value = parseInt(event.target.value, 10);
+    if ((this.state.is_npc || value <= 20) && value >= 0) {
+      this.setState({'level': value});
+    }
   }
 
   //Handles a change event for Strength.
   handleStrengthChange(event) {
     var value = parseInt(event.target.value, 10);
-    this.changeCharacterAttribute('strength', value);
+    if (this.validAttributeChange('strength', value)) {
+      this.setState({'strength': value});
+    }
   }
 
   //Handles a change event for Agility.
   handleAgilityChange(event) {
     var value = parseInt(event.target.value, 10);
-    this.changeCharacterAttribute('agility', value);
+    if (this.validAttributeChange('agility', value)) {
+      this.setState({'agility': value});
+    }
   }
 
   //Handles a change event for Spirit.
   handleSpiritChange(event) {
     var value = parseInt(event.target.value, 10);
-    this.changeCharacterAttribute('spirit', value);
+    if (this.validAttributeChange('spirit', value)) {
+      this.setState({'spirit': value});
+    }
   }
 
   //Handles a change event for Mind.
   handleMindChange(event) {
     var value = parseInt(event.target.value, 10);
-    this.changeCharacterAttribute('mind', value);
+    if (this.validAttributeChange('mind', value)) {
+      this.setState({'mind': value});
+    }
   }
 
   //Handles a change event for Guts.
   handleGutsChange(event) {
     var value = parseInt(event.target.value, 10);
-    this.changeCharacterAttribute('guts', value);
+    if (this.validAttributeChange('guts', value)) {
+      this.setState({'guts': value});
+    }
   }
 
-  changeCharacterAttribute(attribute, value) {
-    if (value <= this.state.character_attributes.level + 7 &&
+  validAttributeChange(attribute, value) {
+    return (value <= this.state.level + 7 &&
         value >= 1 &&
-        (this.unusedBaseAttributePoints() > 0 || value < this.state.character_attributes[attribute])) {
-      this.state.character_attributes[attribute] = value;
-      this.forceUpdate();
-    }
+        (this.unusedBaseAttributePoints() > 0 || value < this.state[attribute]));
   }
 
   baseAttributes() {
     return [
-      this.state.character_attributes.strength,
-      this.state.character_attributes.agility,
-      this.state.character_attributes.spirit,
-      this.state.character_attributes.mind,
-      this.state.character_attributes.guts
+      this.state.strength,
+      this.state.agility,
+      this.state.spirit,
+      this.state.mind,
+      this.state.guts
     ]
   }
 
@@ -162,19 +173,19 @@ class CharacterBuilder extends Component {
   }
 
   unusedBaseAttributePoints() {
-    return (22 + 3 * this.state.character_attributes.level) - this.baseAttributesSum();
+    return (22 + 3 * this.state.level) - this.baseAttributesSum();
   }
 
   objectify() {
     return {
       attributes: {
-        level: this.state.character_attributes.level,
-        strength: this.state.character_attributes.strength,
-        agility: this.state.character_attributes.agility,
-        spirit: this.state.character_attributes.spirit,
-        mind: this.state.character_attributes.mind,
-        guts: this.state.character_attributes.guts,
-        skill_bonuses: this.state.character_attributes.skill_bonuses
+        level: this.state.level,
+        strength: this.state.strength,
+        agility: this.state.agility,
+        spirit: this.state.spirit,
+        mind: this.state.mind,
+        guts: this.state.guts,
+        skill_bonuses: this.state.skill_bonuses
       },
     }
   }
@@ -186,7 +197,8 @@ class CharacterBuilder extends Component {
             handleAgilityChange = {this.handleAgilityChange.bind(this)}
             handleSpiritChange = {this.handleSpiritChange.bind(this)}
             handleMindChange = {this.handleMindChange.bind(this)}
-            handleGutsChange = {this.handleGutsChange.bind(this)}/>;
+            handleGutsChange = {this.handleGutsChange.bind(this)}
+            handleLevelChange = {this.handleLevelChange.bind(this)}/>;
   }
 }
 

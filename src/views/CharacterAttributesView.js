@@ -7,6 +7,12 @@ const CharacterAttributesView = (props) => {
   return (
     <div>
       <p>This (CharacterAttributesView) is still being built out.</p>
+      <div className="masterControls">
+      <AttributeInput
+        attributeName="Level"
+        attributeValue={props.characterAttributes.level}
+        changeAttribute={props.handleLevelChange}/>
+      </div>
       <div className="baseControls">
         <AttributeInput
           attributeName="Strength"
