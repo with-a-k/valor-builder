@@ -42,7 +42,15 @@ class CharacterAttributesContainer extends Component {
 
   naturalTechniquePoints(level = 1) {
     if (level === 1) return 12;
-    return this.naturalTechniquePoints(level - 1) + 4 + Math.floor((level - 1) / 5);
+    //Ultimate Techniques "don't use any TP when gained", but...
+    //how about we just add extra TP instead?
+    var ultimateAdjustment = 0;
+    //Every level multiple of 5, add level+3.
+    if (level % 5 === 0) {
+      ultimateAdjustment = level + 3;
+    }
+    return this.naturalTechniquePoints(level - 1) + 4 + Math.floor((level - 1) / 5)
+      + ultimateAdjustment;
   }
 
   objectify() {
@@ -76,7 +84,7 @@ class CharacterAttributesContainer extends Component {
       defense : this.naturalDefense(),
       resistance : this.naturalResistance(),
       skillPoints : this.baseSkillPoints(),
-      techPoints : this.naturalTechniquePoints()
+      techPoints : this.naturalTechniquePoints(this.props.level)
     }
   }
 
