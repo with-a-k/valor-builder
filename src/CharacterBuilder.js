@@ -41,7 +41,7 @@ class CharacterBuilder extends Component {
       //No overrides are currently implemented, although the Max Health override has been requested.
       overrides: {
 
-      }
+      },
       //Skills and Techniques must be chosen and built out respectively.
       skills: [],
       //Each Skill is an object that looks like this:
