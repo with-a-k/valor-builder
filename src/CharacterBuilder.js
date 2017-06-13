@@ -14,7 +14,6 @@ class CharacterBuilder extends Component {
       //The only values it can have are "Elite", "Master", "Swarm", "Soldier", and "Flunky".
       is_npc: false,
       //This flag affects whether or not NPC-only Skills and Modifiers will show up in the skill selector.
-      //Masters, Swarms, and Flunkies should always have is_npc set to true.
       //Level and the five Base Attributes are the only things that will be top-level for now.
       //When Techniques are implemented, they will need the Active Attributes, Attack values,
       //Damage Increment (Reposition, etc.), and Health Increment (Ultimate Health Limit).
@@ -38,6 +37,11 @@ class CharacterBuilder extends Component {
         techniquePoints: 0, //from the "Versatile Fighter" skill
         damageIncrement: 0, //from the "Improved Damage Increment" skill
       },
+      //Overrides allow for ignoring certain rules and gaining the ability to directly modify attributes.
+      //No overrides are currently implemented, although the Max Health override has been requested.
+      overrides: {
+
+      }
       //Skills and Techniques must be chosen and built out respectively.
       skills: [],
       //Each Skill is an object that looks like this:
@@ -75,8 +79,12 @@ class CharacterBuilder extends Component {
           * NPC: This Skill is not available to players; is_npc must be true for it to show up.
           * Plural: This Skill can be taken multiple times, and ignores the check for "does the character already have this?".
         levelProgression:  String - Either "Fixed", "Slow", or "Fast".
-        level: Integer - What level the skill is. Fixed Skills stay at Level 99.
+        level: Integer - What level the skill is. Fixed Skills stay at Level 1.
         effect: String - What effect the Skill has on the attached character.
+        bonus: Object - {
+          bonusName: Integer - The numerical increase provided by the Skill. This object is passed up to the skillBonuses object above with an Object.assign call...
+            but only if the bonus exists. Only Passive skills will have this property.
+        }
         special: String - The "Special" field from the book's entry.
 
       }
@@ -154,6 +162,17 @@ class CharacterBuilder extends Component {
     return (value <= this.state.level + 7 &&
         value >= 1 &&
         (this.unusedBaseAttributePoints() > 0 || value < this.state[attribute]));
+  }
+
+  handleCheckboxToggle(stateItem) {
+
+  }
+
+  //Masters, Swarms, and Flunkies should always have is_npc set to true.
+  mustBeAnNPC() {
+    return (this.state.character_type === "Master" ||
+            this.state.character_type === "Swarm" ||
+            this.state.character_type === "Flunky");
   }
 
   baseAttributes() {
