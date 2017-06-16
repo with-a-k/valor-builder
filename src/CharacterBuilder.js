@@ -212,6 +212,7 @@ class CharacterBuilder extends Component {
   render() {
     return <CharacterView
             character = {this.objectify()}
+            character_type = {this.state.character_type}
             handleStrengthChange = {this.handleStrengthChange.bind(this)}
             handleAgilityChange = {this.handleAgilityChange.bind(this)}
             handleSpiritChange = {this.handleSpiritChange.bind(this)}

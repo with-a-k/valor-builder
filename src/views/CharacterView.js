@@ -14,6 +14,7 @@ const CharacterView = (props) => {
         mind = {props.character.attributes.mind}
         guts = {props.character.attributes.guts}
         skill_bonuses = {props.character.attributes.skill_bonuses}
+        character_type = {props.character_type}
         handleStrengthChange = {props.handleStrengthChange}
         handleAgilityChange = {props.handleAgilityChange}
         handleSpiritChange = {props.handleSpiritChange}
@@ -28,6 +29,7 @@ const CharacterView = (props) => {
 //<TechniquesContainer/>
 
 CharacterView.propTypes = {
+  character_type: PropTypes.string.isRequired,
   character: PropTypes.shape({
     attributes: PropTypes.shape({
       name: PropTypes.string.isRequired,

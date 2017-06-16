@@ -1,26 +1,31 @@
 import React, {Component} from 'react';
 import CharacterAttributesView from './views/CharacterAttributesView';
 import style from './buildstyle';
+import AttributeConstants from './constants/AttributeConstants';
 
 class CharacterAttributesContainer extends Component {
   naturalActiveAttribute(baseAttributeValue) {
-    return Math.ceil((baseAttributeValue + this.props.level) / 2);
+    return Math.ceil((baseAttributeValue + this.props.level) / 2) + AttributeConstants.ACTIVE_ATTRIBUTE_ADJUSTMENT[this.props.character_type];
   }
 
   naturalAttackScore(baseAttributeValue) {
-    return 2 * (baseAttributeValue + this.props.level);
+    return ((AttributeConstants.MIDCALC_ATTACK_MULTIPLIERS[this.props.character_type] * baseAttributeValue) + (2 * this.props.level)) *
+      AttributeConstants.FINAL_ATTACK_MULTIPLIERS[this.props.character_type];
   }
 
   naturalDamageIncrement() {
-    return this.props.level + 5;
+    return (this.props.level + 5) * AttributeConstants.DAMAGE_INCREMENT_MULTIPLIERS[this.props.character_type];
   }
 
   naturalMaxHealth() {
-    return 5 * (10 + this.props.level * 2 + this.props.strength + this.props.guts * 2);
+    if (this.props.character_type === "Flunky") {
+      return 1;
+    }
+    return Math.ceil(AttributeConstants.HEALTH_MULTIPLIERS[this.props.character_type] * 5 * (10 + this.props.level * 2 + this.props.strength + this.props.guts * 2));
   }
 
   naturalMaxStamina() {
-    return 2 * (4 + this.props.level * 2 + this.props.spirit + this.props.mind);
+    return Math.ceil(AttributeConstants.STAMINA_MULTIPLIERS[this.props.character_type] * 2 * (4 + this.props.level * 2 + this.props.spirit + this.props.mind));
   }
 
   naturalMovement() {
@@ -37,20 +42,26 @@ class CharacterAttributesContainer extends Component {
 
   //SP can't be obtained in any way other than leveling up or Flaws.
   baseSkillPoints() {
-    return 14 + (this.props.level * 6);
+    return ((14 + AttributeConstants.BASE_SP_ADJUSTMENT[this.props.character_type] +
+      this.props.level * (6 + AttributeConstants.SP_GAIN_ADJUSTMENT[this.props.character_type])) *
+      AttributeConstants.SP_MULTIPLIERS[this.props.character_type]);
   }
 
   naturalTechniquePoints(level = 1) {
-    if (level === 1) return 12;
+    if (level === 1) {
+      return Math.ceil((12 + AttributeConstants.BASE_TP_ADJUSTMENT[this.props.character_type]) *
+        AttributeConstants.TP_MULTIPLIERS[this.props.character_type]);
+    }
     //Ultimate Techniques "don't use any TP when gained", but...
     //how about we just add extra TP instead?
     var ultimateAdjustment = 0;
-    //Every level multiple of 5, add level+3.
-    if (level % 5 === 0) {
+    //Every level multiple of 5, add level+3, but only if the character type
+    //is allowed to have Ultimate Techniques.
+    if (level % 5 === 0 && AttributeConstants.INCLUDE_ULTIMATES[this.props.character_type]) {
       ultimateAdjustment = level + 3;
     }
-    return this.naturalTechniquePoints(level - 1) + 4 + Math.floor((level - 1) / 5)
-      + ultimateAdjustment;
+    return Math.ceil(this.naturalTechniquePoints(level - 1) + AttributeConstants.TP_MULTIPLIERS[this.props.character_type] *
+      (4 + Math.floor((level - 1) / 5) + ultimateAdjustment + AttributeConstants.TP_GAIN_ADJUSTMENT[this.props.character_type]));
   }
 
   objectify() {
@@ -75,8 +86,8 @@ class CharacterAttributesContainer extends Component {
       spiritAttack : this.naturalAttackScore(this.props.spirit),
       mindAttack : this.naturalAttackScore(this.props.mind),
       maxHealth : maxHealth,
-      healthIncrement : maxHealth / 5,
-      criticalHealth : maxHealth * 2 / 5,
+      healthIncrement : Math.ceil(maxHealth / 5),
+      criticalHealth : Math.ceil(maxHealth * 2 / 5),
       damageIncrement : this.naturalDamageIncrement(),
       maxStamina : maxStamina,
       staminaIncrement : (Math.ceil(maxStamina / 5)),
