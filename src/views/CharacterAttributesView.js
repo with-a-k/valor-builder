@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AttributeInput from './AttributeInput';
 import AttributeView from './AttributeView';
+import SelectorView from './SelectorView';
+import TextConstants from '../constants/TextConstants';
 
 const CharacterAttributesView = (props) => {
   return (
@@ -11,6 +13,10 @@ const CharacterAttributesView = (props) => {
           attributeName="Level"
           attributeValue={props.characterAttributes.level}
           changeAttribute={props.handleLevelChange}/>
+        <SelectorView
+          selectorName="Type"
+          selectorOptions={TextConstants.ENTITY_TYPES}
+          handleChange={props.handleTypeChange}/>
       </div>
       <div className="baseControls">
         <AttributeInput

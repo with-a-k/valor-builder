@@ -107,7 +107,8 @@ class CharacterAttributesContainer extends Component {
             handleSpiritChange = {this.props.handleSpiritChange}
             handleMindChange = {this.props.handleMindChange}
             handleGutsChange = {this.props.handleGutsChange}
-            handleLevelChange = {this.props.handleLevelChange}/>;
+            handleLevelChange = {this.props.handleLevelChange}
+            handleTypeChange = {this.props.handleTypeChange}/>;
   }
 }
 

@@ -20,7 +20,8 @@ const CharacterView = (props) => {
         handleSpiritChange = {props.handleSpiritChange}
         handleMindChange = {props.handleMindChange}
         handleGutsChange = {props.handleGutsChange}
-        handleLevelChange = {props.handleLevelChange}/>
+        handleLevelChange = {props.handleLevelChange}
+        handleTypeChange = {props.handleTypeChange}/>
     </div>
   )
 }

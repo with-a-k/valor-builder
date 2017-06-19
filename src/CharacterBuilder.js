@@ -158,6 +158,13 @@ class CharacterBuilder extends Component {
     }
   }
 
+  handleTypeChange(event) {
+    this.setState({'character_type': event.target.value})
+    if (this.mustBeAnNPC(event.target.value)) {
+      this.setState({'is_npc': true});
+    }
+  }
+
   validAttributeChange(attribute, value) {
     return (value <= this.state.level + 7 &&
         value >= 1 &&
@@ -169,10 +176,10 @@ class CharacterBuilder extends Component {
   }
 
   //Masters, Swarms, and Flunkies should always have is_npc set to true.
-  mustBeAnNPC() {
-    return (this.state.character_type === "Master" ||
-            this.state.character_type === "Swarm" ||
-            this.state.character_type === "Flunky");
+  mustBeAnNPC(type) {
+    return (type === "Master" ||
+            type === "Swarm" ||
+            type === "Flunky");
   }
 
   baseAttributes() {
@@ -218,7 +225,8 @@ class CharacterBuilder extends Component {
             handleSpiritChange = {this.handleSpiritChange.bind(this)}
             handleMindChange = {this.handleMindChange.bind(this)}
             handleGutsChange = {this.handleGutsChange.bind(this)}
-            handleLevelChange = {this.handleLevelChange.bind(this)}/>;
+            handleLevelChange = {this.handleLevelChange.bind(this)}
+            handleTypeChange = {this.handleTypeChange.bind(this)}/>;
   }
 }
 

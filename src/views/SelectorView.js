@@ -20,7 +20,7 @@ const SelectorView = (props) => {
   )
 }
 
-AttributeInput.propTypes = {
+SelectorView.propTypes = {
   selectorName: PropTypes.string.isRequired,
   selectorOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleChange: PropTypes.func.isRequired
