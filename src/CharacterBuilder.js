@@ -180,6 +180,10 @@ class CharacterBuilder extends Component {
     this.setState({'is_npc': event.target.checked});
   }
 
+  handleRename(event) {
+    this.setState({'name': event.target.value})
+  }
+
   //Masters, Swarms, and Flunkies should always have is_npc set to true.
   mustBeAnNPC(type) {
     return (type === "Master" ||
@@ -211,6 +215,7 @@ class CharacterBuilder extends Component {
     return {
       is_npc: this.state.is_npc,
       attributes: {
+        name: this.state.name,
         level: this.state.level,
         strength: this.state.strength,
         agility: this.state.agility,
@@ -233,7 +238,8 @@ class CharacterBuilder extends Component {
             handleGutsChange = {this.handleGutsChange.bind(this)}
             handleLevelChange = {this.handleLevelChange.bind(this)}
             handleTypeChange = {this.handleTypeChange.bind(this)}
-            handleNPCChange = {this.handleNPCChange.bind(this)}/>;
+            handleNPCChange = {this.handleNPCChange.bind(this)}
+            handleRename = {this.handleRename.bind(this)}/>;
   }
 }
 

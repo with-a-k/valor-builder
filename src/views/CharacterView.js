@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import VBTextfield from './VBTextfield';
 import CharacterAttributesContainer from '../CharacterAttributesContainer';
 
 const CharacterView = (props) => {
   return (
     <div>
       <p>This (CharacterView) is still being built out.</p>
+      <VBTextfield
+        fieldName = "Name"
+        fieldValue = {props.character.attributes.name}
+        handleChange = {props.handleRename}/>
       <CharacterAttributesContainer
         level = {props.character.attributes.level}
         strength = {props.character.attributes.strength}
