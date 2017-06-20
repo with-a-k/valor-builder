@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import CharacterAttributesView from './views/CharacterAttributesView';
-import style from './buildstyle';
 import AttributeConstants from './constants/AttributeConstants';
 
 class CharacterAttributesContainer extends Component {

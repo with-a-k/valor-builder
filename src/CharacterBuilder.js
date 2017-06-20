@@ -58,7 +58,7 @@ class CharacterBuilder extends Component {
           * Situational: This Skill's effects are conditional.
           * Active: This Skill provides an option in combat during your turn only.
           * Reaction: This Skill provides an option in combat to be used during others' turns.
-          * Challenge: This Skill is useful for Challenge Scenes only.
+          * Challenge: This Skill applies Challenge Scenes only. Challenge skills can't be applied to Techniques.
           * Overdrive: This Skill adds to the character's Overdrive options.
           -- "Include These Only For Techniques" --
           * Weaken: This Skill can't be attached to a character directly; it must be attached to a Technique.
@@ -71,7 +71,8 @@ class CharacterBuilder extends Component {
           * PhysicalAttack: For "Physical Attacker" and "Weak Physical Attacker" only, as these passive skills affect Strength Attack and Agility Attack and are mutually exclusive.
           * EnergyAttack: For "Energy Attacker" and "Weak Energy Attacker" only, as these passive skills affect Spirit Attack and Mind Attack and are mutually exclusive.
           * Move: For "Sprinter" and "Slow" only, as these passive skills affect Movement and are mutually exclusive.
-          * StartingValor: For "Bravado" and "Weak-Willed" only, as these passive skills affect the amount of Valor a character has at the start of combat.
+          * Initiative: For "Quick to Act" and "Slow to Act" only, as these passive skills affect initiative rolls.
+          * StartingValor: For "Bravado" and "Weak-Willed" (and variations) only, as these passive skills affect the amount of Valor a character has at the start of combat.
           * Knockout: For "Despair" and "Revenge" only, as these situational skills respond to party members being knocked out in opposite ways.
           -- "Include These Only If The Character Has A Skill With The Same Name As This Tag" --
           * [Name of another skill]: For skills such as Dark Healing that require other skills.

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VBTextfield from './VBTextfield';
 import CharacterAttributesContainer from '../CharacterAttributesContainer';
+import SkillsContainer from '../SkillsContainer';
 
 const CharacterView = (props) => {
   return (
@@ -29,6 +30,7 @@ const CharacterView = (props) => {
         handleLevelChange = {props.handleLevelChange}
         handleTypeChange = {props.handleTypeChange}
         handleNPCChange = {props.handleNPCChange}/>
+      <SkillsContainer/>
     </div>
   )
 }
