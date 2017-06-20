@@ -6,16 +6,16 @@ const VBCheckbox = (props) => {
   return (
     <div>
       <p>{props.toggleName}:</p> <input type="checkbox"
-        value={props.toggleState}
-        onChange={props.toggle}/>
+        checked={props.toggleState}
+        onChange={props.toggleChange}/>
     </div>
   )
 }
 
-AttributeInput.propTypes = {
+VBCheckbox.propTypes = {
   toggleName: PropTypes.string.isRequired,
   toggleState: PropTypes.bool.isRequired,
-  toggleOverride: PropTypes.func.isRequired
+  toggleChange: PropTypes.func.isRequired
 };
 
 export default VBCheckbox;

@@ -15,13 +15,15 @@ const CharacterView = (props) => {
         guts = {props.character.attributes.guts}
         skill_bonuses = {props.character.attributes.skill_bonuses}
         character_type = {props.character_type}
+        is_npc = {props.character.is_npc}
         handleStrengthChange = {props.handleStrengthChange}
         handleAgilityChange = {props.handleAgilityChange}
         handleSpiritChange = {props.handleSpiritChange}
         handleMindChange = {props.handleMindChange}
         handleGutsChange = {props.handleGutsChange}
         handleLevelChange = {props.handleLevelChange}
-        handleTypeChange = {props.handleTypeChange}/>
+        handleTypeChange = {props.handleTypeChange}
+        handleNPCChange = {props.handleNPCChange}/>
     </div>
   )
 }

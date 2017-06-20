@@ -10,7 +10,7 @@ class CharacterBuilder extends Component {
       //Name doesn't affect any of the numbers, so it can stand alone.
       character_type: "Elite",
       //Character Type affects certain attribute calculations, handling Ultimate Techniques, and has other effects.
-      //Non-Elite types have an unremovable Skill detailing the difference between Elite and itself.
+      //Non-Elite types have an unremovable Skill detailing the difference between an Elite and itself.
       //The only values it can have are "Elite", "Master", "Swarm", "Soldier", and "Flunky".
       is_npc: false,
       //This flag affects whether or not NPC-only Skills and Modifiers will show up in the skill selector.
@@ -36,6 +36,7 @@ class CharacterBuilder extends Component {
         movement: 0, //from the "Sprinter" or "Slow" skills
         techniquePoints: 0, //from the "Versatile Fighter" skill
         damageIncrement: 0, //from the "Improved Damage Increment" skill
+        healingPower: 0, //from the "Healer" skill
       },
       //Overrides allow for ignoring certain rules and gaining the ability to directly modify attributes.
       //No overrides are currently implemented, although the Max Health override has been requested.
@@ -171,8 +172,12 @@ class CharacterBuilder extends Component {
         (this.unusedBaseAttributePoints() > 0 || value < this.state[attribute]));
   }
 
-  handleCheckboxToggle(stateItem) {
-
+  handleNPCChange(event) {
+    if (this.mustBeAnNPC(this.state.character_type)) {
+      this.setState({'is_npc': true});
+      return;
+    }
+    this.setState({'is_npc': event.target.checked});
   }
 
   //Masters, Swarms, and Flunkies should always have is_npc set to true.
@@ -204,6 +209,7 @@ class CharacterBuilder extends Component {
 
   objectify() {
     return {
+      is_npc: this.state.is_npc,
       attributes: {
         level: this.state.level,
         strength: this.state.strength,
@@ -226,7 +232,8 @@ class CharacterBuilder extends Component {
             handleMindChange = {this.handleMindChange.bind(this)}
             handleGutsChange = {this.handleGutsChange.bind(this)}
             handleLevelChange = {this.handleLevelChange.bind(this)}
-            handleTypeChange = {this.handleTypeChange.bind(this)}/>;
+            handleTypeChange = {this.handleTypeChange.bind(this)}
+            handleNPCChange = {this.handleNPCChange.bind(this)}/>;
   }
 }
 

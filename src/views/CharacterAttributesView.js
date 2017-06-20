@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AttributeInput from './AttributeInput';
 import AttributeView from './AttributeView';
 import SelectorView from './SelectorView';
+import VBCheckbox from './VBCheckbox';
 import TextConstants from '../constants/TextConstants';
 
 const CharacterAttributesView = (props) => {
@@ -17,6 +18,10 @@ const CharacterAttributesView = (props) => {
           selectorName="Type"
           selectorOptions={TextConstants.ENTITY_TYPES}
           handleChange={props.handleTypeChange}/>
+        <VBCheckbox
+          toggleName="Is an NPC?"
+          toggleState={props.is_npc}
+          toggleChange={props.handleNPCChange}/>
       </div>
       <div className="baseControls">
         <AttributeInput
