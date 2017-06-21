@@ -64,22 +64,24 @@ class CharacterBuilder extends Component {
           * Weaken: This Skill can't be attached to a character directly; it must be attached to a Technique.
           * Boost: This Skill can't be attached to a character directly; it must be attached to a Technique.
           -- "Include These If The Character Doesn't Have One With This Tag Already" --
-          * MaxHP: For "Tough" and "Fragile" only, as these passive skills affect Max HP and are mutually exclusive.
-          * MaxST: For "Tireless" and "Lack of Control" only, as these passive skills affect Max Stamina and are mutually exclusive.
+          * MaxHealth: For "Tough" and "Fragile" only, as these passive skills affect Max HP and are mutually exclusive.
+          * MaxStamina: For "Tireless" and "Lack of Control" only, as these passive skills affect Max Stamina and are mutually exclusive.
           * Defense: For "Iron Defense" and "Weak Defender" only, as these passive skills affect Defense and are mutually exclusive.
           * Resistance: For "Resistant" and "Energy Vulnerability" only, as these passive skills affect Resistance and are mutually exclusive.
           * PhysicalAttack: For "Physical Attacker" and "Weak Physical Attacker" only, as these passive skills affect Strength Attack and Agility Attack and are mutually exclusive.
           * EnergyAttack: For "Energy Attacker" and "Weak Energy Attacker" only, as these passive skills affect Spirit Attack and Mind Attack and are mutually exclusive.
-          * Move: For "Sprinter" and "Slow" only, as these passive skills affect Movement and are mutually exclusive.
+          * Movement: For "Sprinter" and "Slow" only, as these passive skills affect Movement and are mutually exclusive.
           * Initiative: For "Quick to Act" and "Slow to Act" only, as these passive skills affect initiative rolls.
           * StartingValor: For "Bravado" and "Weak-Willed" (and variations) only, as these passive skills affect the amount of Valor a character has at the start of combat.
           * Knockout: For "Despair" and "Revenge" only, as these situational skills respond to party members being knocked out in opposite ways.
           -- "Include These Only If The Character Has A Skill With The Same Name As This Tag" --
           * [Name of another skill]: For skills such as Dark Healing that require other skills.
             Jump, Swift Step, Counterattack, Malevolent Entity, and Companion are some skills that are prerequisites and would have a tag named for them.
+          * Creation: Requires at least one of Attack Node, Refraction Point, or Portal.
           -- "Other" --
           * NPC: This Skill is not available to players; is_npc must be true for it to show up.
-          * Plural: This Skill can be taken multiple times, and ignores the check for "does the character already have this?".
+          * Repeatable: This Skill can be taken multiple times, and ignores the check for "does the character already have this?".
+          Repeatable skills tend to have a customizable element.
         levelProgression:  String - Either "Fixed", "Slow", or "Fast".
         level: Integer - What level the skill is. Fixed Skills stay at Level 1.
         effect: String - What effect the Skill has on the attached character.
