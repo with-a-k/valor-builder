@@ -81,6 +81,7 @@ class CharacterBuilder extends Component {
           -- "Other" --
           * NPC: This Skill is not available to players; is_npc must be true for it to show up.
           * Repeatable: This Skill can be taken multiple times, and ignores the check for "does the character already have this?".
+          * Character: An extremely rare tag which prevents the Skill from being attached to a Technique.
           Repeatable skills tend to have a customizable element.
         levelProgression:  String - Either "Fixed", "Slow", or "Fast".
         level: Integer - What level the skill is. Fixed Skills stay at Level 1.

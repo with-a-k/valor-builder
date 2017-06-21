@@ -179,6 +179,8 @@ module.exports = {
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken']
   },
+  //For all these Impaired Whatever skills, the Unofficial Errata version
+  //just costs more.
   'impaired-accuracy-raw': {
     name: 'Impaired Accuracy (RAW)',
     value: 'impaired-accuracy-raw',
@@ -264,6 +266,7 @@ module.exports = {
     season: 1,
     tags: ['Passive']
   },
+  //A houserule variant Bravado which is Fixed instead of levelable.
   'bravado-fixed': {
     name: 'Bravado (Fixed)',
     value: 'bravado-fixed',
@@ -318,6 +321,14 @@ module.exports = {
     name: 'Improved Damage Increment',
     value: 'improved-di',
     learn_sp: 5,
+    season: 1,
+    tags: ['Passive']
+  },
+  //Unlike most of the other UE skills, this is a straight buff.
+  'improved-di-ue': {
+    name: 'Improved Damage Increment (Unofficial Errata)',
+    value: 'improved-di-ue',
+    learn_sp: 4,
     season: 1,
     tags: ['Passive']
   },
@@ -401,7 +412,7 @@ module.exports = {
   },
   'unyielding-determination-raw': {
     name: 'Unyielding Determination (RAW)',
-    value: 'unyielding-determination-ue',
+    value: 'unyielding-determination-raw',
     learn_sp: 8,
     season: 4,
     tags: ['Passive']
@@ -418,7 +429,7 @@ module.exports = {
   'valiant': {
     name: 'Valiant',
     value: 'valiant',
-    learn_sp: 8,
+    learn_sp: 12,
     season: 1,
     tags: ['Passive', 'NPC']
   },
@@ -808,11 +819,18 @@ module.exports = {
     season: 2,
     tags: ['Active']
   },
-  //Offhand, I think Inspire had unofficial errata or houserules.
-  //But I don't remember what it was.
-  'inspire': {
-    name: 'Inspire',
-    value: 'inspire',
+  //In later seasons, Inspire provided too much valor output.
+  'inspire-raw': {
+    name: 'Inspire (RAW)',
+    value: 'inspire-raw',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Active']
+  },
+  //The UE version is, thus, a Fixed skill.
+  'inspire-ue': {
+    name: 'Inspire (Unofficial Errata)',
+    value: 'inspire-ue',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
@@ -928,5 +946,256 @@ module.exports = {
     learn_sp: 5,
     season: 1,
     tags: ['Active']
+  },
+  //The book classifies this as Reaction, but it works with something
+  //you chose to do yourself; that, and other skills that affect Swift Step
+  //are also Active.
+  'afterimage': {
+    name: 'Afterimage',
+    value: 'afterimage',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Active', 'Swift Step']
+  },
+  'area-shield': {
+    name: 'Area Shield',
+    value: 'area-shield',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'clash': {
+    name: 'Clash',
+    value: 'clash',
+    learn_sp: 3,
+    season: 2,
+    tags: ['Reaction', 'Counterattack']
+  },
+  //RAW Combination Attack is horrendously overtuned and broken.
+  //For one thing, you can't combination attack with someone whose
+  //initiative is higher than yours.
+  //For another thing, it's basically +1 to two attacks every round.
+  //Unless you're the last player, in which case it's useless.
+  'combination-attack-raw': {
+    name: 'Combination Attack (RAW)',
+    value: 'combination-attack-raw',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Reaction']
+  },
+  //Fortunately, this has been discussed. This version fixes the issues.
+  'combination-attack-ue': {
+    name: 'Combination Attack (Unofficial Errata)',
+    value: 'combination-attack-ue',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Reaction']
+  },
+  'counterattack': {
+    name: 'Counterattack',
+    value: 'counterattack',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Reaction']
+  },
+  'cover': {
+    name: 'Cover',
+    value: 'cover',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Reaction']
+  },
+  'damage-feedback': {
+    name: 'Damage Feedback',
+    value: 'damage-feedback',
+    learn_sp: 5,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'defensive-clash': {
+    name: 'Defensive Clash',
+    value: 'defensive-clash',
+    learn_sp: 4,
+    season: 3,
+    tags: ['Reaction']
+  },
+  'deflecting-shield': {
+    name: 'Deflecting Shield',
+    value: 'deflecting-shield',
+    learn_sp: 4,
+    season: 3,
+    tags: ['Reaction', 'Area Shield', 'Line Deflect']
+  },
+  'diving-escape': {
+    name: 'Diving Escape',
+    value: 'diving-escape',
+    learn_sp: 5,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'final-attack': {
+    name: 'Final Attack',
+    value: 'final-attack',
+    learn_sp: 6,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'ignore-effect': {
+    name: 'Ignore Effect',
+    value: 'ignore-effect',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Reaction']
+  },
+  'interrupt-attack': {
+    name: 'Interrupt Attack',
+    value: 'interrupt-attack',
+    learn_sp: 3,
+    season: 1,
+    tags: ['Reaction']
+  },
+  'line-deflect': {
+    name: 'Line Deflect',
+    value: 'line-deflect',
+    learn_sp: 5,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'mobile-cover': {
+    name: 'Mobile Cover',
+    value: 'mobile-cover',
+    learn_sp: 5,
+    season: 2,
+    tags: ['Reaction', 'Cover']
+  },
+  'mobile-dodge': {
+    name: 'Mobile Dodge',
+    value: 'mobile-dodge',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'opportunistic-dodge': {
+    name: 'Opportunistic Dodge',
+    value: 'opportunistic-dodge',
+    learn_sp: 6,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'push-away': {
+    name: 'Push Away',
+    value: 'push-away',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'prepared': {
+    name: 'Prepared',
+    value: 'prepared',
+    learn_sp: 6,
+    season: 3,
+    tags: ['Reaction', 'Counterattack']
+  },
+  'ranged-interrupt': {
+    name: 'Ranged Interrupt',
+    value: 'ranged-interrupt',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Reaction', 'Interrupt Attack']
+  },
+  'shrug-off': {
+    name: 'Shrug Off',
+    value: 'shrug-off',
+    learn_sp: 6,
+    season: 2,
+    tags: ['Reaction']
+  },
+  'acceleration': {
+    name: 'Acceleration',
+    value: 'acceleration',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  'analysis': {
+    name: 'Analysis',
+    value: 'analysis',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  'analysis': {
+    name: 'Analysis',
+    value: 'analysis',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  'blazing-might-raw': {
+    name: 'Blazing Might (RAW)',
+    value: 'blazing-might-raw',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  //Reduced cost compared to the original, but in exchange
+  //it can't be taken until Season 2.
+  'blazing-might-ue': {
+    name: 'Blazing Might (Unofficial Errata)',
+    value: 'blazing-might-ue',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Overdrive']
+  },
+  'burning-passion': {
+    name: 'Burning Passion',
+    value: 'burning-passion',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  'fighting-spirit-raw': {
+    name: 'Fighting Spirit (RAW)',
+    value: 'fighting-spirit-raw',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  //Reduced cost compared to the original, but in exchange
+  //it can't be taken until Season 2.
+  'fighting-spirit-ue': {
+    name: 'Fighting Spirit (Unofficial Errata)',
+    value: 'fighting-spirit-ue',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Overdrive']
+  },
+  'hardened-defense': {
+    name: 'Hardened Defense',
+    value: 'hardened-defense',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  'hardened-resistance': {
+    name: 'Hardened Resistance',
+    value: 'hardened-resistance',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  'resolute-aura': {
+    name: 'Resolute Aura',
+    value: 'resolute-aura',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
+  },
+  'strength-of-will': {
+    name: 'Strength of Will',
+    value: 'strength-of-will',
+    learn_sp: 5,
+    season: 1,
+    tags: ['Overdrive']
   },
 };
