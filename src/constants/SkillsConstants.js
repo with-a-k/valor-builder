@@ -4,7 +4,46 @@
   value: skill's text value for use with react-select
   learn_sp: SP it costs to get one level of
   season: a level requirement, kinda
-  tags: array of tags
+  tags: a series of identifiers that help the skill selector figure out what to show.
+    List of tags:
+    -- "Categorization Tags (let the user choose whether to include)" --
+    * Flaw: This Skill gives you extra SP, but is a drawback. The book keeps Flaws and Skills separate, but...
+    * Passive: This Skill is always in effect. The book uses the term "Permanent" for these.
+    * Situational: This Skill's effects are conditional.
+    * Active: This Skill provides an option in combat during your turn only.
+    * Reaction: This Skill provides an option in combat to be used during others' turns.
+    * Challenge: This Skill applies Challenge Scenes only. Challenge skills can't be applied to Techniques.
+    * Overdrive: This Skill adds to the character's Overdrive options.
+    * Trait: This Skill is a complete packages. Traits are yet to be formally introduced.
+    -- "Include These Only For Techniques" --
+    * Weaken: This Skill can't be attached to a character directly; it must be attached to a Technique.
+    * Boost: This Skill can't be attached to a character directly; it must be attached to a Technique.
+    -- "Include These If The Character Doesn't Have One With This Tag Already" --
+    * MaxHealth: For "Tough" and "Fragile" only, as these passive skills affect Max HP and are mutually exclusive.
+    * MaxStamina: For "Tireless" and "Lack of Control" only, as these passive skills affect Max Stamina and are mutually exclusive.
+    * Defense: For "Iron Defense" and "Weak Defender" only, as these passive skills affect Defense and are mutually exclusive.
+    * Resistance: For "Resistant" and "Energy Vulnerability" only, as these passive skills affect Resistance and are mutually exclusive.
+    * PhysicalAttack: For "Physical Attacker" and "Weak Physical Attacker" only, as these passive skills affect Strength Attack and Agility Attack and are mutually exclusive.
+    * EnergyAttack: For "Energy Attacker" and "Weak Energy Attacker" only, as these passive skills affect Spirit Attack and Mind Attack and are mutually exclusive.
+    * Movement: For "Sprinter" and "Slow" only, as these passive skills affect Movement and are mutually exclusive.
+    * Initiative: For "Quick to Act" and "Slow to Act" only, as these passive skills affect initiative rolls.
+    * StartingValor: For "Bravado" and "Weak-Willed" (and variations) only, as these passive skills affect the amount of Valor a character has at the start of combat.
+    * Knockout: For "Despair" and "Revenge" only, as these situational skills respond to party members being knocked out in opposite ways.
+    * Size: For "Increased Size", "Diminutive", and possibly "Increased Length". These passive skills affect how much space the character takes up in combat.
+            (But only the first is implemented yet. Forward thinking!)
+    -- "Include These Only If The Character Has A Skill With The Same Name As This Tag" --
+    * [Name of another skill]: For skills such as Dark Healing that require other skills.
+      Jump, Swift Step, Counterattack, Malevolent Entity, and Companion are some skills that are prerequisites and would have a tag named for them.
+    * Creation: Requires at least one of Attack Node, Refraction Point, or Portal.
+    -- "Other" --
+    * NPC: This Skill is not available to players; is_npc must be true for it to show up.
+    * Repeatable: This Skill can be taken multiple times, and ignores the check for "does the character already have this?".
+      Repeatable skills tend to have a customizable element.
+    * RAW: "Rules as Written". This tag is applied to multiple-version skills only and reflects that this version of the skill is the original printing.
+    * UE: "Unofficial Errata". This tag is applied to multiple-version skills only and reflects that this version of the skill is likely to appear in future errata.
+    * Errata: This tag is applied to multiple-version skills only and reflects that this version of the skill is the version appearing in official errata...
+              of which there is none yet.
+    * Houserule: Skill variant that has come up in several campaigns I've seen or otherwise been involved with.
 */
 //This array is still pretty lightweight and might be added to.
 //For now it exists to be iterated over to determine how to
@@ -186,14 +225,14 @@ module.exports = {
     value: 'impaired-accuracy-raw',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken']
+    tags: ['Flaw', 'Situational', 'Weaken', 'RAW']
   },
   'impaired-accuracy-ue': {
     name: 'Impaired Accuracy (Unofficial Errata)',
     value: 'impaired-accuracy-ue',
     learn_sp: -4,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken']
+    tags: ['Flaw', 'Situational', 'Weaken', 'UE']
   },
   'impaired-physical-accuracy': {
     name: 'Impaired Physical Accuracy',
@@ -214,14 +253,14 @@ module.exports = {
     value: 'impaired-evasion-raw',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken']
+    tags: ['Flaw', 'Situational', 'Weaken', 'RAW']
   },
   'impaired-evasion-ue': {
     name: 'Impaired Accuracy (Unofficial Errata)',
     value: 'impaired-accuracy-ue',
     learn_sp: -4,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken']
+    tags: ['Flaw', 'Situational', 'Weaken', 'UE']
   },
   'impaired-physical-evasion': {
     name: 'Impaired Physical Evasion',
@@ -256,7 +295,7 @@ module.exports = {
     value: 'bravado-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive', 'RAW']
   },
   //Levels up at 6 SP per level instead of 4.
   'bravado-ue': {
@@ -264,7 +303,7 @@ module.exports = {
     value: 'bravado-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive', 'UE']
   },
   //A houserule variant Bravado which is Fixed instead of levelable.
   'bravado-fixed': {
@@ -272,7 +311,7 @@ module.exports = {
     value: 'bravado-fixed',
     learn_sp: 6,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive', 'Houserule']
   },
   //The book classifies this as Permanent (Passive), but...
   'discreet-aura': {
@@ -337,7 +376,7 @@ module.exports = {
     value: 'increased-size',
     learn_sp: 2,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive', 'Size']
   },
   'iron-defense': {
     name: 'Iron Defense',
@@ -415,7 +454,7 @@ module.exports = {
     value: 'unyielding-determination-raw',
     learn_sp: 8,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive', 'RAW']
   },
   //Only affects Valor awards from the GM.
   'unyielding-determination-ue': {
@@ -423,9 +462,11 @@ module.exports = {
     value: 'unyielding-determination-ue',
     learn_sp: 8,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive', 'UE']
   },
   //NPC-only variant of Unyielding Det. (RAW).
+  //Technically this is a houserule skill for now but it's missing
+  //that tag deliberately.
   'valiant': {
     name: 'Valiant',
     value: 'valiant',
@@ -825,7 +866,7 @@ module.exports = {
     value: 'inspire-raw',
     learn_sp: 5,
     season: 1,
-    tags: ['Active']
+    tags: ['Active', 'RAW']
   },
   //The UE version is, thus, a Fixed skill.
   'inspire-ue': {
@@ -833,7 +874,7 @@ module.exports = {
     value: 'inspire-ue',
     learn_sp: 5,
     season: 1,
-    tags: ['Active']
+    tags: ['Active', 'UE']
   },
   'intimidate': {
     name: 'Intimidate',
@@ -981,15 +1022,15 @@ module.exports = {
     value: 'combination-attack-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Reaction']
+    tags: ['Reaction', 'RAW']
   },
-  //Fortunately, this has been discussed. This version fixes the issues.
-  'combination-attack-ue': {
-    name: 'Combination Attack (Unofficial Errata)',
-    value: 'combination-attack-ue',
+  //Fortunately, this has been discussed. This rough draft rewrite fixes the issues.
+  'combination-attack-house': {
+    name: 'Combination Attack (Rewrite)',
+    value: 'combination-attack-house',
     learn_sp: 6,
     season: 1,
-    tags: ['Reaction']
+    tags: ['Reaction', 'Houserule']
   },
   'counterattack': {
     name: 'Counterattack',
@@ -1136,7 +1177,7 @@ module.exports = {
     value: 'blazing-might-raw',
     learn_sp: 5,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive', 'RAW']
   },
   //Reduced cost compared to the original, but in exchange
   //it can't be taken until Season 2.
@@ -1145,7 +1186,7 @@ module.exports = {
     value: 'blazing-might-ue',
     learn_sp: 4,
     season: 2,
-    tags: ['Overdrive']
+    tags: ['Overdrive', 'UE']
   },
   'burning-passion': {
     name: 'Burning Passion',
@@ -1159,7 +1200,7 @@ module.exports = {
     value: 'fighting-spirit-raw',
     learn_sp: 5,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive', 'RAW']
   },
   //Reduced cost compared to the original, but in exchange
   //it can't be taken until Season 2.
@@ -1168,7 +1209,7 @@ module.exports = {
     value: 'fighting-spirit-ue',
     learn_sp: 4,
     season: 2,
-    tags: ['Overdrive']
+    tags: ['Overdrive', 'UE']
   },
   'hardened-defense': {
     name: 'Hardened Defense',
@@ -1388,14 +1429,14 @@ module.exports = {
     value: 'great-accuracy-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost']
+    tags: ['Boost', 'RAW']
   },
   'great-evasion-raw': {
     name: 'Great Evasion (RAW)',
     value: 'great-evasion-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost']
+    tags: ['Boost', 'RAW']
   },
   //These cost more...
   'great-accuracy-ue': {
@@ -1403,14 +1444,14 @@ module.exports = {
     value: 'great-accuracy-ue',
     learn_sp: 8,
     season: 1,
-    tags: ['Boost']
+    tags: ['Boost', 'UE']
   },
   'great-evasion-ue': {
     name: 'Great Evasion (Unofficial Errata)',
     value: 'great-evasion-ue',
     learn_sp: 8,
     season: 1,
-    tags: ['Boost']
+    tags: ['Boost', 'UE']
   },
   //...and these are half as effective.
   'great-physical-accuracy': {

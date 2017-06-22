@@ -48,42 +48,9 @@ class CharacterBuilder extends Component {
       //Each Skill is an object that looks like this:
       /*
       {
+        key: Integer - this is here so React can iterate over character skills smoothly.
         name: String - The Skill's name. For a Custom Skill, this can't be changed.
         cost: Integer - The amount of SP it uses.
-        tags: [String] - A series of identifiers that help the skill API figure out what to show.
-          List of tags:
-          -- "Categorization Tags (let the user choose whether to include)" --
-          * Flaw: This Skill gives you extra SP, but is a drawback. The book keeps Flaws and Skills separate, but...
-          * Passive: This Skill is always in effect. The book uses the term "Permanent" for these.
-          * Situational: This Skill's effects are conditional.
-          * Active: This Skill provides an option in combat during your turn only.
-          * Reaction: This Skill provides an option in combat to be used during others' turns.
-          * Challenge: This Skill applies Challenge Scenes only. Challenge skills can't be applied to Techniques.
-          * Overdrive: This Skill adds to the character's Overdrive options.
-          -- "Include These Only For Techniques" --
-          * Weaken: This Skill can't be attached to a character directly; it must be attached to a Technique.
-          * Boost: This Skill can't be attached to a character directly; it must be attached to a Technique.
-          -- "Include These If The Character Doesn't Have One With This Tag Already" --
-          * MaxHealth: For "Tough" and "Fragile" only, as these passive skills affect Max HP and are mutually exclusive.
-          * MaxStamina: For "Tireless" and "Lack of Control" only, as these passive skills affect Max Stamina and are mutually exclusive.
-          * Defense: For "Iron Defense" and "Weak Defender" only, as these passive skills affect Defense and are mutually exclusive.
-          * Resistance: For "Resistant" and "Energy Vulnerability" only, as these passive skills affect Resistance and are mutually exclusive.
-          * PhysicalAttack: For "Physical Attacker" and "Weak Physical Attacker" only, as these passive skills affect Strength Attack and Agility Attack and are mutually exclusive.
-          * EnergyAttack: For "Energy Attacker" and "Weak Energy Attacker" only, as these passive skills affect Spirit Attack and Mind Attack and are mutually exclusive.
-          * Movement: For "Sprinter" and "Slow" only, as these passive skills affect Movement and are mutually exclusive.
-          * Initiative: For "Quick to Act" and "Slow to Act" only, as these passive skills affect initiative rolls.
-          * StartingValor: For "Bravado" and "Weak-Willed" (and variations) only, as these passive skills affect the amount of Valor a character has at the start of combat.
-          * Knockout: For "Despair" and "Revenge" only, as these situational skills respond to party members being knocked out in opposite ways.
-          -- "Include These Only If The Character Has A Skill With The Same Name As This Tag" --
-          * [Name of another skill]: For skills such as Dark Healing that require other skills.
-            Jump, Swift Step, Counterattack, Malevolent Entity, and Companion are some skills that are prerequisites and would have a tag named for them.
-          * Creation: Requires at least one of Attack Node, Refraction Point, or Portal.
-          -- "Other" --
-          * NPC: This Skill is not available to players; is_npc must be true for it to show up.
-          * Repeatable: This Skill can be taken multiple times, and ignores the check for "does the character already have this?".
-          * Character: An extremely rare tag which prevents the Skill from being attached to a Technique.
-          Repeatable skills tend to have a customizable element.
-        levelProgression:  String - Either "Fixed", "Slow", or "Fast".
         level: Integer - What level the skill is. Fixed Skills stay at Level 1.
         effect: String - What effect the Skill has on the attached character.
         bonus: Object - {
@@ -94,6 +61,8 @@ class CharacterBuilder extends Component {
 
       }
       */
+      nextSkillId: 0,
+      //Tells the CB what to use as the next key when adding a Skill.
       techniques: []
       //Each Technique is an object that looks like this:
       /*
@@ -231,19 +200,57 @@ class CharacterBuilder extends Component {
     }
   }
 
+  //Add a new, blank skill to state.skills.
+  addSkill() {
+    var skills = this.state.skills;
+    skills.push({
+      id: this.state.nextSkillId,
+      name: '',
+      cost: 0,
+      level: 0,
+      bonus: {}
+    });
+    this.setState({nextSkillId: this.state.nextSkillId++});
+    this.setState({skills: skills});
+  }
+
+  //Takes a data object from SkillContainer and updates the skills array in the state.
+  updateSkill(new_data) {
+    var skills = this.state.skills;
+    skills.map(function(skill) {
+      //if the key of the new data is the same
+      if (skill.id === new_data.id) {
+        return new_data;
+      } else {
+        return skill;
+      }
+    });
+    this.setState({skills: skills});
+  }
+
+  removeSkill(id) {
+    var skills = skills.filter(function(skill) {
+      return skill.id !== id;
+    });
+  }
+
   render() {
     return <CharacterView
-            character = {this.objectify()}
-            character_type = {this.state.character_type}
-            handleStrengthChange = {this.handleStrengthChange.bind(this)}
-            handleAgilityChange = {this.handleAgilityChange.bind(this)}
-            handleSpiritChange = {this.handleSpiritChange.bind(this)}
-            handleMindChange = {this.handleMindChange.bind(this)}
-            handleGutsChange = {this.handleGutsChange.bind(this)}
-            handleLevelChange = {this.handleLevelChange.bind(this)}
-            handleTypeChange = {this.handleTypeChange.bind(this)}
-            handleNPCChange = {this.handleNPCChange.bind(this)}
-            handleRename = {this.handleRename.bind(this)}/>;
+              character = {this.objectify()}
+              character_type = {this.state.character_type}
+              handleStrengthChange = {this.handleStrengthChange.bind(this)}
+              handleAgilityChange = {this.handleAgilityChange.bind(this)}
+              handleSpiritChange = {this.handleSpiritChange.bind(this)}
+              handleMindChange = {this.handleMindChange.bind(this)}
+              handleGutsChange = {this.handleGutsChange.bind(this)}
+              handleLevelChange = {this.handleLevelChange.bind(this)}
+              handleTypeChange = {this.handleTypeChange.bind(this)}
+              handleNPCChange = {this.handleNPCChange.bind(this)}
+              handleRename = {this.handleRename.bind(this)}
+              skills = {this.state.skills}
+              addSkill = {this.addSkill.bind(this)}
+              updateSkill = {this.updateSkill.bind(this)}
+              removeSkill = {this.updateSkill.bind(this)}/>;
   }
 }
 

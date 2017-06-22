@@ -30,7 +30,11 @@ const CharacterView = (props) => {
         handleLevelChange = {props.handleLevelChange}
         handleTypeChange = {props.handleTypeChange}
         handleNPCChange = {props.handleNPCChange}/>
-      <SkillsContainer/>
+      <SkillsContainer
+        skills = {props.skills}
+        addSkill = {props.addSkill}
+        updateSkill = {props.updateSkill}
+        removeSkill = {props.removeSkill}/>
     </div>
   )
 }
