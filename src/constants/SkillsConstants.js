@@ -1198,4 +1198,247 @@ module.exports = {
     season: 1,
     tags: ['Overdrive']
   },
+  'asset': {
+    name: 'Asset',
+    value: 'asset',
+    learn_sp: 3,
+    season: 1,
+    tags: ['Challenge', 'Character', 'Repeatable']
+  },
+  'challenge-technique': {
+    name: 'Challenge Technique',
+    value: 'challenge-technique',
+    learn_sp: 3,
+    season: 1,
+    tags: ['Challenge', 'Character', 'Repeatable']
+  },
+  'favorable-insight': {
+    name: 'Favorable Insight',
+    value: 'favorable-insight',
+    learn_sp: 3,
+    season: 1,
+    tags: ['Challenge', 'Character', 'Repeatable']
+  },
+  'favorable-success': {
+    name: 'Favorable Success',
+    value: 'favorable-success',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Challenge', 'Character', 'Repeatable']
+  },
+  'proficiency': {
+    name: 'Proficiency',
+    value: 'proficiency',
+    learn_sp: 2,
+    season: 1,
+    tags: ['Challenge', 'Character', 'Repeatable']
+  },
+  'recovery': {
+    name: 'Recovery',
+    value: 'recovery',
+    learn_sp: 3,
+    season: 1,
+    tags: ['Challenge', 'Character', 'Repeatable']
+  },
+  'companion': {
+    name: 'Companion',
+    value: 'companion',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Passive', 'Repeatable']
+  },
+  'ally-mount': {
+    name: 'Companion',
+    value: 'ally-mount',
+    learn_sp: 6,
+    season: 2,
+    tags: ['Active', 'Companion', 'Mount']
+  },
+  //Unlike most of these companion skills, Companion Sense applies
+  //to ALL of your companions.
+  'companion-sense': {
+    name: 'Companion Sense',
+    value: 'companion-sense',
+    learn_sp: 2,
+    season: 3,
+    tags: ['Active', 'Companion']
+  },
+  'companion-zoc': {
+    name: 'Companion Zone of Control',
+    value: 'companion-zoc',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Passive', 'Companion']
+  },
+  'extended-revival': {
+    name: 'Extended Revival',
+    value: 'extended-revival',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Active', 'Companion']
+  },
+  'fast-companion': {
+    name: 'Fast Companion',
+    value: 'fast-companion',
+    learn_sp: 2,
+    season: 1,
+    tags: ['Passive', 'Companion']
+  },
+  'flank-attack': {
+    name: 'Flank Attack',
+    value: 'flank-attack',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Situational', 'Companion']
+  },
+  'flying-companion': {
+    name: 'Flying Companion',
+    value: 'flying-companion',
+    learn_sp: 3,
+    season: 3,
+    tags: ['Passive', 'Companion']
+  },
+  'hidden-companion': {
+    name: 'Hidden Companion',
+    value: 'hidden-companion',
+    learn_sp: 4,
+    season: 1,
+    tags: ['Active', 'Companion']
+  },
+  'instant-mount': {
+    name: 'Instant Mount',
+    value: 'instant-mount',
+    learn_sp: 6,
+    season: 3,
+    tags: ['Active', 'Companion', 'Mount']
+  },
+  'mount': {
+    name: 'Mount',
+    value: 'mount',
+    learn_sp: 3,
+    season: 1,
+    tags: ['Active', 'Companion']
+  },
+  'protect-ally': {
+    name: 'Protect Ally',
+    value: 'protect-ally',
+    learn_sp: 2,
+    season: 2,
+    tags: ['Reaction', 'Companion', 'Protect Master']
+  },
+  'protect-master': {
+    name: 'Protect Master',
+    value: 'protect-master',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Reaction', 'Companion']
+  },
+  'ranged-revival': {
+    name: 'Ranged Revival',
+    value: 'ranged-revival',
+    learn_sp: 3,
+    season: 2,
+    tags: ['Active', 'Companion']
+  },
+  'reactive-companion': {
+    name: 'Reactive Companion',
+    value: 'reactive-companion',
+    learn_sp: 4,
+    season: 3,
+    tags: ['Reaction', 'Companion']
+  },
+  'sense-malice': {
+    name: 'Sense Malice',
+    value: 'sense-malice',
+    learn_sp: 2,
+    season: 1,
+    tags: ['Situational', 'Companion']
+  },
+  'tossing-companion': {
+    name: 'Tossing Companion',
+    value: 'tossing-companion',
+    learn_sp: 3,
+    season: 2,
+    tags: ['Active', 'Companion', 'Toss']
+  },
+  'trusting-companion': {
+    name: 'Trusting Companion',
+    value: 'trusting-companion',
+    learn_sp: 4,
+    season: 2,
+    tags: ['Active', 'Companion']
+  },
+  'change-attributes': {
+    name: 'Change Attributes',
+    value: 'change-attributes',
+    learn_sp: 2,
+    season: 1,
+    tags: ['Boost']
+  },
+  'enhanced-range': {
+    name: 'Enhanced Range',
+    value: 'enhanced-range',
+    learn_sp: 2,
+    season: 1,
+    tags: ['Boost']
+  },
+  //Like their Weaken Flaw counterparts, these are too strong.
+  'great-accuracy-raw': {
+    name: 'Great Accuracy (RAW)',
+    value: 'great-accuracy-raw',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost']
+  },
+  'great-evasion-raw': {
+    name: 'Great Evasion (RAW)',
+    value: 'great-evasion-raw',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost']
+  },
+  //These cost more...
+  'great-accuracy-ue': {
+    name: 'Great Accuracy (Unofficial Errata)',
+    value: 'great-accuracy-ue',
+    learn_sp: 8,
+    season: 1,
+    tags: ['Boost']
+  },
+  'great-evasion-ue': {
+    name: 'Great Evasion (Unofficial Errata)',
+    value: 'great-evasion-ue',
+    learn_sp: 8,
+    season: 1,
+    tags: ['Boost']
+  },
+  //...and these are half as effective.
+  'great-physical-accuracy': {
+    name: 'Great Physical Accuracy',
+    value: 'great-physical-accuracy',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost', 'Houserule']
+  },
+  'great-physical-evasion': {
+    name: 'Great Physical Evasion',
+    value: 'great-physical-evasion',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost', 'Houserule']
+  },
+  'great-energy-accuracy': {
+    name: 'Great Energy Accuracy',
+    value: 'great-energy-accuracy',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost', 'Houserule']
+  },
+  'great-energy-evasion': {
+    name: 'Great Energy Evasion',
+    value: 'great-energy-evasion',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost', 'Houserule']
+  },
 };
