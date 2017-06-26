@@ -30,7 +30,7 @@
     * StartingValor: For "Bravado" and "Weak-Willed" (and variations) only, as these passive skills affect the amount of Valor a character has at the start of combat.
     * Knockout: For "Despair" and "Revenge" only, as these situational skills respond to party members being knocked out in opposite ways.
     * Size: For "Increased Size", "Diminutive", and possibly "Increased Length". These passive skills affect how much space the character takes up in combat.
-            (But only the first is implemented yet. Forward thinking!)
+            (But only the first is implemented yet.)
     -- "Include These Only If The Character Has A Skill With The Same Name As This Tag" --
     * [Name of another skill]: For skills such as Dark Healing that require other skills.
       Jump, Swift Step, Counterattack, Malevolent Entity, and Companion are some skills that are prerequisites and would have a tag named for them.

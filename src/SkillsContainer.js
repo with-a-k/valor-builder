@@ -3,7 +3,11 @@ import SkillsView from './views/SkillsView';
 
 class SkillsContainer extends Component {
   render() {
-    return <div>SkillsContainer is still being built.</div>;
+    return <SkillsView
+              skills={this.props.skills}
+              addSkill={this.props.addSkill}
+              updateSkill={this.props.updateSkill}
+              removeSkill={this.props.removeSkill}/>;
   }
 }
 

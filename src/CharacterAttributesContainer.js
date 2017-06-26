@@ -100,16 +100,16 @@ class CharacterAttributesContainer extends Component {
 
   render() {
     return <CharacterAttributesView
-            characterAttributes = {this.objectify()}
-            is_npc = {this.props.is_npc}
-            handleStrengthChange = {this.props.handleStrengthChange}
-            handleAgilityChange = {this.props.handleAgilityChange}
-            handleSpiritChange = {this.props.handleSpiritChange}
-            handleMindChange = {this.props.handleMindChange}
-            handleGutsChange = {this.props.handleGutsChange}
-            handleLevelChange = {this.props.handleLevelChange}
-            handleTypeChange = {this.props.handleTypeChange}
-            handleNPCChange = {this.props.handleNPCChange}/>;
+              characterAttributes = {this.objectify()}
+              is_npc = {this.props.is_npc}
+              handleStrengthChange = {this.props.handleStrengthChange}
+              handleAgilityChange = {this.props.handleAgilityChange}
+              handleSpiritChange = {this.props.handleSpiritChange}
+              handleMindChange = {this.props.handleMindChange}
+              handleGutsChange = {this.props.handleGutsChange}
+              handleLevelChange = {this.props.handleLevelChange}
+              handleTypeChange = {this.props.handleTypeChange}
+              handleNPCChange = {this.props.handleNPCChange}/>;
   }
 }
 

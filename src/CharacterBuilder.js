@@ -10,7 +10,6 @@ class CharacterBuilder extends Component {
       //Name doesn't affect any of the numbers, so it can stand alone.
       character_type: "Elite",
       //Character Type affects certain attribute calculations, handling Ultimate Techniques, and has other effects.
-      //Non-Elite types have an unremovable Skill detailing the difference between an Elite and itself.
       //The only values it can have are "Elite", "Master", "Swarm", "Soldier", and "Flunky".
       is_npc: false,
       //This flag affects whether or not NPC-only Skills and Modifiers will show up in the skill selector.
@@ -58,6 +57,7 @@ class CharacterBuilder extends Component {
             but only if the bonus exists. Only Passive skills will have this property.
         }
         special: String - The "Special" field from the book's entry.
+        priority: Used to sort the skills array. Traits have -2. Flaws have -1. Everything else has 0.
 
       }
       */
@@ -229,9 +229,10 @@ class CharacterBuilder extends Component {
   }
 
   removeSkill(id) {
-    var skills = skills.filter(function(skill) {
+    var skills = this.state.skills.filter(function(skill) {
       return skill.id !== id;
     });
+    this.setState({skills: skills});
   }
 
   render() {

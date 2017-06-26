@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import SkillView from './views/SkillsView';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+import SkillView from './views/SkillView';
 
 class SkillContainer extends Component {
   render() {

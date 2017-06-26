@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-//An FSC that views all Skill. This is a "high-level" FSC which
+//An FSC that views all Skills. This is a "high-level" FSC which
 //has a number of children.
 const SkillsView = (props) => {
   return (
@@ -10,9 +9,5 @@ const SkillsView = (props) => {
     </div>
   )
 }
-
-SkillsView.propTypes = {
-
-};
 
 export default SkillsView;
