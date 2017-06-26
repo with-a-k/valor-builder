@@ -5,119 +5,136 @@ import AttributeView from './AttributeView';
 import SelectorView from './SelectorView';
 import VBCheckbox from './VBCheckbox';
 import TextConstants from '../constants/TextConstants';
+import Styles from '../styles';
 
 const CharacterAttributesView = (props) => {
   return (
-    <div>
-      <div className="masterControls">
+    <div style={Styles.CharacterAttributesView}>
         <AttributeInput
           attributeName="Level"
           attributeValue={props.characterAttributes.level}
-          changeAttribute={props.handleLevelChange}/>
+          changeAttribute={props.handleLevelChange}
+          position="level"/>
         <SelectorView
           selectorName="Type"
           selectorOptions={TextConstants.ENTITY_TYPES}
-          handleChange={props.handleTypeChange}/>
+          handleChange={props.handleTypeChange}
+          position="type"/>
         <VBCheckbox
           toggleName="Is an NPC?"
           toggleState={props.is_npc}
-          toggleChange={props.handleNPCChange}/>
-      </div>
-      <div className="baseControls">
+          toggleChange={props.handleNPCChange}
+          position="npc"/>
         <AttributeInput
           attributeName="Strength"
           attributeValue={props.characterAttributes.strength}
           changeAttribute={props.handleStrengthChange}
-          maxValue={props.level + 7}/>
+          maxValue={props.level + 7}
+          position={"strength"}/>
         <AttributeInput
           attributeName="Agility"
           attributeValue={props.characterAttributes.agility}
           changeAttribute={props.handleAgilityChange}
-          maxValue={props.level + 7}/>
+          maxValue={props.level + 7}
+          position={"agility"}/>
         <AttributeInput
           attributeName="Spirit"
           attributeValue={props.characterAttributes.spirit}
           changeAttribute={props.handleSpiritChange}
-          maxValue={props.level + 7}/>
+          maxValue={props.level + 7}
+          position={"spirit"}/>
         <AttributeInput
           attributeName="Mind"
           attributeValue={props.characterAttributes.mind}
           changeAttribute={props.handleMindChange}
-          maxValue={props.level + 7}/>
+          maxValue={props.level + 7}
+          position={"mind"}/>
         <AttributeInput
           attributeName="Guts"
           attributeValue={props.characterAttributes.guts}
           changeAttribute={props.handleGutsChange}
-          maxValue={props.level + 7}/>
-      </div>
-      <div className="activeAttributes">
+          maxValue={props.level + 7}
+          position={"guts"}/>
         <AttributeView
           attributeName="Muscle"
-          attributeValue={props.characterAttributes.muscle}/>
+          attributeValue={props.characterAttributes.muscle}
+          position="muscle"/>
         <AttributeView
           attributeName="Dexterity"
-          attributeValue={props.characterAttributes.dexterity}/>
+          attributeValue={props.characterAttributes.dexterity}
+          position="dexterity"/>
         <AttributeView
           attributeName="Aura"
-          attributeValue={props.characterAttributes.aura}/>
+          attributeValue={props.characterAttributes.aura}
+          position="aura"/>
         <AttributeView
           attributeName="Intuition"
-          attributeValue={props.characterAttributes.intuition}/>
+          attributeValue={props.characterAttributes.intuition}
+          position="intuition"/>
         <AttributeView
           attributeName="Resolve"
-          attributeValue={props.characterAttributes.resolve}/>
-      </div>
-      <div className="attackScores">
+          attributeValue={props.characterAttributes.resolve}
+          position="resolve"/>
         <AttributeView
           attributeName="Strength Attack"
-          attributeValue={props.characterAttributes.strengthAttack}/>
+          attributeValue={props.characterAttributes.strengthAttack}
+          position="strength_attack"/>
         <AttributeView
           attributeName="Agility Attack"
-          attributeValue={props.characterAttributes.agilityAttack}/>
+          attributeValue={props.characterAttributes.agilityAttack}
+          position="agility_attack"/>
         <AttributeView
           attributeName="Spirit Attack"
-          attributeValue={props.characterAttributes.spiritAttack}/>
+          attributeValue={props.characterAttributes.spiritAttack}
+          position="spirit_attack"/>
         <AttributeView
           attributeName="Mind Attack"
-          attributeValue={props.characterAttributes.mindAttack}/>
+          attributeValue={props.characterAttributes.mindAttack}
+          position="mind_attack"/>
         <AttributeView
           attributeName="Damage Increment"
-          attributeValue={props.characterAttributes.damageIncrement}/>
-      </div>
-      <div className="healthAttributes">
+          attributeValue={props.characterAttributes.damageIncrement}
+          position="damage_increment"/>
         <AttributeView
           attributeName="Max Health"
-          attributeValue={props.characterAttributes.maxHealth}/>
+          attributeValue={props.characterAttributes.maxHealth}
+          position="maxhp"/>
         <AttributeView
           attributeName="Health Increment"
-          attributeValue={props.characterAttributes.healthIncrement}/>
+          attributeValue={props.characterAttributes.healthIncrement}
+          position="hpincrement"/>
         <AttributeView
           attributeName="Critical Health"
-          attributeValue={props.characterAttributes.criticalHealth}/>
+          attributeValue={props.characterAttributes.criticalHealth}
+          position="criticalhp"/>
         <AttributeView
           attributeName="Defense"
-          attributeValue={props.characterAttributes.defense}/>
+          attributeValue={props.characterAttributes.defense}
+          position="defense"/>
         <AttributeView
           attributeName="Resistance"
-          attributeValue={props.characterAttributes.resistance}/>
-      </div>
-      <div className="staminaAndMetaAttributes">
+          attributeValue={props.characterAttributes.resistance}
+          position="resistance"/>
         <AttributeView
           attributeName="Max Stamina"
-          attributeValue={props.characterAttributes.maxStamina}/>
+          attributeValue={props.characterAttributes.maxStamina}
+          position="maxst"/>
         <AttributeView
           attributeName="Stamina Increment"
-          attributeValue={props.characterAttributes.staminaIncrement}/>
+          attributeValue={props.characterAttributes.staminaIncrement}
+          position="stincrement"/>
         <AttributeView
           attributeName="Movement"
-          attributeValue={props.characterAttributes.move}/>
+          attributeValue={props.characterAttributes.move}
+          position="movement"/>
         <AttributeView
           attributeName="Max Skill Points"
-          attributeValue={props.characterAttributes.skillPoints}/>
+          attributeValue={props.characterAttributes.skillPoints}
+          position="maxsp"/>
         <AttributeView
           attributeName="Max Technique Points"
-          attributeValue={props.characterAttributes.techPoints}/>
-      </div>
+          attributeValue={props.characterAttributes.techPoints}
+          position="maxtp"/>
     </div>
   )
 }

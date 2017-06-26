@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CharacterView from './views/CharacterView';
-import style from './buildstyle';
+import style from './styles';
 
 class CharacterBuilder extends Component {
   constructor() {

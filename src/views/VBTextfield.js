@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 //to be used for certain Skills such as Companion or Elemental Resistance.
 const VBTextfield = (props) => {
   return (
-    <div>
-      <p>{props.fieldName}:</p> <input type="text"
+    <div style={{gridArea: props.position}}>
+      {props.fieldName}: <input type="text"
         value={props.fieldValue}
         onChange={props.handleChange}/>
     </div>

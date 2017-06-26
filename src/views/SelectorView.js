@@ -11,8 +11,8 @@ const SelectorView = (props) => {
     return <option key={index}>{option}</option>
   });
   return (
-    <div>
-      <p>{props.selectorName}:</p> <select name={props.selectorName}
+    <div style={{gridArea: props.position}}>
+      {props.selectorName}: <select name={props.selectorName}
         onChange={props.handleChange}>
         { options }
       </select>

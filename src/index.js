@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CharacterBuilder from './CharacterBuilder';
 import registerServiceWorker from './registerServiceWorker';
-import './buildstyle.js';
+import './styles.js';
 
 ReactDOM.render(
   <CharacterBuilder />,

@@ -7,6 +7,8 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "foreman": "^2.0.0",
+    "glamor": "^2.20.25",
+    "glamorous": "^3.23.4",
     "marked": "^0.3.6",
     "mongoose": "^4.10.0",
     "nodemon": "^1.11.0",

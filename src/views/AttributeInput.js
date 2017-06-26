@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Styles from '../styles';
 
 //An FSC (functional stateless component) that provides an input device.
 const AttributeInput = (props) => {
+  var style = Object.assign(Styles.AttributeInput, {gridArea: props.position})
   return (
-    <div>
-      <p>{props.attributeName}:</p> <input type="number" min="1" max={props.maxValue} value={props.attributeValue}
-        onChange={props.changeAttribute}/>
+    <div style={style}>
+      {props.attributeName}: <input type="number" min="1" max={props.maxValue} value={props.attributeValue}
+        onChange={props.changeAttribute}
+        style={{width: '50px'}}/>
     </div>
   )
 }
