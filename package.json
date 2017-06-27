@@ -16,6 +16,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-select": "^1.0.0-rc.4",
+    "react-sortable-hoc": "^0.6.3",
     "react-virtualized-select": "^3.0.1"
   },
   "devDependencies": {

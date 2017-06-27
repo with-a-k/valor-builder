@@ -210,7 +210,7 @@ class CharacterBuilder extends Component {
       level: 0,
       bonus: {}
     });
-    this.setState({nextSkillId: this.state.nextSkillId++});
+    this.setState({nextSkillId: this.state.nextSkillId + 1});
     this.setState({skills: skills});
   }
 
@@ -229,6 +229,8 @@ class CharacterBuilder extends Component {
   }
 
   removeSkill(id) {
+    console.log('Reached removeSkill in CharacterBuilder for Skill ' + id);
+    console.log(`"this" is ${this}`);
     var skills = this.state.skills.filter(function(skill) {
       return skill.id !== id;
     });
@@ -251,7 +253,7 @@ class CharacterBuilder extends Component {
               skills = {this.state.skills}
               addSkill = {this.addSkill.bind(this)}
               updateSkill = {this.updateSkill.bind(this)}
-              removeSkill = {this.updateSkill.bind(this)}/>;
+              removeSkill = {this.removeSkill.bind(this)}/>;
   }
 }
 

@@ -28,7 +28,7 @@ class SkillSelector extends Component {
     options.filter(function(option) {
       return !(Skills[option.value].tags.some(function(tag) {
         return this.props.excludeTags.includes(tag) || this.props.value === tag;
-      }))
+      }));
     });
 
     return <VirtualizedSelect
