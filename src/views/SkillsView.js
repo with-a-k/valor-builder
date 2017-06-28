@@ -11,7 +11,10 @@ const SkillsView = (props) => {
               id={skillObject.id}
               skill={skillObject}
               removeSkill={props.removeSkill}
-              updateSkill={props.updateSkill}/>
+              updateSkill={props.updateSkill}
+              is_npc={props.is_npc}
+              season={props.season}
+              exclude={props.exclude}/>
   });
 
   return (

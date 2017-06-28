@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CharacterView from './views/CharacterView';
-import style from './styles';
+import AttributeConstants from './constants/AttributeConstants';
 
 class CharacterBuilder extends Component {
   constructor() {
@@ -48,7 +48,7 @@ class CharacterBuilder extends Component {
       /*
       {
         key: Integer - this is here so React can iterate over character skills smoothly.
-        name: String - The Skill's name. For a Custom Skill, this can't be changed.
+        selectValue: Object - this has the skill's label and selector internal value.
         cost: Integer - The amount of SP it uses.
         level: Integer - What level the skill is. Fixed Skills stay at Level 1.
         effect: String - What effect the Skill has on the attached character.
@@ -200,12 +200,28 @@ class CharacterBuilder extends Component {
     }
   }
 
+  //SP can't be obtained in any way other than leveling up or Flaws.
+  baseSkillPoints() {
+    return ((14 + AttributeConstants.BASE_SP_ADJUSTMENT[this.state.character_type] +
+      this.state.level * (6 + AttributeConstants.SP_GAIN_ADJUSTMENT[this.state.character_type])) *
+      AttributeConstants.SP_MULTIPLIERS[this.state.character_type]);
+  }
+
+  freeSkillPoints() {
+    return this.baseSkillPoints() - this.state.skills.reduce(function(total, skill) {
+      return total + skill.cost;
+    }, 0);
+  }
+
   //Add a new, blank skill to state.skills.
   addSkill() {
     var skills = this.state.skills;
     skills.push({
       id: this.state.nextSkillId,
-      name: '',
+      selectValue: {
+        label: '',
+        value: ''
+      },
       cost: 0,
       level: 0,
       bonus: {}
@@ -229,8 +245,6 @@ class CharacterBuilder extends Component {
   }
 
   removeSkill(id) {
-    console.log('Reached removeSkill in CharacterBuilder for Skill ' + id);
-    console.log(`"this" is ${this}`);
     var skills = this.state.skills.filter(function(skill) {
       return skill.id !== id;
     });
@@ -253,7 +267,9 @@ class CharacterBuilder extends Component {
               skills = {this.state.skills}
               addSkill = {this.addSkill.bind(this)}
               updateSkill = {this.updateSkill.bind(this)}
-              removeSkill = {this.removeSkill.bind(this)}/>;
+              removeSkill = {this.removeSkill.bind(this)}
+              maxSp = {this.baseSkillPoints()}
+              npc = {this.state.is_npc}/>;
   }
 }
 

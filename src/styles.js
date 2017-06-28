@@ -5,7 +5,7 @@ Positioning attributes are not included in these constants, as by design the vie
 */
 module.exports = {
   'AttributeInput': {
-    'width': '120px'
+
   },
   'AttributeView': {
 
@@ -27,7 +27,8 @@ module.exports = {
     'alignItems': 'center',
     'alignContent': 'start',
     'justifyItems': 'center',
-    'justifyContent': 'center'
+    'justifyContent': 'center',
+    'padding': '24px'
   },
   'SelectorView': {
 

@@ -1,7 +1,7 @@
 //A hugetastic object of objects with:
 /*
   name: skill's name
-  value: skill's text value for use with react-select
+  selectValue: skill's text value for use with react-select
   learn_sp: SP it costs to get one level of
   season: a level requirement, kinda
   tags: a series of identifiers that help the skill selector figure out what to show.
@@ -52,168 +52,168 @@
 module.exports = {
   'aggravated-wounds': {
     name: 'Aggravated Wounds',
-    value: 'aggravated-wounds',
+    selectValue: 'aggravated-wounds',
     learn_sp: -2,
     season: 1,
     tags: ['Flaw', 'Passive']
   },
   'berserker': {
     name: 'Berserker',
-    value: 'berserker',
+    selectValue: 'berserker',
     learn_sp: -5,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'compulsion': {
     name: 'Compulsion',
-    value: 'compulsion',
+    selectValue: 'compulsion',
     learn_sp: -4,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'despair': {
     name: 'Despair',
-    value: 'despair',
+    selectValue: 'despair',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Knockout']
   },
   'energy-vulnerability': {
     name: 'Energy Vulnerability',
-    value: 'energy-vulnerability',
+    selectValue: 'energy-vulnerability',
     learn_sp: -2,
     season: 1,
     tags: ['Flaw', 'Passive', 'Resistance']
   },
   'feeble': {
     name: 'Feeble',
-    value: 'feeble',
+    selectValue: 'feeble',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'form-restriction': {
     name: 'Form Restriction',
-    value: 'form-restriction',
+    selectValue: 'form-restriction',
     learn_sp: -2,
     season: 1,
     tags: ['Flaw', 'Situational', 'Repeatable']
   },
   'fragile': {
     name: 'Fragile',
-    value: 'fragile',
+    selectValue: 'fragile',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Passive', 'MaxHealth']
   },
   'lack-of-control': {
     name: 'Lack of Control',
-    value: 'lack-of-control',
+    selectValue: 'lack-of-control',
     learn_sp: -2,
     season: 1,
     tags: ['Flaw', 'Passive', 'MaxStamina']
   },
   'malevolent-entity': {
     name: 'Malevolent Entity',
-    value: 'malevolent-entity',
+    selectValue: 'malevolent-entity',
     learn_sp: -5,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'non-proficient': {
     name: 'Non-proficient',
-    value: 'non-proficient',
+    selectValue: 'non-proficient',
     learn_sp: -1,
     season: 1,
     tags: ['Flaw', 'Challenge', 'Repeatable']
   },
   'oblivious': {
     name: 'Oblivious',
-    value: 'oblivious',
+    selectValue: 'oblivious',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'slow': {
     name: 'Slow',
-    value: 'slow',
+    selectValue: 'slow',
     learn_sp: -2,
     season: 1,
     tags: ['Flaw', 'Passive', 'Movement']
   },
   'slow-healing': {
     name: 'Slow Healing',
-    value: 'slow-healing',
+    selectValue: 'slow-healing',
     learn_sp: -2,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'slow-to-act': {
     name: 'Slow to Act',
-    value: 'slow-to-act',
+    selectValue: 'slow-to-act',
     learn_sp: -1,
     season: 1,
     tags: ['Flaw', 'Situational', 'Initiative']
   },
   'unthreatening': {
     name: 'Unthreatening',
-    value: 'unthreatening',
+    selectValue: 'unthreatening',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Passive']
   },
   'uncoordinated': {
     name: 'Uncoordinated',
-    value: 'uncoordinated',
+    selectValue: 'uncoordinated',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'violent': {
     name: 'Violent',
-    value: 'violent',
+    selectValue: 'violent',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'weak-energy-attacker': {
     name: 'Weak Energy Attacker',
-    value: 'weak-energy-attacker',
+    selectValue: 'weak-energy-attacker',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Passive', 'EnergyAttack']
   },
   'weak-physical-attacker': {
     name: 'Weak Physical Attacker',
-    value: 'weak-physical-attacker',
+    selectValue: 'weak-physical-attacker',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Passive', 'PhysicalAttack']
   },
   'weak-aura': {
     name: 'Weak Aura',
-    value: 'weak-aura',
+    selectValue: 'weak-aura',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational']
   },
   'weak-defender': {
     name: 'Weak Defender',
-    value: 'weak-defender',
+    selectValue: 'weak-defender',
     learn_sp: -2,
     season: 1,
     tags: ['Flaw', 'Passive', 'Defense']
   },
   'weak-willed': {
     name: 'Weak-Willed',
-    value: 'weak-willed',
+    selectValue: 'weak-willed',
     learn_sp: -4,
     season: 1,
     tags: ['Flaw', 'Passive', 'StartingValor']
   },
   'flightless': {
     name: 'Weak-Willed',
-    value: 'weak-willed',
+    selectValue: 'weak-willed',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken']
@@ -222,77 +222,77 @@ module.exports = {
   //just costs more.
   'impaired-accuracy-raw': {
     name: 'Impaired Accuracy (RAW)',
-    value: 'impaired-accuracy-raw',
+    selectValue: 'impaired-accuracy-raw',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'RAW']
   },
   'impaired-accuracy-ue': {
     name: 'Impaired Accuracy (Unofficial Errata)',
-    value: 'impaired-accuracy-ue',
+    selectValue: 'impaired-accuracy-ue',
     learn_sp: -4,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'UE']
   },
   'impaired-physical-accuracy': {
     name: 'Impaired Physical Accuracy',
-    value: 'impaired-physical-accuracy',
+    selectValue: 'impaired-physical-accuracy',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
   },
   'impaired-energy-accuracy': {
     name: 'Impaired Energy Accuracy',
-    value: 'impaired-energy-accuracy',
+    selectValue: 'impaired-energy-accuracy',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
   },
   'impaired-evasion-raw': {
     name: 'Impaired Evasion (RAW)',
-    value: 'impaired-evasion-raw',
+    selectValue: 'impaired-evasion-raw',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'RAW']
   },
   'impaired-evasion-ue': {
     name: 'Impaired Accuracy (Unofficial Errata)',
-    value: 'impaired-accuracy-ue',
+    selectValue: 'impaired-accuracy-ue',
     learn_sp: -4,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'UE']
   },
   'impaired-physical-evasion': {
     name: 'Impaired Physical Evasion',
-    value: 'impaired-physical-evasion',
+    selectValue: 'impaired-physical-evasion',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
   },
   'impaired-energy-evasion': {
     name: 'Impaired Energy Evasion',
-    value: 'impaired-energy-evasion',
+    selectValue: 'impaired-energy-evasion',
     learn_sp: -3,
     season: 1,
     tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
   },
   'balanced-fighter': {
     name: 'Balanced Fighter',
-    value: 'balanced-fighter',
+    selectValue: 'balanced-fighter',
     learn_sp: 8,
     season: 1,
     tags: ['Passive']
   },
   'break-valor-limit': {
     name: 'Break Valor Limit',
-    value: 'break-valor-limit',
+    selectValue: 'break-valor-limit',
     learn_sp: 6,
     season: 4,
     tags: ['Passive']
   },
   'bravado-raw': {
     name: 'Bravado (RAW)',
-    value: 'bravado-raw',
+    selectValue: 'bravado-raw',
     learn_sp: 6,
     season: 1,
     tags: ['Passive', 'RAW']
@@ -300,7 +300,7 @@ module.exports = {
   //Levels up at 6 SP per level instead of 4.
   'bravado-ue': {
     name: 'Bravado (Unofficial Errata)',
-    value: 'bravado-raw',
+    selectValue: 'bravado-ue',
     learn_sp: 6,
     season: 1,
     tags: ['Passive', 'UE']
@@ -308,7 +308,7 @@ module.exports = {
   //A houserule variant Bravado which is Fixed instead of levelable.
   'bravado-fixed': {
     name: 'Bravado (Fixed)',
-    value: 'bravado-fixed',
+    selectValue: 'bravado-fixed',
     learn_sp: 6,
     season: 1,
     tags: ['Passive', 'Houserule']
@@ -316,49 +316,49 @@ module.exports = {
   //The book classifies this as Permanent (Passive), but...
   'discreet-aura': {
     name: 'Discreet Aura',
-    value: 'discreet-aura',
+    selectValue: 'discreet-aura',
     learn_sp: 6,
     season: 1,
     tags: ['Situational']
   },
   'darksight': {
     name: 'Darksight',
-    value: 'darksight',
+    selectValue: 'darksight',
     learn_sp: 4,
     season: 1,
     tags: ['Passive']
   },
   'energy-attacker': {
     name: 'Energy Attacker',
-    value: 'energy-attacker',
+    selectValue: 'energy-attacker',
     learn_sp: 6,
     season: 1,
     tags: ['Passive', 'EnergyAttack']
   },
   'expanded-reach': {
     name: 'Expanded Reach',
-    value: 'expanded-reach',
+    selectValue: 'expanded-reach',
     learn_sp: 8,
     season: 4,
     tags: ['Passive']
   },
   'extra-action': {
     name: 'Extra Action',
-    value: 'extra-action',
+    selectValue: 'extra-action',
     learn_sp: 12,
     season: 4,
     tags: ['Passive']
   },
   'fast-healing': {
     name: 'Fast Healing',
-    value: 'fast-healing',
+    selectValue: 'fast-healing',
     learn_sp: 4,
     season: 1,
     tags: ['Passive']
   },
   'improved-di': {
     name: 'Improved Damage Increment',
-    value: 'improved-di',
+    selectValue: 'improved-di',
     learn_sp: 5,
     season: 1,
     tags: ['Passive']
@@ -366,42 +366,42 @@ module.exports = {
   //Unlike most of the other UE skills, this is a straight buff.
   'improved-di-ue': {
     name: 'Improved Damage Increment (Unofficial Errata)',
-    value: 'improved-di-ue',
+    selectValue: 'improved-di-ue',
     learn_sp: 4,
     season: 1,
     tags: ['Passive']
   },
   'increased-size': {
     name: 'Increased Size',
-    value: 'increased-size',
+    selectValue: 'increased-size',
     learn_sp: 2,
     season: 1,
     tags: ['Passive', 'Size']
   },
   'iron-defense': {
     name: 'Iron Defense',
-    value: 'iron-defense',
+    selectValue: 'iron-defense',
     learn_sp: 4,
     season: 1,
     tags: ['Passive', 'Defense']
   },
   'physical-attacker': {
     name: 'Physical Attacker',
-    value: 'physical-attacker',
+    selectValue: 'physical-attacker',
     learn_sp: 6,
     season: 1,
     tags: ['Passive', 'PhysicalAttack']
   },
   'regeneration': {
     name: 'Regeneration',
-    value: 'regeneration',
+    selectValue: 'regeneration',
     learn_sp: 6,
     season: 4,
     tags: ['Passive']
   },
   'resistant': {
     name: 'Resistant',
-    value: 'resistant',
+    selectValue: 'resistant',
     learn_sp: 4,
     season: 1,
     tags: ['Passive', 'Resistance']
@@ -409,49 +409,49 @@ module.exports = {
   //The book classifies this as Permanent, but it only affects airborne targets.
   'sky-attack': {
     name: 'Sky Attack',
-    value: 'sky-attack',
+    selectValue: 'sky-attack',
     learn_sp: 5,
     season: 2,
     tags: ['Situational']
   },
   'sprinter': {
     name: 'Sprinter',
-    value: 'sprinter',
+    selectValue: 'sprinter',
     learn_sp: 4,
     season: 1,
     tags: ['Passive', 'Movement']
   },
   'stamina-recovery': {
     name: 'Stamina Recovery',
-    value: 'stamina-recovery',
+    selectValue: 'stamina-recovery',
     learn_sp: 4,
     season: 4,
     tags: ['Passive']
   },
   'teleportation': {
     name: 'Teleportation',
-    value: 'teleportation',
+    selectValue: 'teleportation',
     learn_sp: 6,
     season: 4,
     tags: ['Passive']
   },
   'tireless': {
     name: 'Tireless',
-    value: 'tireless',
+    selectValue: 'tireless',
     learn_sp: 5,
     season: 1,
     tags: ['Passive', 'MaxStamina']
   },
   'tough': {
     name: 'Tough',
-    value: 'tough',
+    selectValue: 'tough',
     learn_sp: 6,
     season: 1,
     tags: ['Passive', 'MaxHealth']
   },
   'unyielding-determination-raw': {
     name: 'Unyielding Determination (RAW)',
-    value: 'unyielding-determination-raw',
+    selectValue: 'unyielding-determination-raw',
     learn_sp: 8,
     season: 4,
     tags: ['Passive', 'RAW']
@@ -459,7 +459,7 @@ module.exports = {
   //Only affects Valor awards from the GM.
   'unyielding-determination-ue': {
     name: 'Unyielding Determination (Unofficial Errata)',
-    value: 'unyielding-determination-ue',
+    selectValue: 'unyielding-determination-ue',
     learn_sp: 8,
     season: 4,
     tags: ['Passive', 'UE']
@@ -469,245 +469,245 @@ module.exports = {
   //that tag deliberately.
   'valiant': {
     name: 'Valiant',
-    value: 'valiant',
+    selectValue: 'valiant',
     learn_sp: 12,
     season: 1,
     tags: ['Passive', 'NPC']
   },
   'versatile-fighter': {
     name: 'Versatile Fighter',
-    value: 'versatile-fighter',
+    selectValue: 'versatile-fighter',
     learn_sp: 6,
     season: 1,
     tags: ['Passive']
   },
   'violent-aura': {
     name: 'Violent Aura',
-    value: 'violent-aura',
+    selectValue: 'violent-aura',
     learn_sp: 4,
     season: 4,
     tags: ['Passive']
   },
   'abundant-creation': {
     name: 'Abundant Creation',
-    value: 'abundant-creation',
+    selectValue: 'abundant-creation',
     learn_sp: 5,
     season: 2,
     tags: ['Situational', 'Creation']
   },
   'bounce-back': {
     name: 'Bounce Back',
-    value: 'bounce-back',
+    selectValue: 'bounce-back',
     learn_sp: 6,
     season: 1,
     tags: ['Situational']
   },
   'clone-tactics': {
     name: 'Clone Tactics',
-    value: 'clone-tactics',
+    selectValue: 'clone-tactics',
     learn_sp: 5,
     season: 2,
     tags: ['Situational', 'Clone']
   },
   'combat-toss': {
     name: 'Combat Toss',
-    value: 'combat-toss',
+    selectValue: 'combat-toss',
     learn_sp: 4,
     season: 2,
     tags: ['Situational', 'Toss']
   },
   'crisis': {
     name: 'Crisis',
-    value: 'crisis',
+    selectValue: 'crisis',
     learn_sp: 4,
     season: 1,
     tags: ['Situational']
   },
   'danger-sense': {
     name: 'Danger Sense',
-    value: 'danger-sense',
+    selectValue: 'danger-sense',
     learn_sp: 3,
     season: 1,
     tags: ['Situational']
   },
   'daredevil': {
     name: 'Daredevil',
-    value: 'daredevil',
+    selectValue: 'daredevil',
     learn_sp: 4,
     season: 2,
     tags: ['Situational']
   },
   'desperation': {
     name: 'Desperation',
-    value: 'desperation',
+    selectValue: 'desperation',
     learn_sp: 6,
     season: 1,
     tags: ['Situational']
   },
   'dig-deep': {
     name: 'Dig Deep',
-    value: 'dig-deep',
+    selectValue: 'dig-deep',
     learn_sp: 5,
     season: 1,
     tags: ['Situational']
   },
   'discretion': {
     name: 'Discretion',
-    value: 'discretion',
+    selectValue: 'discretion',
     learn_sp: 2,
     season: 1,
     tags: ['Situational']
   },
   'empower-attack': {
     name: 'Empower Attack',
-    value: 'empower-attack',
+    selectValue: 'empower-attack',
     learn_sp: 6,
     season: 1,
     tags: ['Situational']
   },
   'extended-range': {
     name: 'Extended Range',
-    value: 'extended-range',
+    selectValue: 'extended-range',
     learn_sp: 6,
     season: 4,
     tags: ['Situational']
   },
   'free-flight': {
     name: 'Free Flight',
-    value: 'free-flight',
+    selectValue: 'free-flight',
     learn_sp: 3,
     season: 4,
     tags: ['Situational', 'Fly']
   },
   'free-swift-step': {
     name: 'Free Swift Step',
-    value: 'free-swift-step',
+    selectValue: 'free-swift-step',
     learn_sp: 5,
     season: 4,
     tags: ['Situational', 'Swift Step']
   },
   'improved-swimming': {
     name: 'Improved Swimming',
-    value: 'improved-swimming',
+    selectValue: 'improved-swimming',
     learn_sp: 4,
     season: 1,
     tags: ['Situational']
   },
   'nimble-movement': {
     name: 'Nimble Movement',
-    value: 'nimble-movement',
+    selectValue: 'nimble-movement',
     learn_sp: 4,
     season: 1,
     tags: ['Situational']
   },
   'overload-limits': {
     name: 'Overload Limits',
-    value: 'overload-limits',
+    selectValue: 'overload-limits',
     learn_sp: 6,
     season: 1,
     tags: ['Situational']
   },
   'passive-healing': {
     name: 'Passive Healing',
-    value: 'passive-healing',
+    selectValue: 'passive-healing',
     learn_sp: 4,
     season: 1,
     tags: ['Situational']
   },
   'phasing': {
     name: 'Phasing',
-    value: 'phasing',
+    selectValue: 'phasing',
     learn_sp: 5,
     season: 2,
     tags: ['Situational']
   },
   'protector': {
     name: 'Protector',
-    value: 'protector',
+    selectValue: 'protector',
     learn_sp: 5,
     season: 1,
     tags: ['Situational', 'Cover']
   },
   'quick-to-act': {
     name: 'Quick to Act',
-    value: 'quick-to-act',
+    selectValue: 'quick-to-act',
     learn_sp: 3,
     season: 1,
     tags: ['Situational', 'Initiative']
   },
   'reckless-attack': {
     name: 'Reckless Attack',
-    value: 'reckless-attack',
+    selectValue: 'reckless-attack',
     learn_sp: 5,
     season: 1,
     tags: ['Situational']
   },
   'resolute-strike': {
     name: 'Resolute Strike',
-    value: 'resolute-strike',
+    selectValue: 'resolute-strike',
     learn_sp: 5,
     season: 1,
     tags: ['Situational']
   },
   'revenge': {
     name: 'Revenge',
-    value: 'revenge',
+    selectValue: 'revenge',
     learn_sp: 5,
     season: 1,
     tags: ['Situational', 'Knockout']
   },
   'rising-attack': {
     name: 'Rising Attack',
-    value: 'rising-attack',
+    selectValue: 'rising-attack',
     learn_sp: 6,
     season: 2,
     tags: ['Situational']
   },
   'rolling-recovery': {
     name: 'Rolling Recovery',
-    value: 'rolling-recovery',
+    selectValue: 'rolling-recovery',
     learn_sp: 4,
     season: 1,
     tags: ['Situational']
   },
   'safe-stride': {
     name: 'Safe Stride',
-    value: 'safe-stride',
+    selectValue: 'safe-stride',
     learn_sp: 5,
     season: 2,
     tags: ['Situational']
   },
   'split-move': {
     name: 'Split Move',
-    value: 'split-move',
+    selectValue: 'split-move',
     learn_sp: 6,
     season: 2,
     tags: ['Situational']
   },
   'team-tactics': {
     name: 'Team Tactics',
-    value: 'team-tactics',
+    selectValue: 'team-tactics',
     learn_sp: 5,
     season: 1,
     tags: ['Situational']
   },
   'transposition': {
     name: 'Transposition',
-    value: 'transposition',
+    selectValue: 'transposition',
     learn_sp: 4,
     season: 1,
     tags: ['Situational', 'Swift Step']
   },
   'underhanded': {
     name: 'Underhanded',
-    value: 'underhanded',
+    selectValue: 'underhanded',
     learn_sp: 5,
     season: 2,
     tags: ['Situational']
   },
   'unmovable': {
     name: 'Unmovable',
-    value: 'unmovable',
+    selectValue: 'unmovable',
     learn_sp: 6,
     season: 1,
     tags: ['Situational']
@@ -715,147 +715,147 @@ module.exports = {
   //common alternate spelling
   'immovable': {
     name: 'Unmovable',
-    value: 'unmovable',
+    selectValue: 'unmovable',
     learn_sp: 6,
     season: 1,
     tags: ['Situational']
   },
   'unshakeable': {
     name: 'Unshakeable',
-    value: 'unshakeable',
+    selectValue: 'unshakeable',
     learn_sp: 6,
     season: 3,
     tags: ['Situational']
   },
   'unstoppable': {
     name: 'Unstoppable',
-    value: 'unstoppable',
+    selectValue: 'unstoppable',
     learn_sp: 6,
     season: 3,
     tags: ['Situational']
   },
   'water-adaptation': {
     name: 'Water Adaptation',
-    value: 'water-adaptation',
+    selectValue: 'water-adaptation',
     learn_sp: 6,
     season: 2,
     tags: ['Situational']
   },
   'wall-walk': {
     name: 'Wall Walk',
-    value: 'wall-walk',
+    selectValue: 'wall-walk',
     learn_sp: 4,
     season: 2,
     tags: ['Situational']
   },
   'water-walk': {
     name: 'Water Walk',
-    value: 'water-walk',
+    selectValue: 'water-walk',
     learn_sp: 4,
     season: 2,
     tags: ['Situational']
   },
   'x-ray-vision': {
     name: 'X-Ray Vision',
-    value: 'x-ray-vision',
+    selectValue: 'x-ray-vision',
     learn_sp: 4,
     season: 2,
     tags: ['Situational']
   },
   'attack-node': {
     name: 'Attack Node',
-    value: 'attack-node',
+    selectValue: 'attack-node',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
   },
   'attack-node-network': {
     name: 'Attack Node Network',
-    value: 'attack-node-network',
+    selectValue: 'attack-node-network',
     learn_sp: 4,
     season: 3,
     tags: ['Active', 'Attack Node']
   },
   'battle-analysis': {
     name: 'Battle Analysis',
-    value: 'battle-analysis',
+    selectValue: 'battle-analysis',
     learn_sp: 6,
     season: 2,
     tags: ['Active']
   },
   'clone': {
     name: 'Clone',
-    value: 'clone',
+    selectValue: 'clone',
     learn_sp: 6,
     season: 2,
     tags: ['Active']
   },
   'dark-healing': {
     name: 'Dark Healing',
-    value: 'dark-healing',
+    selectValue: 'dark-healing',
     learn_sp: 6,
     season: 1,
     tags: ['Active', 'Malevolent Entity']
   },
   'dirty-trick': {
     name: 'Dirty Trick',
-    value: 'dirty-trick',
+    selectValue: 'dirty-trick',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
   },
   'duel': {
     name: 'Duel',
-    value: 'duel',
+    selectValue: 'duel',
     learn_sp: 2,
     season: 1,
     tags: ['Active']
   },
   'effect-capture': {
     name: 'Effect Capture',
-    value: 'effect-capture',
+    selectValue: 'effect-capture',
     learn_sp: 4,
     season: 2,
     tags: ['Active']
   },
   'effect-transfer': {
     name: 'Effect Transfer',
-    value: 'effect-transfer',
+    selectValue: 'effect-transfer',
     learn_sp: 4,
     season: 1,
     tags: ['Active']
   },
   'exploit-weakness': {
     name: 'Exploit Weakness',
-    value: 'exploit-weakness',
+    selectValue: 'exploit-weakness',
     learn_sp: 6,
     season: 3,
     tags: ['Active']
   },
   'feint': {
     name: 'Feint',
-    value: 'feint',
+    selectValue: 'feint',
     learn_sp: 6,
     season: 1,
     tags: ['Active']
   },
   'flunky-domination': {
     name: 'Flunky Domination',
-    value: 'flunky-domination',
+    selectValue: 'flunky-domination',
     learn_sp: 5,
     season: 3,
     tags: ['Active']
   },
   'fly': {
     name: 'Fly',
-    value: 'fly',
+    selectValue: 'fly',
     learn_sp: 6,
     season: 3,
     tags: ['Active']
   },
   'health-transference': {
     name: 'Health Transference',
-    value: 'health-transference',
+    selectValue: 'health-transference',
     learn_sp: 4,
     season: 2,
     tags: ['Active']
@@ -863,7 +863,7 @@ module.exports = {
   //In later seasons, Inspire provided too much valor output.
   'inspire-raw': {
     name: 'Inspire (RAW)',
-    value: 'inspire-raw',
+    selectValue: 'inspire-raw',
     learn_sp: 5,
     season: 1,
     tags: ['Active', 'RAW']
@@ -871,119 +871,119 @@ module.exports = {
   //The UE version is, thus, a Fixed skill.
   'inspire-ue': {
     name: 'Inspire (Unofficial Errata)',
-    value: 'inspire-ue',
+    selectValue: 'inspire-ue',
     learn_sp: 5,
     season: 1,
     tags: ['Active', 'UE']
   },
   'intimidate': {
     name: 'Intimidate',
-    value: 'intimidate',
+    selectValue: 'intimidate',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
   },
   'jump': {
     name: 'Jump',
-    value: 'jump',
+    selectValue: 'jump',
     learn_sp: 4,
     season: 1,
     tags: ['Active']
   },
   'nullify': {
     name: 'Nullify',
-    value: 'nullify',
+    selectValue: 'nullify',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
   },
   'portal': {
     name: 'Portal',
-    value: 'portal',
+    selectValue: 'portal',
     learn_sp: 6,
     season: 2,
     tags: ['Active']
   },
   'provoke': {
     name: 'Provoke',
-    value: 'provoke',
+    selectValue: 'provoke',
     learn_sp: 4,
     season: 1,
     tags: ['Active']
   },
   'recharge': {
     name: 'Recharge',
-    value: 'recharge',
+    selectValue: 'recharge',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
   },
   'refraction-chain': {
     name: 'Feint',
-    value: 'refraction-chain',
+    selectValue: 'refraction-chain',
     learn_sp: 6,
     season: 3,
     tags: ['Active']
   },
   'refraction-point': {
     name: 'Refraction Point',
-    value: 'refraction-point',
+    selectValue: 'refraction-point',
     learn_sp: 4,
     season: 2,
     tags: ['Active']
   },
   'seal': {
     name: 'Seal',
-    value: 'seal',
+    selectValue: 'seal',
     learn_sp: 6,
     season: 2,
     tags: ['Active']
   },
   'shadow-meld': {
     name: 'Shadow Meld',
-    value: 'shadow-meld',
+    selectValue: 'shadow-meld',
     learn_sp: 6,
     season: 2,
     tags: ['Active']
   },
   'size-up': {
     name: 'Size Up',
-    value: 'size-up',
+    selectValue: 'size-up',
     learn_sp: 3,
     season: 1,
     tags: ['Active']
   },
   'spirit-sight': {
     name: 'Spirit Sight',
-    value: 'spirit-sight',
+    selectValue: 'spirit-sight',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
   },
   'stamina-transference': {
     name: 'Stamina Transference',
-    value: 'stamina-transference',
+    selectValue: 'stamina-transference',
     learn_sp: 4,
     season: 2,
     tags: ['Active']
   },
   'swift-jump': {
     name: 'Swift Jump',
-    value: 'swift-jump',
+    selectValue: 'swift-jump',
     learn_sp: 3,
     season: 3,
     tags: ['Active', 'Jump']
   },
   'swift-step': {
     name: 'Swift Step',
-    value: 'swift-step',
+    selectValue: 'swift-step',
     learn_sp: 5,
     season: 2,
     tags: ['Active']
   },
   'toss': {
     name: 'Toss',
-    value: 'toss',
+    selectValue: 'toss',
     learn_sp: 5,
     season: 1,
     tags: ['Active']
@@ -993,21 +993,21 @@ module.exports = {
   //are also Active.
   'afterimage': {
     name: 'Afterimage',
-    value: 'afterimage',
+    selectValue: 'afterimage',
     learn_sp: 4,
     season: 2,
     tags: ['Active', 'Swift Step']
   },
   'area-shield': {
     name: 'Area Shield',
-    value: 'area-shield',
+    selectValue: 'area-shield',
     learn_sp: 4,
     season: 2,
     tags: ['Reaction']
   },
   'clash': {
     name: 'Clash',
-    value: 'clash',
+    selectValue: 'clash',
     learn_sp: 3,
     season: 2,
     tags: ['Reaction', 'Counterattack']
@@ -1019,7 +1019,7 @@ module.exports = {
   //Unless you're the last player, in which case it's useless.
   'combination-attack-raw': {
     name: 'Combination Attack (RAW)',
-    value: 'combination-attack-raw',
+    selectValue: 'combination-attack-raw',
     learn_sp: 6,
     season: 1,
     tags: ['Reaction', 'RAW']
@@ -1027,154 +1027,147 @@ module.exports = {
   //Fortunately, this has been discussed. This rough draft rewrite fixes the issues.
   'combination-attack-house': {
     name: 'Combination Attack (Rewrite)',
-    value: 'combination-attack-house',
+    selectValue: 'combination-attack-house',
     learn_sp: 6,
     season: 1,
     tags: ['Reaction', 'Houserule']
   },
   'counterattack': {
     name: 'Counterattack',
-    value: 'counterattack',
+    selectValue: 'counterattack',
     learn_sp: 6,
     season: 1,
     tags: ['Reaction']
   },
   'cover': {
     name: 'Cover',
-    value: 'cover',
+    selectValue: 'cover',
     learn_sp: 6,
     season: 1,
     tags: ['Reaction']
   },
   'damage-feedback': {
     name: 'Damage Feedback',
-    value: 'damage-feedback',
+    selectValue: 'damage-feedback',
     learn_sp: 5,
     season: 2,
     tags: ['Reaction']
   },
   'defensive-clash': {
     name: 'Defensive Clash',
-    value: 'defensive-clash',
+    selectValue: 'defensive-clash',
     learn_sp: 4,
     season: 3,
     tags: ['Reaction']
   },
   'deflecting-shield': {
     name: 'Deflecting Shield',
-    value: 'deflecting-shield',
+    selectValue: 'deflecting-shield',
     learn_sp: 4,
     season: 3,
     tags: ['Reaction', 'Area Shield', 'Line Deflect']
   },
   'diving-escape': {
     name: 'Diving Escape',
-    value: 'diving-escape',
+    selectValue: 'diving-escape',
     learn_sp: 5,
     season: 2,
     tags: ['Reaction']
   },
   'final-attack': {
     name: 'Final Attack',
-    value: 'final-attack',
+    selectValue: 'final-attack',
     learn_sp: 6,
     season: 2,
     tags: ['Reaction']
   },
   'ignore-effect': {
     name: 'Ignore Effect',
-    value: 'ignore-effect',
+    selectValue: 'ignore-effect',
     learn_sp: 5,
     season: 1,
     tags: ['Reaction']
   },
   'interrupt-attack': {
     name: 'Interrupt Attack',
-    value: 'interrupt-attack',
+    selectValue: 'interrupt-attack',
     learn_sp: 3,
     season: 1,
     tags: ['Reaction']
   },
   'line-deflect': {
     name: 'Line Deflect',
-    value: 'line-deflect',
+    selectValue: 'line-deflect',
     learn_sp: 5,
     season: 2,
     tags: ['Reaction']
   },
   'mobile-cover': {
     name: 'Mobile Cover',
-    value: 'mobile-cover',
+    selectValue: 'mobile-cover',
     learn_sp: 5,
     season: 2,
     tags: ['Reaction', 'Cover']
   },
   'mobile-dodge': {
     name: 'Mobile Dodge',
-    value: 'mobile-dodge',
+    selectValue: 'mobile-dodge',
     learn_sp: 4,
     season: 2,
     tags: ['Reaction']
   },
   'opportunistic-dodge': {
     name: 'Opportunistic Dodge',
-    value: 'opportunistic-dodge',
+    selectValue: 'opportunistic-dodge',
     learn_sp: 6,
     season: 2,
     tags: ['Reaction']
   },
   'push-away': {
     name: 'Push Away',
-    value: 'push-away',
+    selectValue: 'push-away',
     learn_sp: 4,
     season: 2,
     tags: ['Reaction']
   },
   'prepared': {
     name: 'Prepared',
-    value: 'prepared',
+    selectValue: 'prepared',
     learn_sp: 6,
     season: 3,
     tags: ['Reaction', 'Counterattack']
   },
   'ranged-interrupt': {
     name: 'Ranged Interrupt',
-    value: 'ranged-interrupt',
+    selectValue: 'ranged-interrupt',
     learn_sp: 4,
     season: 2,
     tags: ['Reaction', 'Interrupt Attack']
   },
   'shrug-off': {
     name: 'Shrug Off',
-    value: 'shrug-off',
+    selectValue: 'shrug-off',
     learn_sp: 6,
     season: 2,
     tags: ['Reaction']
   },
   'acceleration': {
     name: 'Acceleration',
-    value: 'acceleration',
+    selectValue: 'acceleration',
     learn_sp: 5,
     season: 1,
     tags: ['Overdrive']
   },
   'analysis': {
     name: 'Analysis',
-    value: 'analysis',
-    learn_sp: 5,
-    season: 1,
-    tags: ['Overdrive']
-  },
-  'analysis': {
-    name: 'Analysis',
-    value: 'analysis',
+    selectValue: 'analysis',
     learn_sp: 5,
     season: 1,
     tags: ['Overdrive']
   },
   'blazing-might-raw': {
     name: 'Blazing Might (RAW)',
-    value: 'blazing-might-raw',
+    selectValue: 'blazing-might-raw',
     learn_sp: 5,
     season: 1,
     tags: ['Overdrive', 'RAW']
@@ -1183,21 +1176,21 @@ module.exports = {
   //it can't be taken until Season 2.
   'blazing-might-ue': {
     name: 'Blazing Might (Unofficial Errata)',
-    value: 'blazing-might-ue',
+    selectValue: 'blazing-might-ue',
     learn_sp: 4,
     season: 2,
     tags: ['Overdrive', 'UE']
   },
   'burning-passion': {
     name: 'Burning Passion',
-    value: 'burning-passion',
+    selectValue: 'burning-passion',
     learn_sp: 5,
     season: 1,
     tags: ['Overdrive']
   },
   'fighting-spirit-raw': {
     name: 'Fighting Spirit (RAW)',
-    value: 'fighting-spirit-raw',
+    selectValue: 'fighting-spirit-raw',
     learn_sp: 5,
     season: 1,
     tags: ['Overdrive', 'RAW']
@@ -1206,91 +1199,91 @@ module.exports = {
   //it can't be taken until Season 2.
   'fighting-spirit-ue': {
     name: 'Fighting Spirit (Unofficial Errata)',
-    value: 'fighting-spirit-ue',
+    selectValue: 'fighting-spirit-ue',
     learn_sp: 4,
     season: 2,
     tags: ['Overdrive', 'UE']
   },
   'hardened-defense': {
     name: 'Hardened Defense',
-    value: 'hardened-defense',
+    selectValue: 'hardened-defense',
     learn_sp: 6,
     season: 1,
     tags: ['Overdrive']
   },
   'hardened-resistance': {
     name: 'Hardened Resistance',
-    value: 'hardened-resistance',
+    selectValue: 'hardened-resistance',
     learn_sp: 6,
     season: 1,
     tags: ['Overdrive']
   },
   'resolute-aura': {
     name: 'Resolute Aura',
-    value: 'resolute-aura',
+    selectValue: 'resolute-aura',
     learn_sp: 5,
     season: 1,
     tags: ['Overdrive']
   },
   'strength-of-will': {
     name: 'Strength of Will',
-    value: 'strength-of-will',
+    selectValue: 'strength-of-will',
     learn_sp: 5,
     season: 1,
     tags: ['Overdrive']
   },
   'asset': {
     name: 'Asset',
-    value: 'asset',
+    selectValue: 'asset',
     learn_sp: 3,
     season: 1,
     tags: ['Challenge', 'Character', 'Repeatable']
   },
   'challenge-technique': {
     name: 'Challenge Technique',
-    value: 'challenge-technique',
+    selectValue: 'challenge-technique',
     learn_sp: 3,
     season: 1,
     tags: ['Challenge', 'Character', 'Repeatable']
   },
   'favorable-insight': {
     name: 'Favorable Insight',
-    value: 'favorable-insight',
+    selectValue: 'favorable-insight',
     learn_sp: 3,
     season: 1,
     tags: ['Challenge', 'Character', 'Repeatable']
   },
   'favorable-success': {
     name: 'Favorable Success',
-    value: 'favorable-success',
+    selectValue: 'favorable-success',
     learn_sp: 4,
     season: 2,
     tags: ['Challenge', 'Character', 'Repeatable']
   },
   'proficiency': {
     name: 'Proficiency',
-    value: 'proficiency',
+    selectValue: 'proficiency',
     learn_sp: 2,
     season: 1,
     tags: ['Challenge', 'Character', 'Repeatable']
   },
   'recovery': {
     name: 'Recovery',
-    value: 'recovery',
+    selectValue: 'recovery',
     learn_sp: 3,
     season: 1,
     tags: ['Challenge', 'Character', 'Repeatable']
   },
   'companion': {
     name: 'Companion',
-    value: 'companion',
+    selectValue: 'companion',
     learn_sp: 6,
     season: 1,
     tags: ['Passive', 'Repeatable']
   },
   'ally-mount': {
-    name: 'Companion',
-    value: 'ally-mount',
+    name: 'Ally Mount',
+    selectValue: 'ally-mount',
     learn_sp: 6,
     season: 2,
     tags: ['Active', 'Companion', 'Mount']
@@ -1299,126 +1292,126 @@ module.exports = {
   //to ALL of your companions.
   'companion-sense': {
     name: 'Companion Sense',
-    value: 'companion-sense',
+    selectValue: 'companion-sense',
     learn_sp: 2,
     season: 3,
     tags: ['Active', 'Companion']
   },
   'companion-zoc': {
     name: 'Companion Zone of Control',
-    value: 'companion-zoc',
+    selectValue: 'companion-zoc',
     learn_sp: 4,
     season: 2,
     tags: ['Passive', 'Companion']
   },
   'extended-revival': {
     name: 'Extended Revival',
-    value: 'extended-revival',
+    selectValue: 'extended-revival',
     learn_sp: 4,
     season: 2,
     tags: ['Active', 'Companion']
   },
   'fast-companion': {
     name: 'Fast Companion',
-    value: 'fast-companion',
+    selectValue: 'fast-companion',
     learn_sp: 2,
     season: 1,
     tags: ['Passive', 'Companion']
   },
   'flank-attack': {
     name: 'Flank Attack',
-    value: 'flank-attack',
+    selectValue: 'flank-attack',
     learn_sp: 4,
     season: 2,
     tags: ['Situational', 'Companion']
   },
   'flying-companion': {
     name: 'Flying Companion',
-    value: 'flying-companion',
+    selectValue: 'flying-companion',
     learn_sp: 3,
     season: 3,
     tags: ['Passive', 'Companion']
   },
   'hidden-companion': {
     name: 'Hidden Companion',
-    value: 'hidden-companion',
+    selectValue: 'hidden-companion',
     learn_sp: 4,
     season: 1,
     tags: ['Active', 'Companion']
   },
   'instant-mount': {
     name: 'Instant Mount',
-    value: 'instant-mount',
+    selectValue: 'instant-mount',
     learn_sp: 6,
     season: 3,
     tags: ['Active', 'Companion', 'Mount']
   },
   'mount': {
     name: 'Mount',
-    value: 'mount',
+    selectValue: 'mount',
     learn_sp: 3,
     season: 1,
     tags: ['Active', 'Companion']
   },
   'protect-ally': {
     name: 'Protect Ally',
-    value: 'protect-ally',
+    selectValue: 'protect-ally',
     learn_sp: 2,
     season: 2,
     tags: ['Reaction', 'Companion', 'Protect Master']
   },
   'protect-master': {
     name: 'Protect Master',
-    value: 'protect-master',
+    selectValue: 'protect-master',
     learn_sp: 4,
     season: 2,
     tags: ['Reaction', 'Companion']
   },
   'ranged-revival': {
     name: 'Ranged Revival',
-    value: 'ranged-revival',
+    selectValue: 'ranged-revival',
     learn_sp: 3,
     season: 2,
     tags: ['Active', 'Companion']
   },
   'reactive-companion': {
     name: 'Reactive Companion',
-    value: 'reactive-companion',
+    selectValue: 'reactive-companion',
     learn_sp: 4,
     season: 3,
     tags: ['Reaction', 'Companion']
   },
   'sense-malice': {
     name: 'Sense Malice',
-    value: 'sense-malice',
+    selectValue: 'sense-malice',
     learn_sp: 2,
     season: 1,
     tags: ['Situational', 'Companion']
   },
   'tossing-companion': {
     name: 'Tossing Companion',
-    value: 'tossing-companion',
+    selectValue: 'tossing-companion',
     learn_sp: 3,
     season: 2,
     tags: ['Active', 'Companion', 'Toss']
   },
   'trusting-companion': {
     name: 'Trusting Companion',
-    value: 'trusting-companion',
+    selectValue: 'trusting-companion',
     learn_sp: 4,
     season: 2,
     tags: ['Active', 'Companion']
   },
   'change-attributes': {
     name: 'Change Attributes',
-    value: 'change-attributes',
+    selectValue: 'change-attributes',
     learn_sp: 2,
     season: 1,
     tags: ['Boost']
   },
   'enhanced-range': {
     name: 'Enhanced Range',
-    value: 'enhanced-range',
+    selectValue: 'enhanced-range',
     learn_sp: 2,
     season: 1,
     tags: ['Boost']
@@ -1426,14 +1419,14 @@ module.exports = {
   //Like their Weaken Flaw counterparts, these are too strong.
   'great-accuracy-raw': {
     name: 'Great Accuracy (RAW)',
-    value: 'great-accuracy-raw',
+    selectValue: 'great-accuracy-raw',
     learn_sp: 6,
     season: 1,
     tags: ['Boost', 'RAW']
   },
   'great-evasion-raw': {
     name: 'Great Evasion (RAW)',
-    value: 'great-evasion-raw',
+    selectValue: 'great-evasion-raw',
     learn_sp: 6,
     season: 1,
     tags: ['Boost', 'RAW']
@@ -1441,14 +1434,14 @@ module.exports = {
   //These cost more...
   'great-accuracy-ue': {
     name: 'Great Accuracy (Unofficial Errata)',
-    value: 'great-accuracy-ue',
+    selectValue: 'great-accuracy-ue',
     learn_sp: 8,
     season: 1,
     tags: ['Boost', 'UE']
   },
   'great-evasion-ue': {
     name: 'Great Evasion (Unofficial Errata)',
-    value: 'great-evasion-ue',
+    selectValue: 'great-evasion-ue',
     learn_sp: 8,
     season: 1,
     tags: ['Boost', 'UE']
@@ -1456,28 +1449,28 @@ module.exports = {
   //...and these are half as effective.
   'great-physical-accuracy': {
     name: 'Great Physical Accuracy',
-    value: 'great-physical-accuracy',
+    selectValue: 'great-physical-accuracy',
     learn_sp: 6,
     season: 1,
     tags: ['Boost', 'Houserule']
   },
   'great-physical-evasion': {
     name: 'Great Physical Evasion',
-    value: 'great-physical-evasion',
+    selectValue: 'great-physical-evasion',
     learn_sp: 6,
     season: 1,
     tags: ['Boost', 'Houserule']
   },
   'great-energy-accuracy': {
     name: 'Great Energy Accuracy',
-    value: 'great-energy-accuracy',
+    selectValue: 'great-energy-accuracy',
     learn_sp: 6,
     season: 1,
     tags: ['Boost', 'Houserule']
   },
   'great-energy-evasion': {
     name: 'Great Energy Evasion',
-    value: 'great-energy-evasion',
+    selectValue: 'great-energy-evasion',
     learn_sp: 6,
     season: 1,
     tags: ['Boost', 'Houserule']

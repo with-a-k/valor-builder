@@ -22,6 +22,7 @@ const CharacterView = (props) => {
         skill_bonuses = {props.character.attributes.skill_bonuses}
         character_type = {props.character_type}
         is_npc = {props.character.is_npc}
+        maxSp = {props.maxSp}
         handleStrengthChange = {props.handleStrengthChange}
         handleAgilityChange = {props.handleAgilityChange}
         handleSpiritChange = {props.handleSpiritChange}
@@ -34,7 +35,9 @@ const CharacterView = (props) => {
         skills = {props.skills}
         addSkill = {props.addSkill}
         updateSkill = {props.updateSkill}
-        removeSkill = {props.removeSkill}/>
+        removeSkill = {props.removeSkill}
+        is_npc = {props.character.is_npc}
+        season = {Math.floor(props.character.attributes.level - 1 / 5) + 1}/>
     </div>
   )
 }

@@ -39,13 +39,6 @@ class CharacterAttributesContainer extends Component {
     return this.props.level * 2 + this.props.spirit + this.props.mind;
   }
 
-  //SP can't be obtained in any way other than leveling up or Flaws.
-  baseSkillPoints() {
-    return ((14 + AttributeConstants.BASE_SP_ADJUSTMENT[this.props.character_type] +
-      this.props.level * (6 + AttributeConstants.SP_GAIN_ADJUSTMENT[this.props.character_type])) *
-      AttributeConstants.SP_MULTIPLIERS[this.props.character_type]);
-  }
-
   naturalTechniquePoints(level = 1) {
     if (level === 1) {
       return Math.ceil((12 + AttributeConstants.BASE_TP_ADJUSTMENT[this.props.character_type]) *
@@ -93,7 +86,7 @@ class CharacterAttributesContainer extends Component {
       move : this.naturalMovement(),
       defense : this.naturalDefense(),
       resistance : this.naturalResistance(),
-      skillPoints : this.baseSkillPoints(),
+      skillPoints : this.props.maxSp,
       techPoints : this.naturalTechniquePoints(this.props.level)
     }
   }

@@ -7,29 +7,37 @@ import 'react-virtualized/styles.css';
 import 'react-virtualized-select/styles.css';
 
 class SkillSelector extends Component {
-  constructor (props) = {
-    super(props)
+  skillHasAnIncludeTag(skill) {
+    return skill.tags.some(function(tag) {
+      return this.props.includeTags.includes(tag);
+    }, this);
+  }
+
+  skillHasNoExcludeTags(skill) {
+    return !skill.tags.some(function(tag) {
+      return this.props.excludeTags.includes(tag);
+    }, this);
+  }
+
+  skillMeetsSeasonRequirement(skill) {
+    return this.props.is_npc || this.props.season >= skill.season;
+  }
+
+  skillCostsLessThanFreeSP(skill) {
+    return this.props.freeSp < skill.learn_sp;
   }
 
   render() {
     //determine what to include/exclude based on those props
     var options = [];
-    Object.keys(Skills).forEach(function(skill) {
-      //first include all skills from included tags
-      if (skill.tags.some(function(tag) {
-        return this.props.includeTags.includes(tag);
-      })) {
-        options.push({label: skill.name, value: skill.value});
+    Object.values(Skills).forEach(function(skill) {
+      //first include all skills from included tags that can be taken at a certain season
+      if (this.skillHasAnIncludeTag(skill) &&
+          this.skillHasNoExcludeTags(skill) &&
+          this.skillMeetsSeasonRequirement(skill)) {
+        options.push({label: skill.name, value: skill.selectValue});
       }
-    });
-    //now remove all the skills with any exclude tags and skills
-    //tagged as requiring the skill which the selector is currently set to
-    //(this prevents weird detachments, hopefully)
-    options.filter(function(option) {
-      return !(Skills[option.value].tags.some(function(tag) {
-        return this.props.excludeTags.includes(tag) || this.props.value === tag;
-      }));
-    });
+    }, this);
 
     return <VirtualizedSelect
               options={options}
