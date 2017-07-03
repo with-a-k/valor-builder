@@ -7,26 +7,27 @@ import 'react-virtualized/styles.css';
 import 'react-virtualized-select/styles.css';
 
 class SkillSelector extends Component {
+  //does the skill have any tag in the include list?
   skillHasAnIncludeTag(skill) {
     return skill.tags.some(function(tag) {
       return this.props.includeTags.includes(tag);
     }, this);
   }
 
+  //does it have NO tags in the exclude list?
   skillHasNoExcludeTags(skill) {
     return !skill.tags.some(function(tag) {
       return this.props.excludeTags.includes(tag);
     }, this);
   }
 
+  //is the character's season equal to or higher than the skill's?
+  //(or is the character an NPC?)
   skillMeetsSeasonRequirement(skill) {
     return this.props.is_npc || this.props.season >= skill.season;
   }
 
-  skillCostsLessThanFreeSP(skill) {
-    return this.props.freeSp < skill.learn_sp;
-  }
-
+  //does the skill cost less SP than is available to the player?
   skillCostsLessSPThanIsAvailable(skill) {
     return skill.learn_sp < this.props.retrainSkillPoints;
   }
@@ -35,7 +36,6 @@ class SkillSelector extends Component {
     //determine what to include/exclude based on those props
     var options = [];
     Object.values(Skills).forEach(function(skill) {
-      //first include all skills from included tags that can be taken at a certain season
       if (this.skillHasAnIncludeTag(skill) &&
           this.skillHasNoExcludeTags(skill) &&
           this.skillMeetsSeasonRequirement(skill) &&

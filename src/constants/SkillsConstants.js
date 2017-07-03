@@ -989,7 +989,7 @@ module.exports = {
     tags: ['Active']
   },
   //The book classifies this as Reaction, but it works with something
-  //you chose to do yourself; that, and other skills that affect Swift Step
+  //you chose to do yourself; other skills that affect Swift Step
   //are also Active.
   'afterimage': {
     name: 'Afterimage',
@@ -1058,7 +1058,7 @@ module.exports = {
     selectValue: 'defensive-clash',
     learn_sp: 4,
     season: 3,
-    tags: ['Reaction']
+    tags: ['Reaction', 'Clash']
   },
   'deflecting-shield': {
     name: 'Deflecting Shield',
