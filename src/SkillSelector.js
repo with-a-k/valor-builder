@@ -27,6 +27,10 @@ class SkillSelector extends Component {
     return this.props.freeSp < skill.learn_sp;
   }
 
+  skillCostsLessSPThanIsAvailable(skill) {
+    return skill.learn_sp < this.props.retrainSkillPoints;
+  }
+
   render() {
     //determine what to include/exclude based on those props
     var options = [];
@@ -34,7 +38,8 @@ class SkillSelector extends Component {
       //first include all skills from included tags that can be taken at a certain season
       if (this.skillHasAnIncludeTag(skill) &&
           this.skillHasNoExcludeTags(skill) &&
-          this.skillMeetsSeasonRequirement(skill)) {
+          this.skillMeetsSeasonRequirement(skill) &&
+          this.skillCostsLessSPThanIsAvailable(skill)) {
         options.push({label: skill.name, value: skill.selectValue});
       }
     }, this);

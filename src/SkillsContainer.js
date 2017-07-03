@@ -18,7 +18,8 @@ class SkillsContainer extends Component {
               removeSkill={this.props.removeSkill}
               is_npc={this.props.is_npc}
               season={this.props.season}
-              exclude={this.determineExcludes()}/>;
+              exclude={this.determineExcludes()}
+              freeSkillPoints={this.props.freeSkillPoints}/>;
   }
 }
 

@@ -269,7 +269,8 @@ class CharacterBuilder extends Component {
               updateSkill = {this.updateSkill.bind(this)}
               removeSkill = {this.removeSkill.bind(this)}
               maxSp = {this.baseSkillPoints()}
-              npc = {this.state.is_npc}/>;
+              npc = {this.state.is_npc}
+              freeSkillPoints = {this.freeSkillPoints()}/>;
   }
 }
 

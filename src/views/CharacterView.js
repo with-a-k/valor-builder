@@ -37,7 +37,8 @@ const CharacterView = (props) => {
         updateSkill = {props.updateSkill}
         removeSkill = {props.removeSkill}
         is_npc = {props.character.is_npc}
-        season = {Math.floor(props.character.attributes.level - 1 / 5) + 1}/>
+        season = {Math.floor(props.character.attributes.level - 1 / 5) + 1}
+        freeSkillPoints = {props.freeSkillPoints}/>
     </div>
   )
 }

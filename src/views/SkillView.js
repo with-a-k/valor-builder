@@ -14,7 +14,8 @@ const SkillView = (props) => {
         excludeTags={props.excludeTags}
         value={props.skillSelectValue}
         is_npc={props.is_npc}
-        season={props.season}/>
+        season={props.season}
+        retrainSkillPoints={props.retrainSkillPoints}/>
       <VBButton
         buttonAction={props.remove}
         buttonName="Remove this Skill"/>
