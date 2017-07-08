@@ -44,10 +44,17 @@
     * Errata: This tag is applied to multiple-version skills only and reflects that this version of the skill is the version appearing in official errata...
               of which there is none yet.
     * Houserule: Skill variant that has come up in several campaigns I've seen or otherwise been involved with.
+  bonus: What character attributes this skill affects. Some bonuses are grouped up (e.g. Strength Attack and Agility Attack into "Physical Attack".)
+  learn_value: The amount this skill affects its attribute by at skill level 1.
+  level_speed: The rate at which new levels in this skill can be taken.
+    Fixed skills can't be leveled.
+    Fast skills can be leveled once every 3 levels (1, 4, 7, 10, etc.).
+    Slow skills can be leveled once every 5 levels (1, 6, 15, etc.).
+  level_sp: The amount of SP it costs to increase a skill's level beyond 1.
+  level_value: The amount additional levels in this skill increase its effect.
+  description: The text of the skill, here modified in many cases from the book text. ${calc} is substituted for (learn_value + (level_value * level-1)) during use.
+    Other ${} entries are special calculations detailed within the skills themselves.
 */
-//This array is still pretty lightweight and might be added to.
-//For now it exists to be iterated over to determine how to
-//populate the skill selection bar.
 
 module.exports = {
   'aggravated-wounds': {
@@ -55,168 +62,250 @@ module.exports = {
     selectValue: 'aggravated-wounds',
     learn_sp: -2,
     season: 1,
-    tags: ['Flaw', 'Passive']
+    tags: ['Flaw', 'Passive'],
+    level_speed: "Fixed",
+    description: "Healing Techniques used on you restore 1/2 the Health they ordinarily would."
   },
   'berserker': {
     name: 'Berserker',
     selectValue: 'berserker',
     learn_sp: -5,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: "Fixed",
+    description: "Whenever you are below Critical Health and not incapacitated, every space you move must bring you closer to at least one enemy if possible, you must use a Damage Core Technique every turn if possible even if you must attack an ally, you gain a +1 bonus to all attack rolls, a +10 bonus to all attack scores, a -2 penalty to all defense rolls, and a -20 penalty to Defense and Resistance."
   },
   'compulsion': {
     name: 'Compulsion',
     selectValue: 'compulsion',
     learn_sp: -4,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: "Fixed",
+    description: "Every other round of combat starting with the second, you must choose between losing your Support Action on your turn by engaging in some compulsive activity or 1 Valor."
   },
   'despair': {
     name: 'Despair',
     selectValue: 'despair',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Knockout']
+    tags: ['Flaw', 'Situational', 'Knockout'],
+    level_speed: "Fixed",
+    description: "The first time any ally is reduced to 0 Health or less in a scene, lose 2 Valor. If the ally was a Flunky or created by a Summoning Core Technique, do not lose Valor. If the ally was a Soldier not created by a Summoning Core Technique, lose 1 Valor."
   },
   'energy-vulnerability': {
     name: 'Energy Vulnerability',
     selectValue: 'energy-vulnerability',
     learn_sp: -2,
+    learn_value: -4,
     season: 1,
-    tags: ['Flaw', 'Passive', 'Resistance']
+    tags: ['Flaw', 'Passive', 'Resistance'],
+    level_speed: "Fast",
+    level_sp: -1,
+    level_value: -2,
+    bonus: 'resistance',
+    description: "Reduces Resistance by ${calc}."
   },
   'feeble': {
     name: 'Feeble',
     selectValue: 'feeble',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: "Fixed",
+    description: "All defense rolls you make against Damage Techniques based on Muscle are rolled with a -1 penalty."
   },
   'form-restriction': {
     name: 'Form Restriction',
     selectValue: 'form-restriction',
     learn_sp: -2,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Repeatable']
+    tags: ['Flaw', 'Situational', 'Repeatable'],
+    level_speed: "Fixed",
+    description: "Choose one Skill and one Transformation you have. The Skill has no effect or cannot be used unless you are in that Transformation. This Flaw may be taken multiple times, and each applies to a different Skill. If the chosen Skill costs 2 SP, this Flaw grants 1 SP instead."
   },
   'fragile': {
     name: 'Fragile',
     selectValue: 'fragile',
     learn_sp: -3,
+    learn_value: -30,
     season: 1,
-    tags: ['Flaw', 'Passive', 'MaxHealth']
+    tags: ['Flaw', 'Passive', 'MaxHealth'],
+    level_speed: 'Fast',
+    level_sp: -2,
+    level_value: -15,
+    description: "Reduces Maximum Health by ${calc}.",
+    technique: "Applying this Flaw does not reduce the target's current Health unless the target's current Health is below their new Maximum Health. Any Health lost this way is regained when the Technique's effect ends."
   },
   'lack-of-control': {
     name: 'Lack of Control',
     selectValue: 'lack-of-control',
     learn_sp: -2,
+    learn_value: -8,
     season: 1,
-    tags: ['Flaw', 'Passive', 'MaxStamina']
+    tags: ['Flaw', 'Passive', 'MaxStamina'],
+    level_speed: 'Fast',
+    level_sp: -1,
+    level_value: -6,
+    description: "Reduces Maximum Stamina by ${calc}.",
+    technique: "Applying this Flaw does not reduce the target's current Stamina unless the target's current Stamina is below their new Maximum Stamina. Any Stamina lost this way is regained when the Technique's effect ends."
   },
   'malevolent-entity': {
     name: 'Malevolent Entity',
     selectValue: 'malevolent-entity',
     learn_sp: -5,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: 'Fixed',
+    //${mecalc} = 3 + CharacterLevel/2 ; ${mescalc} = 5 + Resolve
+    description: "You are inhabited by an entity striving to take over. When you gain this Flaw, the entity has a base Resolve score equal to ${mecalc}. Whenever you take damage that brings you below Critical Health or another effect asks, roll Resolve check against the entity. If you succeed, you retain control of your body, but the entity's Resolve increases by 1. If it succeeds, it takes control over your body. While the entity controls your body, the GM has full control over your character's actions, and all your rolls are made with a +1 bonus; however, the entity cannot spend your Valor to use Overdrives. At the end of each of your turns while the entity controls your body, roll Resolve against it. You cannot use Overdrives to improve your chances at this roll, but your allies can. If it succeeds, its Resolve decreases by 1, and it retains control. If you succeed, its Resolve drops to its base value and you regain control of your body. Whenever you gain a level that increases the entity's base Resolve, its current Resolve also increases. You may, with no action, surrender control, giving the entity control and increasing its Resolve to ${mescalc}. Sometimes the GM may opt to have the entity not attempt to take over; if this happens, you always retain control and the entity's Resolve increases by 1."
   },
   'non-proficient': {
     name: 'Non-proficient',
     selectValue: 'non-proficient',
     learn_sp: -1,
     season: 1,
-    tags: ['Flaw', 'Challenge', 'Repeatable']
+    tags: ['Flaw', 'Challenge', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: "Select a Challenge action. Whenever you roll for this action, you do so at a -1 penalty. You may take this Flaw multiple times, for a different action each time."
   },
   'oblivious': {
     name: 'Oblivious',
     selectValue: 'oblivious',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: 'Fixed',
+    description: "All defense rolls you make against Damage Techniques based on Intuition are rolled with a -1 penalty."
   },
   'slow': {
     name: 'Slow',
     selectValue: 'slow',
     learn_sp: -2,
+    learn_value: -1,
     season: 1,
-    tags: ['Flaw', 'Passive', 'Movement']
+    tags: ['Flaw', 'Passive', 'Movement'],
+    level_speed: 'Slow',
+    level_sp: -1,
+    level_value: -1,
+    bonus: 'movement',
+    description: "Reduces Movement by ${calc}."
   },
   'slow-healing': {
     name: 'Slow Healing',
     selectValue: 'slow-healing',
     learn_sp: -2,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: 'Fixed',
+    description: "At the end of the first non-combat scene following any number of combat scenes, you do not recover Health as usual."
   },
   'slow-to-act': {
     name: 'Slow to Act',
     selectValue: 'slow-to-act',
     learn_sp: -1,
+    learn_value: -2,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Initiative']
+    tags: ['Flaw', 'Situational', 'Initiative'],
+    level_speed: 'Fixed',
+    bonus: 'initiative',
+    description: "Reduces Initiative by 2."
   },
   'unthreatening': {
     name: 'Unthreatening',
     selectValue: 'unthreatening',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Passive']
+    tags: ['Flaw', 'Passive'],
+    level_speed: 'Fixed',
+    description: "Enemies move through your Zone of Control at no penalty to movement."
   },
   'uncoordinated': {
     name: 'Uncoordinated',
     selectValue: 'uncoordinated',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: 'Fixed',
+    description: "All defense rolls you make against Damage Techniques based on Dexterity are rolled with a -1 penalty."
   },
   'violent': {
     name: 'Violent',
     selectValue: 'violent',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: 'Fixed',
+    description: "At the end of all of your turns in which you do not use a Damage Core Technique on an enemy, lose 2 Valor."
   },
   'weak-energy-attacker': {
     name: 'Weak Energy Attacker',
     selectValue: 'weak-energy-attacker',
     learn_sp: -3,
+    learn_value: -6,
     season: 1,
-    tags: ['Flaw', 'Passive', 'EnergyAttack']
+    tags: ['Flaw', 'Passive', 'EnergyAttack'],
+    level_speed: 'Fast',
+    level_sp: -2,
+    level_value: -3,
+    bonus: 'energy_attack',
+    description: "Reduces Spirit Attack and Mind Attack by ${calc} each."
   },
   'weak-physical-attacker': {
     name: 'Weak Physical Attacker',
     selectValue: 'weak-physical-attacker',
     learn_sp: -3,
+    learn_value: -6,
     season: 1,
-    tags: ['Flaw', 'Passive', 'PhysicalAttack']
+    tags: ['Flaw', 'Passive', 'PhysicalAttack'],
+    level_speed: 'Fast',
+    level_sp: -2,
+    level_value: -3,
+    bonus: 'physical_attack',
+    description: "Reduces Strength Attack and Agility Attack by ${calc} each."
   },
   'weak-aura': {
     name: 'Weak Aura',
     selectValue: 'weak-aura',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational']
+    tags: ['Flaw', 'Situational'],
+    level_speed: 'Fixed',
+    description: "All defense rolls you make against Damage Techniques based on Aura are rolled with a -1 penalty."
   },
   'weak-defender': {
     name: 'Weak Defender',
     selectValue: 'weak-defender',
     learn_sp: -2,
+    learn_value: -4,
     season: 1,
-    tags: ['Flaw', 'Passive', 'Defense']
+    tags: ['Flaw', 'Passive', 'Defense'],
+    level_speed: "Fast",
+    level_sp: -1,
+    level_value: -2,
+    bonus: 'defense',
+    description: "Reduces Defense by ${calc}."
   },
   'weak-willed': {
     name: 'Weak-Willed',
     selectValue: 'weak-willed',
     learn_sp: -4,
+    learn_value: -1,
     season: 1,
-    tags: ['Flaw', 'Passive', 'StartingValor']
+    tags: ['Flaw', 'Passive', 'StartingValor'],
+    level_speed: 'Slow',
+    level_sp: -3,
+    level_value: -1,
+    description: "You begin combat scenes with ${calc} less Valor."
   },
   'flightless': {
-    name: 'Weak-Willed',
-    selectValue: 'weak-willed',
+    name: 'Flightless',
+    selectValue: 'flightless',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken']
+    tags: ['Flaw', 'Situational', 'Weaken'],
+    level_speed: 'Fixed',
+    description: "If you are Flying for any reason, you immediately stop flying and fall Prone."
   },
   //For all these Impaired Whatever skills, the Unofficial Errata version
   //just costs more.
@@ -225,85 +314,117 @@ module.exports = {
     selectValue: 'impaired-accuracy-raw',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'RAW']
+    tags: ['Flaw', 'Situational', 'Weaken', 'RAW'],
+    level_speed: 'Fixed',
+    description: "Whenever you make an attack roll, subtract 1 from it."
   },
   'impaired-accuracy-ue': {
     name: 'Impaired Accuracy (Unofficial Errata)',
     selectValue: 'impaired-accuracy-ue',
     learn_sp: -4,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'UE']
+    tags: ['Flaw', 'Situational', 'Weaken', 'UE'],
+    level_speed: 'Fixed',
+    description: "Whenever you make an attack roll, subtract 1 from it."
   },
   'impaired-physical-accuracy': {
     name: 'Impaired Physical Accuracy',
     selectValue: 'impaired-physical-accuracy',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
+    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule'],
+    level_speed: 'Fixed',
+    description: "Whenever you make an attack roll with Muscle or Dexterity, subtract 1 from it."
   },
   'impaired-energy-accuracy': {
     name: 'Impaired Energy Accuracy',
     selectValue: 'impaired-energy-accuracy',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
+    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule'],
+    level_speed: 'Fixed',
+    description: "Whenever you make an attack roll with Aura or Intuition, subtract 1 from it."
   },
   'impaired-evasion-raw': {
     name: 'Impaired Evasion (RAW)',
     selectValue: 'impaired-evasion-raw',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'RAW']
+    tags: ['Flaw', 'Situational', 'Weaken', 'RAW'],
+    level_speed: 'Fixed',
+    description: "Whenever you make a defense roll, subtract 1 from it."
   },
   'impaired-evasion-ue': {
     name: 'Impaired Accuracy (Unofficial Errata)',
     selectValue: 'impaired-accuracy-ue',
     learn_sp: -4,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'UE']
+    tags: ['Flaw', 'Situational', 'Weaken', 'UE'],
+    level_speed: 'Fixed',
+    description: "Whenever you make a defense roll, subtract 1 from it."
   },
   'impaired-physical-evasion': {
     name: 'Impaired Physical Evasion',
     selectValue: 'impaired-physical-evasion',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
+    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule'],
+    level_speed: 'Fixed',
+    description: "Whenever you make a defense roll against a Muscle or Dexterity Technique, subtract 1 from it."
   },
   'impaired-energy-evasion': {
     name: 'Impaired Energy Evasion',
     selectValue: 'impaired-energy-evasion',
     learn_sp: -3,
     season: 1,
-    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule']
+    tags: ['Flaw', 'Situational', 'Weaken', 'Houserule'],
+    level_speed: 'Fixed',
+    description: "Whenever you make a defense roll against an Aura or Intuition Technique, subtract 1 from it."
   },
   'balanced-fighter': {
     name: 'Balanced Fighter',
     selectValue: 'balanced-fighter',
     learn_sp: 8,
+    learn_value: 1,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    bonus: 'actives',
+    description: "Increase all of your Active Attributes lower than your highest one by 1."
   },
   'break-valor-limit': {
     name: 'Break Valor Limit',
     selectValue: 'break-valor-limit',
     learn_sp: 6,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    description: "Increase your maximum Valor to 20. While you have 20 Valor, increase your bonus to all rolls by an additional 1."
   },
   'bravado-raw': {
     name: 'Bravado (RAW)',
     selectValue: 'bravado-raw',
     learn_sp: 6,
+    learn_value: 1,
     season: 1,
-    tags: ['Passive', 'RAW']
+    tags: ['Passive', 'RAW'],
+    level_speed: 'Slow',
+    level_sp: 4,
+    level_value: 1,
+    description: "You begin combat scenes with ${calc} more Valor."
   },
   //Levels up at 6 SP per level instead of 4.
   'bravado-ue': {
     name: 'Bravado (Unofficial Errata)',
     selectValue: 'bravado-ue',
     learn_sp: 6,
+    learn_value: 1,
     season: 1,
-    tags: ['Passive', 'UE']
+    tags: ['Passive', 'UE'],
+    level_speed: 'Slow',
+    level_sp: 6,
+    level_value: 1,
+    description: "You begin combat scenes with ${calc} more Valor."
   },
   //A houserule variant Bravado which is Fixed instead of levelable.
   'bravado-fixed': {
@@ -311,7 +432,9 @@ module.exports = {
     selectValue: 'bravado-fixed',
     learn_sp: 6,
     season: 1,
-    tags: ['Passive', 'Houserule']
+    tags: ['Passive', 'Houserule'],
+    level_speed: 'Fixed',
+    description: "You begin combat scenes with 1 more Valor."
   },
   //The book classifies this as Permanent (Passive), but...
   'discreet-aura': {
@@ -319,92 +442,146 @@ module.exports = {
     selectValue: 'discreet-aura',
     learn_sp: 6,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "If an enemy attempts to detect you with Spirit Sight, you may roll Aura against them to stay concealed. You may use Aura for stealth rolls. Anyone reading or tracking your aura must succeed at an opposed Aura roll against you. If they fail, you can choose to give them no information or false information."
   },
   'darksight': {
     name: 'Darksight',
     selectValue: 'darksight',
     learn_sp: 4,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    description: "Ignore all penalties to rolls that would be caused by you or any target being in darkness."
   },
   'energy-attacker': {
     name: 'Energy Attacker',
     selectValue: 'energy-attacker',
     learn_sp: 6,
+    learn_value: 6,
     season: 1,
-    tags: ['Passive', 'EnergyAttack']
+    tags: ['Passive', 'EnergyAttack'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 3,
+    bonus: 'energy_attack',
+    description: "Increase Spirit Attack and Mind Attack by ${calc} each."
   },
   'expanded-reach': {
     name: 'Expanded Reach',
     selectValue: 'expanded-reach',
     learn_sp: 8,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    description: "Your Zone of Control expands by 1 space in all directions."
   },
   'extra-action': {
     name: 'Extra Action',
     selectValue: 'extra-action',
     learn_sp: 12,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    description: "You may use two Support Actions per turn. Slow Actions use both of them."
   },
   'fast-healing': {
     name: 'Fast Healing',
     selectValue: 'fast-healing',
     learn_sp: 4,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    //${di} is Damage Increment.
+    description: "At the end of every scene, recover an additional ${di} Health."
   },
   'improved-di': {
     name: 'Improved Damage Increment',
     selectValue: 'improved-di',
     learn_sp: 5,
+    learn_value: 2,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "Increase Damage Increment by ${calc}."
   },
   //Unlike most of the other UE skills, this is a straight buff.
   'improved-di-ue': {
     name: 'Improved Damage Increment (Unofficial Errata)',
     selectValue: 'improved-di-ue',
     learn_sp: 4,
+    learn_value: 4,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 2,
+    description: "Increase Damage Increment by ${calc}."
   },
   'increased-size': {
     name: 'Increased Size',
     selectValue: 'increased-size',
     learn_sp: 2,
+    learn_value: 1,
     season: 1,
-    tags: ['Passive', 'Size']
+    tags: ['Passive', 'Size'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 1,
+    //${2calc} is 2 * calc.
+    description: "The space you occupy expands by ${calc} in every direction. You make all attack rolls with a +${calc} bonus and all defense rolls with a -${calc} penalty. The threshold to score a critical hit against you increases by ${2calc}. Your Techniques can originate from any space you occupy, and enemies cannot move through any space you occupy. Any Technique that targets you only has to reach part of the space you occupy. If you can't move through a space, you can temporary reduce your size by 1. While your size is reduced this way, all movement is made as if it were through difficult terrain and you make all rolls at -1. You cannot reduce your size by any more than 1."
   },
   'iron-defense': {
     name: 'Iron Defense',
     selectValue: 'iron-defense',
     learn_sp: 4,
+    learn_value: 4,
     season: 1,
-    tags: ['Passive', 'Defense']
+    tags: ['Passive', 'Defense'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 2,
+    description: "Increase Defense by ${calc}."
   },
   'physical-attacker': {
     name: 'Physical Attacker',
     selectValue: 'physical-attacker',
     learn_sp: 6,
+    learn_value: 3,
     season: 1,
-    tags: ['Passive', 'PhysicalAttack']
+    tags: ['Passive', 'PhysicalAttack'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 3,
+    bonus: 'energy_attack',
+    description: "Increase Strength Attack and Agility Attack by ${calc} each."
   },
   'regeneration': {
     name: 'Regeneration',
     selectValue: 'regeneration',
     learn_sp: 6,
+    learn_value: 10,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive', 'HealthRegen'],
+    level_speed: 'Slow',
+    level_sp: 4,
+    level_value: 10,
+    description: "At the end of each round of combat, recover ${calc} Health."
   },
   'resistant': {
     name: 'Resistant',
     selectValue: 'resistant',
     learn_sp: 4,
+    learn_value: 4,
     season: 1,
-    tags: ['Passive', 'Resistance']
+    tags: ['Passive', 'Resistance'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 2,
+    description: "Increase Resistance by ${calc}."
   },
   //The book classifies this as Permanent, but it only affects airborne targets.
   'sky-attack': {
@@ -412,49 +589,77 @@ module.exports = {
     selectValue: 'sky-attack',
     learn_sp: 5,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you hit an airborne target with a Damage Technique, increase the damage by ${di}."
   },
   'sprinter': {
     name: 'Sprinter',
     selectValue: 'sprinter',
     learn_sp: 4,
+    learn_value: 1,
     season: 1,
-    tags: ['Passive', 'Movement']
+    tags: ['Passive', 'Movement'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 1,
+    description: "Increase Movement by ${calc}."
   },
   'stamina-recovery': {
     name: 'Stamina Recovery',
     selectValue: 'stamina-recovery',
     learn_sp: 4,
+    learn_value: 4,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive', 'StaminaRegen'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 4,
+    description: "At the end of each round of combat, recover ${calc} Stamina."
   },
   'teleportation': {
     name: 'Teleportation',
     selectValue: 'teleportation',
     learn_sp: 6,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    description: "Ignore Zones of Control and obstacles whenever you move voluntarily, as long as your move ends on an unoccupied space. If you attempt to move to an occupied space you can't see, the GM moves you to the nearest unoccupied space instead."
   },
   'tireless': {
     name: 'Tireless',
     selectValue: 'tireless',
     learn_sp: 5,
+    learn_value: 8,
     season: 1,
-    tags: ['Passive', 'MaxStamina']
+    tags: ['Passive', 'MaxStamina'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 6,
+    description: "Increase Maximum Stamina by ${calc}.",
+    technique: "Applying this Skill also increases the target's current Stamina. Any Stamina gained this way is lost when the Technique's effect ends."
   },
   'tough': {
     name: 'Tough',
     selectValue: 'tough',
     learn_sp: 6,
+    learn_value: 30,
     season: 1,
-    tags: ['Passive', 'MaxHealth']
+    tags: ['Passive', 'MaxHealth'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 15,
+    description: "Increase Maximum Health by ${calc}.",
+    technique: "Applying this Skill also increases the target's current Health. Any Health gained this way is lost when the Technique's effect ends."
   },
   'unyielding-determination-raw': {
     name: 'Unyielding Determination (RAW)',
     selectValue: 'unyielding-determination-raw',
     learn_sp: 8,
     season: 4,
-    tags: ['Passive', 'RAW']
+    tags: ['Passive', 'RAW', 'ValorPerRound'],
+    level_speed: 'Fixed',
+    description: "Gain 2 Valor at the start of every round."
   },
   //Only affects Valor awards from the GM.
   'unyielding-determination-ue': {
@@ -462,7 +667,9 @@ module.exports = {
     selectValue: 'unyielding-determination-ue',
     learn_sp: 8,
     season: 4,
-    tags: ['Passive', 'UE']
+    tags: ['Passive', 'UE'],
+    level_speed: 'Fixed',
+    description: "Whenever you are awarded Valor for dramatic speech or action, increase the amount received by 1."
   },
   //NPC-only variant of Unyielding Det. (RAW).
   //Technically this is a houserule skill for now but it's missing
@@ -472,21 +679,32 @@ module.exports = {
     selectValue: 'valiant',
     learn_sp: 12,
     season: 1,
-    tags: ['Passive', 'NPC']
+    tags: ['Passive', 'NPC'],
+    level_speed: 'Fixed',
+    //${mcheck} is 2 if the character is a Master and 1 otherwise.
+    description: "At the beginning of each round, gain ${mcheck} additional Valor."
   },
   'versatile-fighter': {
     name: 'Versatile Fighter',
     selectValue: 'versatile-fighter',
     learn_sp: 6,
+    learn_value: 4,
     season: 1,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fast',
+    level_sp: 3,
+    level_value: 2,
+    description: "Increase maximum Technique Points by ${calc}.",
+    technique: "The targets of this Technique may freely and immediately assign the TP gained this way to their Techniques or make new ones, though the changes last only for the duration of the Technique's effect."
   },
   'violent-aura': {
     name: 'Violent Aura',
     selectValue: 'violent-aura',
     learn_sp: 4,
     season: 4,
-    tags: ['Passive']
+    tags: ['Passive'],
+    level_speed: 'Fixed',
+    description: "At the beginning of your turn, enemies within your Zone of Control take ${di} damage. Damage from Violent Aura ignores Defense and Resistance. You may turn this effect on or off with a Support Action. When a scene begins, you choose whether this effect is on or off."
   },
   'abundant-creation': {
     name: 'Abundant Creation',
@@ -500,7 +718,7 @@ module.exports = {
     selectValue: 'bounce-back',
     learn_sp: 6,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational', 'ValorPerRound']
   },
   'clone-tactics': {
     name: 'Clone Tactics',
