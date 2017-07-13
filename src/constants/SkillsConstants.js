@@ -31,6 +31,7 @@
     * Knockout: For "Despair" and "Revenge" only, as these situational skills respond to party members being knocked out in opposite ways.
     * Size: For "Increased Size", "Diminutive", and possibly "Increased Length". These passive skills affect how much space the character takes up in combat.
             (But only the first is implemented yet.)
+    * AttackDefenseUp: For "Great Evasion" and "Great Accuracy", which can no longer ever be applied simultaneously.
     -- "Include These Only If The Character Has A Skill With The Same Name As This Tag" --
     * [Name of another skill]: For skills such as Dark Healing that require other skills.
       Jump, Swift Step, Counterattack, Malevolent Entity, and Companion are some skills that are prerequisites and would have a tag named for them.
@@ -52,8 +53,9 @@
     Slow skills can be leveled once every 5 levels (1, 6, 15, etc.).
   level_sp: The amount of SP it costs to increase a skill's level beyond 1.
   level_value: The amount additional levels in this skill increase its effect.
-  description: The text of the skill, here modified in many cases from the book text. ${calc} is substituted for (learn_value + (level_value * level-1)) during use.
-    Other ${} entries are special calculations detailed within the skills themselves.
+  description: The text of the skill, here modified in many cases from the book text. #{calc} is substituted for (learn_value + (level_value * level-1)) during use.
+    Other #{} entries are special calculations detailed within the skills themselves.
+  technique: Extra text that is displayed if the Skill is attached to a Technique.
 */
 
 module.exports = {
@@ -104,7 +106,7 @@ module.exports = {
     level_sp: -1,
     level_value: -2,
     bonus: 'resistance',
-    description: "Reduces Resistance by ${calc}."
+    description: "Reduces Resistance by #{calc}."
   },
   'feeble': {
     name: 'Feeble',
@@ -134,7 +136,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: -2,
     level_value: -15,
-    description: "Reduces Maximum Health by ${calc}.",
+    description: "Reduces Maximum Health by #{calc}.",
     technique: "Applying this Flaw does not reduce the target's current Health unless the target's current Health is below their new Maximum Health. Any Health lost this way is regained when the Technique's effect ends."
   },
   'lack-of-control': {
@@ -147,7 +149,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: -1,
     level_value: -6,
-    description: "Reduces Maximum Stamina by ${calc}.",
+    description: "Reduces Maximum Stamina by #{calc}.",
     technique: "Applying this Flaw does not reduce the target's current Stamina unless the target's current Stamina is below their new Maximum Stamina. Any Stamina lost this way is regained when the Technique's effect ends."
   },
   'malevolent-entity': {
@@ -157,8 +159,8 @@ module.exports = {
     season: 1,
     tags: ['Flaw', 'Situational'],
     level_speed: 'Fixed',
-    //${mecalc} = 3 + CharacterLevel/2 ; ${mescalc} = 5 + Resolve
-    description: "You are inhabited by an entity striving to take over. When you gain this Flaw, the entity has a base Resolve score equal to ${mecalc}. Whenever you take damage that brings you below Critical Health or another effect asks, roll Resolve check against the entity. If you succeed, you retain control of your body, but the entity's Resolve increases by 1. If it succeeds, it takes control over your body. While the entity controls your body, the GM has full control over your character's actions, and all your rolls are made with a +1 bonus; however, the entity cannot spend your Valor to use Overdrives. At the end of each of your turns while the entity controls your body, roll Resolve against it. You cannot use Overdrives to improve your chances at this roll, but your allies can. If it succeeds, its Resolve decreases by 1, and it retains control. If you succeed, its Resolve drops to its base value and you regain control of your body. Whenever you gain a level that increases the entity's base Resolve, its current Resolve also increases. You may, with no action, surrender control, giving the entity control and increasing its Resolve to ${mescalc}. Sometimes the GM may opt to have the entity not attempt to take over; if this happens, you always retain control and the entity's Resolve increases by 1."
+    //#{mecalc} = 3 + CharacterLevel/2 ; #{mescalc} = 5 + Resolve
+    description: "You are inhabited by an entity striving to take over. When you gain this Flaw, the entity has a base Resolve score equal to #{mecalc}. Whenever you take damage that brings you below Critical Health or another effect asks, roll Resolve check against the entity. If you succeed, you retain control of your body, but the entity's Resolve increases by 1. If it succeeds, it takes control over your body. While the entity controls your body, the GM has full control over your character's actions, and all your rolls are made with a +1 bonus; however, the entity cannot spend your Valor to use Overdrives. At the end of each of your turns while the entity controls your body, roll Resolve against it. You cannot use Overdrives to improve your chances at this roll, but your allies can. If it succeeds, its Resolve decreases by 1, and it retains control. If you succeed, its Resolve drops to its base value and you regain control of your body. Whenever you gain a level that increases the entity's base Resolve, its current Resolve also increases. You may, with no action, surrender control, giving the entity control and increasing its Resolve to #{mescalc}. Sometimes the GM may opt to have the entity not attempt to take over; if this happens, you always retain control and the entity's Resolve increases by 1."
   },
   'non-proficient': {
     name: 'Non-proficient',
@@ -189,7 +191,7 @@ module.exports = {
     level_sp: -1,
     level_value: -1,
     bonus: 'movement',
-    description: "Reduces Movement by ${calc}."
+    description: "Reduces Movement by #{calc}."
   },
   'slow-healing': {
     name: 'Slow Healing',
@@ -249,7 +251,7 @@ module.exports = {
     level_sp: -2,
     level_value: -3,
     bonus: 'energy_attack',
-    description: "Reduces Spirit Attack and Mind Attack by ${calc} each."
+    description: "Reduces Spirit Attack and Mind Attack by #{calc} each."
   },
   'weak-physical-attacker': {
     name: 'Weak Physical Attacker',
@@ -262,7 +264,7 @@ module.exports = {
     level_sp: -2,
     level_value: -3,
     bonus: 'physical_attack',
-    description: "Reduces Strength Attack and Agility Attack by ${calc} each."
+    description: "Reduces Strength Attack and Agility Attack by #{calc} each."
   },
   'weak-aura': {
     name: 'Weak Aura',
@@ -284,7 +286,7 @@ module.exports = {
     level_sp: -1,
     level_value: -2,
     bonus: 'defense',
-    description: "Reduces Defense by ${calc}."
+    description: "Reduces Defense by #{calc}."
   },
   'weak-willed': {
     name: 'Weak-Willed',
@@ -296,7 +298,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: -3,
     level_value: -1,
-    description: "You begin combat scenes with ${calc} less Valor."
+    description: "You begin combat scenes with #{calc} less Valor."
   },
   'flightless': {
     name: 'Flightless',
@@ -411,7 +413,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 4,
     level_value: 1,
-    description: "You begin combat scenes with ${calc} more Valor."
+    description: "You begin combat scenes with #{calc} more Valor."
   },
   //Levels up at 6 SP per level instead of 4.
   'bravado-ue': {
@@ -424,7 +426,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 6,
     level_value: 1,
-    description: "You begin combat scenes with ${calc} more Valor."
+    description: "You begin combat scenes with #{calc} more Valor."
   },
   //A houserule variant Bravado which is Fixed instead of levelable.
   'bravado-fixed': {
@@ -436,22 +438,24 @@ module.exports = {
     level_speed: 'Fixed',
     description: "You begin combat scenes with 1 more Valor."
   },
-  //The book classifies this as Permanent (Passive), but...
+  //The book classifies this as Permanent (Passive), but I haven't seen a use case for this yet.
   'discreet-aura': {
     name: 'Discreet Aura',
     selectValue: 'discreet-aura',
     learn_sp: 6,
     season: 1,
-    tags: ['Situational'],
+    tags: ['Situational', 'Passive'],
     level_speed: 'Fixed',
     description: "If an enemy attempts to detect you with Spirit Sight, you may roll Aura against them to stay concealed. You may use Aura for stealth rolls. Anyone reading or tracking your aura must succeed at an opposed Aura roll against you. If they fail, you can choose to give them no information or false information."
   },
+  //The book classifies this as Permanent, but not every campaign will even use Darkness.
+  //I've added the Situational tag to it for this reason.
   'darksight': {
     name: 'Darksight',
     selectValue: 'darksight',
     learn_sp: 4,
     season: 1,
-    tags: ['Passive'],
+    tags: ['Situational', 'Passive'],
     level_speed: 'Fixed',
     description: "Ignore all penalties to rolls that would be caused by you or any target being in darkness."
   },
@@ -466,7 +470,7 @@ module.exports = {
     level_sp: 3,
     level_value: 3,
     bonus: 'energy_attack',
-    description: "Increase Spirit Attack and Mind Attack by ${calc} each."
+    description: "Increase Spirit Attack and Mind Attack by #{calc} each."
   },
   'expanded-reach': {
     name: 'Expanded Reach',
@@ -493,8 +497,8 @@ module.exports = {
     season: 1,
     tags: ['Passive'],
     level_speed: 'Fixed',
-    //${di} is Damage Increment.
-    description: "At the end of every scene, recover an additional ${di} Health."
+    //#{di} is Damage Increment.
+    description: "At the end of every scene, recover an additional #{di} Health."
   },
   'improved-di': {
     name: 'Improved Damage Increment',
@@ -506,7 +510,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 3,
     level_value: 1,
-    description: "Increase Damage Increment by ${calc}."
+    description: "Increase Damage Increment by #{calc}."
   },
   //Unlike most of the other UE skills, this is a straight buff.
   'improved-di-ue': {
@@ -519,7 +523,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 2,
-    description: "Increase Damage Increment by ${calc}."
+    description: "Increase Damage Increment by #{calc}."
   },
   'increased-size': {
     name: 'Increased Size',
@@ -531,8 +535,8 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 2,
     level_value: 1,
-    //${2calc} is 2 * calc.
-    description: "The space you occupy expands by ${calc} in every direction. You make all attack rolls with a +${calc} bonus and all defense rolls with a -${calc} penalty. The threshold to score a critical hit against you increases by ${2calc}. Your Techniques can originate from any space you occupy, and enemies cannot move through any space you occupy. Any Technique that targets you only has to reach part of the space you occupy. If you can't move through a space, you can temporary reduce your size by 1. While your size is reduced this way, all movement is made as if it were through difficult terrain and you make all rolls at -1. You cannot reduce your size by any more than 1."
+    //#{2calc} is 2 * calc.
+    description: "The space you occupy expands by #{calc} in every direction. You make all attack rolls with a +#{calc} bonus and all defense rolls with a -#{calc} penalty. The threshold to score a critical hit against you increases by #{2calc}. Your Techniques can originate from any space you occupy, and enemies cannot move through any space you occupy. Any Technique that targets you only has to reach part of the space you occupy. If you can't move through a space, you can temporary reduce your size by 1. While your size is reduced this way, all movement is made as if it were through difficult terrain and you make all rolls at -1. You cannot reduce your size by any more than 1."
   },
   'iron-defense': {
     name: 'Iron Defense',
@@ -544,7 +548,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 2,
-    description: "Increase Defense by ${calc}."
+    description: "Increase Defense by #{calc}."
   },
   'physical-attacker': {
     name: 'Physical Attacker',
@@ -557,7 +561,7 @@ module.exports = {
     level_sp: 3,
     level_value: 3,
     bonus: 'energy_attack',
-    description: "Increase Strength Attack and Agility Attack by ${calc} each."
+    description: "Increase Strength Attack and Agility Attack by #{calc} each."
   },
   'regeneration': {
     name: 'Regeneration',
@@ -569,7 +573,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 4,
     level_value: 10,
-    description: "At the end of each round of combat, recover ${calc} Health."
+    description: "At the end of each round of combat, recover #{calc} Health."
   },
   'resistant': {
     name: 'Resistant',
@@ -581,7 +585,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 2,
-    description: "Increase Resistance by ${calc}."
+    description: "Increase Resistance by #{calc}."
   },
   //The book classifies this as Permanent, but it only affects airborne targets.
   'sky-attack': {
@@ -591,7 +595,7 @@ module.exports = {
     season: 2,
     tags: ['Situational'],
     level_speed: 'Fixed',
-    description: "Whenever you hit an airborne target with a Damage Technique, increase the damage by ${di}."
+    description: "Whenever you hit an airborne target with a Damage Technique, increase the damage by #{di}."
   },
   'sprinter': {
     name: 'Sprinter',
@@ -603,7 +607,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 1,
-    description: "Increase Movement by ${calc}."
+    description: "Increase Movement by #{calc}."
   },
   'stamina-recovery': {
     name: 'Stamina Recovery',
@@ -615,7 +619,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 4,
-    description: "At the end of each round of combat, recover ${calc} Stamina."
+    description: "At the end of each round of combat, recover #{calc} Stamina."
   },
   'teleportation': {
     name: 'Teleportation',
@@ -636,7 +640,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 2,
     level_value: 6,
-    description: "Increase Maximum Stamina by ${calc}.",
+    description: "Increase Maximum Stamina by #{calc}.",
     technique: "Applying this Skill also increases the target's current Stamina. Any Stamina gained this way is lost when the Technique's effect ends."
   },
   'tough': {
@@ -649,7 +653,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 2,
     level_value: 15,
-    description: "Increase Maximum Health by ${calc}.",
+    description: "Increase Maximum Health by #{calc}.",
     technique: "Applying this Skill also increases the target's current Health. Any Health gained this way is lost when the Technique's effect ends."
   },
   'unyielding-determination-raw': {
@@ -681,8 +685,8 @@ module.exports = {
     season: 1,
     tags: ['Passive', 'NPC'],
     level_speed: 'Fixed',
-    //${mcheck} is 2 if the character is a Master and 1 otherwise.
-    description: "At the beginning of each round, gain ${mcheck} additional Valor."
+    //#{mcheck} is 2 if the character is a Master and 1 otherwise.
+    description: "At the beginning of each round, gain #{mcheck} additional Valor."
   },
   'versatile-fighter': {
     name: 'Versatile Fighter',
@@ -694,7 +698,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 3,
     level_value: 2,
-    description: "Increase maximum Technique Points by ${calc}.",
+    description: "Increase maximum Technique Points by #{calc}.",
     technique: "The targets of this Technique may freely and immediately assign the TP gained this way to their Techniques or make new ones, though the changes last only for the duration of the Technique's effect."
   },
   'violent-aura': {
@@ -704,281 +708,381 @@ module.exports = {
     season: 4,
     tags: ['Passive'],
     level_speed: 'Fixed',
-    description: "At the beginning of your turn, enemies within your Zone of Control take ${di} damage. Damage from Violent Aura ignores Defense and Resistance. You may turn this effect on or off with a Support Action. When a scene begins, you choose whether this effect is on or off."
+    description: "At the beginning of your turn, enemies within your Zone of Control take #{di} damage. Damage from Violent Aura ignores Defense and Resistance. You may turn this effect on or off with a Support Action. When a scene begins, you choose whether this effect is on or off."
   },
   'abundant-creation': {
     name: 'Abundant Creation',
     selectValue: 'abundant-creation',
     learn_sp: 5,
     season: 2,
-    tags: ['Situational', 'Creation']
+    tags: ['Situational', 'Creation'],
+    level_speed: 'Fixed',
+    description: "Whenever you create Attack Nodes, Portals, or Refraction Points, you may create one additional one at normal cost without spending another action. The number of Attack Nodes, Portals, or Refraction Points you may have deployed at once is still determined by the other skill's level."
   },
   'bounce-back': {
     name: 'Bounce Back',
     selectValue: 'bounce-back',
     learn_sp: 6,
     season: 1,
-    tags: ['Situational', 'ValorPerRound']
+    tags: ['Situational', 'ValorPerRound'],
+    level_speed: 'Fixed',
+    description: "If you are below 0 Valor at the start of a combat round, gain 2 Valor instead of the usual 1."
   },
+  //The wording on this one is pretty vague.
   'clone-tactics': {
     name: 'Clone Tactics',
     selectValue: 'clone-tactics',
     learn_sp: 5,
     season: 2,
-    tags: ['Situational', 'Clone']
+    tags: ['Situational', 'Clone'],
+    level_speed: 'Fixed',
+    description: "Whenever you attack a target, and any of your Clones would also be able to attack that target with the same Technique, add 1 to the attack roll."
   },
   'combat-toss': {
     name: 'Combat Toss',
     selectValue: 'combat-toss',
     learn_sp: 4,
     season: 2,
-    tags: ['Situational', 'Toss']
+    tags: ['Situational', 'Toss'],
+    level_speed: 'Fixed',
+    description: "Whenever you use Toss on an ally, they receive a +1 bonus to all attack rolls until the beginning of your next turn."
   },
   'crisis': {
     name: 'Crisis',
     selectValue: 'crisis',
     learn_sp: 4,
+    learn_value: 6,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 3,
+    description: "Whenever you are below Critical Health, increase all damage you deal by #{calc}."
   },
   'danger-sense': {
     name: 'Danger Sense',
     selectValue: 'danger-sense',
     learn_sp: 3,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "If an Ambush round occurs, you do not suffer from Surprise."
   },
   'daredevil': {
     name: 'Daredevil',
     selectValue: 'daredevil',
     learn_sp: 4,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you succeed at defending against an attack while you are below Critical Health, gain 1 Valor."
   },
   'desperation': {
     name: 'Desperation',
     selectValue: 'desperation',
     learn_sp: 6,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you defend against an attack while you are below Critical Health, add 1 to your defense roll."
   },
   'dig-deep': {
     name: 'Dig Deep',
     selectValue: 'dig-deep',
     learn_sp: 5,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you would expend Stamina, you may instead expend Health equal to five times the amount of Stamina you would have expended."
   },
   'discretion': {
     name: 'Discretion',
     selectValue: 'discretion',
     learn_sp: 2,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you make any opposed roll, you may subtract 3 from the result."
   },
   'empower-attack': {
     name: 'Empower Attack',
     selectValue: 'empower-attack',
     learn_sp: 6,
+    learn_value: 6,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fast',
+    level_sp: 3,
+    level_value: 3,
+    description: "Whenever you use a Damage Core technique, and that Technique requires only an Attack Action to use, you may instead use a Slow Action on it. If you do, the Technique deals #{calc} additional damage."
   },
   'extended-range': {
     name: 'Extended Range',
     selectValue: 'extended-range',
     learn_sp: 6,
     season: 4,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Increase the range of all Active Skills you have with a range of 5 to range 20."
   },
   'free-flight': {
     name: 'Free Flight',
     selectValue: 'free-flight',
     learn_sp: 3,
     season: 4,
-    tags: ['Situational', 'Fly']
+    tags: ['Situational', 'Fly'],
+    level_speed: 'Fixed',
+    description: "While you are flying, you do not expend Stamina to stay airborne."
   },
   'free-swift-step': {
     name: 'Free Swift Step',
     selectValue: 'free-swift-step',
     learn_sp: 5,
     season: 4,
-    tags: ['Situational', 'Swift Step']
+    tags: ['Situational', 'Swift Step'],
+    level_speed: 'Fixed',
+    description: "Whenever you use Swift Step, you do not expend Stamina."
   },
   'improved-swimming': {
     name: 'Improved Swimming',
     selectValue: 'improved-swimming',
     learn_sp: 4,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational', 'Challenge'],
+    level_speed: 'Fixed',
+    description: "You do not suffer penalties to movement or die rolls from being underwater. During Challenge Scenes, add 1 to any roll you make related to swimming."
   },
+  //This also has Active since you need to roll to activate it.
   'nimble-movement': {
     name: 'Nimble Movement',
     selectValue: 'nimble-movement',
     learn_sp: 4,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational', 'Active'],
+    level_speed: 'Fixed',
+    description: "If you move through an enemy's Zone of Control, you may roll your Dexterity against their Muscle or Dexterity (their choice). If you succeed, ignore the movement penalty from their Zone of Control for this round."
   },
   'overload-limits': {
     name: 'Overload Limits',
     selectValue: 'overload-limits',
     learn_sp: 6,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you use a Technique, you may ignore any number of its Limits and instead pay the Stamina cost they were mitigating."
   },
   'passive-healing': {
     name: 'Passive Healing',
     selectValue: 'passive-healing',
     learn_sp: 4,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "At the end of any scene, you may choose not to recover Stamina. If you do, you or one of your allies recovers Health by an additional Health Increment."
   },
   'phasing': {
     name: 'Phasing',
     selectValue: 'phasing',
     learn_sp: 5,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "When moving, you may choose to move through an impassable obstacle by expending 2 Stamina per space moved through this way. You may not move through enemies with Phasing. You must end your movement on an open space; if you would end your movement inside an obstacle you are pushed out to the nearest open space of the GM's choice."
   },
   'protector': {
     name: 'Protector',
     selectValue: 'protector',
     learn_sp: 5,
     season: 1,
-    tags: ['Situational', 'Cover']
+    tags: ['Situational', 'Cover', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: "Choose another character. Whenever you use Cover to defend that character, gain 1 Valor. You may take Protector multiple times, choosing a different character for each."
   },
+  //Since the builder openly displays the Initiative modifier, this adds to that directly like some of the other Passive skills.
   'quick-to-act': {
     name: 'Quick to Act',
     selectValue: 'quick-to-act',
     learn_sp: 3,
     season: 1,
-    tags: ['Situational', 'Initiative']
+    tags: ['Situational', 'Passive', 'Initiative'],
+    level_speed: 'Fixed',
+    description: "Increase your Initiative modifier by 2."
   },
   'reckless-attack': {
     name: 'Reckless Attack',
     selectValue: 'reckless-attack',
     learn_sp: 5,
+    learn_value: 1,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "Whenever you attack, you may add up to #{calc} to your attack roll. If you do, subtract the same number from all defense rolls you make until the beginning of your next turn."
   },
   'resolute-strike': {
     name: 'Resolute Strike',
     selectValue: 'resolute-strike',
     learn_sp: 5,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "While you have at least 2 Valor, you may make attack rolls using Resolve instead of the Technique's usual attribute."
   },
   'revenge': {
     name: 'Revenge',
     selectValue: 'revenge',
     learn_sp: 5,
     season: 1,
-    tags: ['Situational', 'Knockout']
+    tags: ['Situational', 'Knockout'],
+    level_speed: "Fixed",
+    description: "The first time any ally is reduced to 0 Health or less in a scene, gain 2 Valor. If the ally was a Flunky or created by a Summoning Core Technique, do not gain Valor. If the ally was a Soldier not created by a Summoning Core Technique, gain 1 Valor."
   },
   'rising-attack': {
     name: 'Rising Attack',
     selectValue: 'rising-attack',
     learn_sp: 6,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you recover from Prone, add 1 to the next attack roll you make that turn."
   },
   'rolling-recovery': {
     name: 'Rolling Recovery',
     selectValue: 'rolling-recovery',
     learn_sp: 4,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    //#{rrcalc} is Movement/2.
+    description: "Whenever you use a Move Action to recover from Prone, you may also move up to #{rrcalc}"
   },
   'safe-stride': {
     name: 'Safe Stride',
     selectValue: 'safe-stride',
     learn_sp: 5,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Ignore damage that would be caused by terrain effects. Safe Stride does not protect you from Techniques with Persistent Effect."
   },
   'split-move': {
     name: 'Split Move',
     selectValue: 'split-move',
     learn_sp: 6,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    //#{move} is, as one might expect, Movement.
+    description: "You may take two Move Actions during your turn, as long as the total distance you move with them is less than #{move}. Recovering from a condition such as Immobilized still takes your entire Move Action."
   },
   'team-tactics': {
     name: 'Team Tactics',
     selectValue: 'team-tactics',
     learn_sp: 5,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you attack an enemy, if you and at least one of your allies are both adjacent to it but not adjacent to each other, add 1 to your attack roll."
   },
   'transposition': {
     name: 'Transposition',
     selectValue: 'transposition',
     learn_sp: 4,
     season: 1,
-    tags: ['Situational', 'Swift Step']
+    tags: ['Situational', 'Swift Step'],
+    level_speed: 'Fixed',
+    description: "Whenever you use Swift Step, you may choose to move into a space occupied by another character. If you do, you trade places with them. If the other character is an enemy, you must also succeed at an opposed Aura or Intuition roll against their choice of Aura or Intuition. If you succeed, you switch positions with them as normal. If you fail, you still expend the Stamina and Support Action that went into making the attempt, but nothing happens."
   },
   'underhanded': {
     name: 'Underhanded',
     selectValue: 'underhanded',
     learn_sp: 5,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "You do not suffer penalties to die rolls that would be caused by having less than 0 Valor. You are still Incapacitated if you reach -10 Valor."
   },
+  //TODO: figure out how to make "immovable" search for this without the duplicate entry
   'unmovable': {
     name: 'Unmovable',
-    selectValue: 'unmovable',
+    selectValue: 'immovable',
     learn_sp: 6,
+    learn_value: 2,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 2,
+    description: "Whenever any effect would move you against your will, reduce the distance you are moved by #{calc}. If another character is forcibly moved into you, they collide with you as if you were a wall; their movement stops and they take damage equal to the attacker's Damage Increment, and nothing happens to you. If you successfully defend against a Damage Technique with the Rush Attack modifier using Muscle, stop the attacker's action and place them anywhere within your Zone of Control."
   },
   //common alternate spelling
   'immovable': {
     name: 'Unmovable',
     selectValue: 'unmovable',
     learn_sp: 6,
+    learn_value: 2,
     season: 1,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 2,
+    description: "Whenever any effect would move you against your will, reduce the distance you are moved by #{calc}. If another character is forcibly moved into you, they collide with you as if you were a wall; their movement stops and they take damage equal to the attacker's Damage Increment, and nothing happens to you. If you successfully defend against a Damage Technique with the Rush Attack modifier using Muscle, stop the attacker's action and place them anywhere within your Zone of Control."
   },
   'unshakeable': {
     name: 'Unshakeable',
     selectValue: 'unshakeable',
     learn_sp: 6,
     season: 3,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "You cannot receive the Shaken condition."
   },
   'unstoppable': {
     name: 'Unstoppable',
     selectValue: 'unstoppable',
     learn_sp: 6,
     season: 3,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    //#{nhi} is -1 * Health Increment
+    description: "While you have at least 2 Valor, you are not Incapacitated until your Health drops to #{nhi}"
   },
   'water-adaptation': {
     name: 'Water Adaptation',
     selectValue: 'water-adaptation',
     learn_sp: 6,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "If you are completely immersed in a liquid, you gain Valor normally, do not begin drowning if you are Incapacitated, and ignore the usual penalty to die rolls for being completely immersed. Water Adaptation does not protect you from any effects of the liquid itself, such as damage from lava or acid."
   },
   'wall-walk': {
     name: 'Wall Walk',
     selectValue: 'wall-walk',
     learn_sp: 4,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "If you are adjacent to a wall, you are treated as Flying for the purpose of targeting Flying enemies. During Challenge Scenes, add 1 to any roll you make related to climbing."
   },
   'water-walk': {
     name: 'Water Walk',
     selectValue: 'water-walk',
     learn_sp: 4,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "You may stand on liquids as if they were solid. Water Walk does not protect you from the effects of the liquid."
   },
   'x-ray-vision': {
     name: 'X-Ray Vision',
     selectValue: 'x-ray-vision',
     learn_sp: 4,
     season: 2,
-    tags: ['Situational']
+    tags: ['Situational'],
+    level_speed: 'Fixed',
+    description: "You can see and target enemies behind cover at no penalty. X-Ray Vision does not give you any bonuses to piercing the cover."
   },
   'attack-node': {
     name: 'Attack Node',
