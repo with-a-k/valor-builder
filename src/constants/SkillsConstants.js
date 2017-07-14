@@ -55,6 +55,7 @@
   level_value: The amount additional levels in this skill increase its effect.
   description: The text of the skill, here modified in many cases from the book text. #{calc} is substituted for (learn_value + (level_value * level-1)) during use.
     Other #{} entries are special calculations detailed within the skills themselves.
+  character: Extra text that is displayed if the Skill is attached directly to a character.
   technique: Extra text that is displayed if the Skill is attached to a Technique.
 */
 
@@ -816,12 +817,13 @@ module.exports = {
     level_value: 3,
     description: "Whenever you use a Damage Core technique, and that Technique requires only an Attack Action to use, you may instead use a Slow Action on it. If you do, the Technique deals #{calc} additional damage."
   },
+  //Extended Range keys off Active Skills, so it also gets the Active tag.
   'extended-range': {
     name: 'Extended Range',
     selectValue: 'extended-range',
     learn_sp: 6,
     season: 4,
-    tags: ['Situational'],
+    tags: ['Situational', 'Active'],
     level_speed: 'Fixed',
     description: "Increase the range of all Active Skills you have with a range of 5 to range 20."
   },
@@ -878,7 +880,7 @@ module.exports = {
     season: 1,
     tags: ['Situational'],
     level_speed: 'Fixed',
-    description: "At the end of any scene, you may choose not to recover Stamina. If you do, you or one of your allies recovers Health by an additional Health Increment."
+    description: "At the end of any scene, you may choose not to recover Stamina. If you do, you or one of your allies recovers Health equal to their Health Increment."
   },
   'phasing': {
     name: 'Phasing',
@@ -1088,107 +1090,161 @@ module.exports = {
     name: 'Attack Node',
     selectValue: 'attack-node',
     learn_sp: 5,
+    learn_value: 1,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 1,
+    //#{range} is 20 if the character has Extended Range or 5 otherwise.
+    description: "As a Support Action, and at the cost of 4 Stamina, create one Attack Node within #{range} spaces of you. If an Attack Node you created is within 20 spaces of you, you may use Techniques through it as if you were standing there as long as they do not have the Ramming Attack or Rush Attack modifiers. Attack Nodes cannot be targeted by Techniques, and any character may occupy the same space as an Attack Node. You may deploy up to #{calc} #{pluralize(Attack Node)} at a time."
   },
+  //ANN requires some work to set up, so it also gets Situational.
   'attack-node-network': {
     name: 'Attack Node Network',
     selectValue: 'attack-node-network',
     learn_sp: 4,
     season: 3,
-    tags: ['Active', 'Attack Node']
+    tags: ['Active', 'Attack Node', 'Situational'],
+    level_speed: 'Fixed',
+    description: "Whenever you use a technique, if you can attack all targets of the technique from at least two Attack Nodes that you created, you may spend 2 Stamina. If you do, add 1 to your attack rolls for this use of the Technique. No matter how many nodes are within range, the technique will still only hit each target once."
   },
   'battle-analysis': {
     name: 'Battle Analysis',
     selectValue: 'battle-analysis',
     learn_sp: 6,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, you may make an opposed Intuition roll against an enemy. If you succeed, one time during the battle, you may increase you or an ally's defense roll against any of that enemy's attacks by 5. Battle Analysis can only be used successfully one time per enemy per battle."
   },
   'clone': {
     name: 'Clone',
     selectValue: 'clone',
     learn_sp: 6,
+    learn_value: 1,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "As a Support Action, and at the cost of 5 Stamina, either create one illusionary copy of yourself in any space adjacent to you or move 1 space and create an illusionary copy of yourself in the space you just left. Whenever you move, you may also move your clones. You and your allies always know which you is real. If an enemy attacks a clone, it is destroyed immediately without needing an attack roll. You may have up to #{calc} #{pluralize(clones)} active at a time. If you hit an enemy with a Technique, that enemy immediately knows which you is real and will continue to know until you create another clone. Any enemy can attempt to discern which you is real with an opposed Aura or Intuition roll against you. If you have the Discreet Aura skill, add 2 to any rolls you make to defend against this. Your clones have Zones of Control only if the enemy doesn't know whether they're clones."
   },
+  //Other limits on using?
   'dark-healing': {
     name: 'Dark Healing',
     selectValue: 'dark-healing',
     learn_sp: 6,
     season: 1,
-    tags: ['Active', 'Malevolent Entity']
+    tags: ['Active', 'Malevolent Entity'],
+    level_speed: 'Fixed',
+    //#{hi} is the character's Health Increment.
+    description: "As a Free Action, recover #{hi} Health. Using Dark Healing provokes a takeover attempt by your Malevolent Entity."
   },
+  //Other limits on using?
   'dirty-trick': {
     name: 'Dirty Trick',
     selectValue: 'dirty-trick',
     learn_sp: 5,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Free Action, one enemy in your Zone of Control becomes Surprised, and you lose 2 Valor."
   },
   'duel': {
     name: 'Duel',
     selectValue: 'duel',
     learn_sp: 2,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "Once per battle, as a Support Action, challenge one Elite enemy to single combat. If the enemy accepts, you gain 2 Valor, they gain 2 Valor, and the Duel begins. The effects of Duel last until broken or until either duelist is defeated. If either duelist makes an attack that doesn't target the other, the Duel breaks. If anyone other than one of the duelists makes an attack that targets either duelist, the duelist targeted defends against the attack as if they were Surprised and the Duel breaks. If the Duel breaks, both duelists lose 2 Valor and whoever broke it loses 4 Valor. If the chosen enemy refuses the Duel, they lose 2 Valor."
   },
   'effect-capture': {
     name: 'Effect Capture',
     selectValue: 'effect-capture',
     learn_sp: 4,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    //#{range} is as in Attack Node.
+    description: "As a Support Action, and at the cost of 5 Stamina, you may make an opposed Aura or Intuition roll against any character within #{range} spaces of you. If you succeed, gain control of any one Attack Node, Portal, Refraction Point, Boost, Weaken, Sapping Strike, or Persistent Effect that the target created. If you capture a Boost, transfer the effect from the target to you. If you capture a Weaken, transfer the effect from the original target to its creator."
   },
   'effect-transfer': {
     name: 'Effect Transfer',
     selectValue: 'effect-transfer',
     learn_sp: 4,
+    learn_value: 4,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 2,
+    description: "As a Support Action, move up to #{calc} #{pluralize(Attack Node)}, #{pluralize(Portal)}, or #{pluralize(Persistent Effect)} up to #{calc} spaces. If any chosen #{pluralize{effect}} #{pluralize(was)} created by an enemy, make an opposed Intuition roll against them. If you succeed, move the #{pluralize(effect)}. If you fail, the action and Stamina are expended but nothing happens."
   },
   'exploit-weakness': {
     name: 'Exploit Weakness',
     selectValue: 'exploit-weakness',
     learn_sp: 6,
     season: 3,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, you may make an opposed Intuition roll against an enemy, although they may defend against it with Dexterity instead. If you succeed, one time during the battle, you may increase your or an ally's attack roll against that enemy by 5. Exploit Weakness can only be used one time per enemy per battle, whether or not it is successful."
   },
   'feint': {
     name: 'Feint',
     selectValue: 'feint',
     learn_sp: 6,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, you may make an opposed Dexterity or Intuition roll against an enemy within #{range} spaces of you. If you succeed, the next attack you make against that enemy this turn deals #{di} extra damage if it hits."
   },
   'flunky-domination': {
     name: 'Flunky Domination',
     selectValue: 'flunky-domination',
     learn_sp: 5,
     season: 3,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, you may make an opposed Aura, Intuition, or Resolve roll against a Flunky enemy within #{range} spaces of you. If you succeed, it immediately makes one Move Action or Attack Action which you control."
   },
   'fly': {
     name: 'Fly',
     selectValue: 'fly',
     learn_sp: 6,
+    learn_value: 1,
     season: 3,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 1,
+    //#{ffcheck} is 0 if the character has Free Flight or 4 otherwise.
+    description: "As a Support Action, and at the cost of 4 Stamina, you may begin flying. While flying, your Move increases by #{calc}, you may move through but not end movement on spaces occupied by non-flying enemies, you are unaffected by land-based difficult terrain and hazards, and you cannot be targeted by melee attacks from non-flying enemies. Maintaining flight requires #{ffcheck} Stamina and no additional actions. If you are currently Immobilized, you cannot use Fly.",
+    character: "If you are not attacked by surprise, you may begin flying as a Free Action at the beginning of combat at the cost of 4 Stamina.",
+    technique: "When this Technique is applied, the target may begin flying immediately as a Free Action at the cost of 4 Stamina."
   },
   'health-transference': {
     name: 'Health Transference',
     selectValue: 'health-transference',
     learn_sp: 4,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, you may expend #{hi} Health to restore an ally's Health by their Health Increment."
   },
   //In later seasons, Inspire provided too much valor output.
   'inspire-raw': {
     name: 'Inspire (RAW)',
     selectValue: 'inspire-raw',
     learn_sp: 5,
+    learn_value: 1,
     season: 1,
-    tags: ['Active', 'RAW']
+    tags: ['Active', 'RAW'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "As a Support Action, #{calc} #{pluralize(ally)} within #{range} spaces of you gains 1 Valor, as long as they have less Valor than you do. During Challenge Scenes, add 1 to any roll you make related to being inspirational."
   },
   //The UE version is, thus, a Fixed skill.
   'inspire-ue': {
@@ -1196,119 +1252,184 @@ module.exports = {
     selectValue: 'inspire-ue',
     learn_sp: 5,
     season: 1,
-    tags: ['Active', 'UE']
+    tags: ['Active', 'UE'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, one ally within #{range} spaces of you gains 1 Valor, as long as they have less Valor than you do. During Challenge Scenes, add 1 to any roll you make related to being inspirational."
   },
   'intimidate': {
     name: 'Intimidate',
     selectValue: 'intimidate',
     learn_sp: 5,
+    learn_value: 1,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    level_sp: 3,
+    level_value: 1,
+    description: "As a Support Action, make an opposed Aura or Resolve roll against #{calc} #{pluralize(enemy)} within #{range} spaces of you. If you succeed, the enemy becomes Shaken. During Challenge Scenes, add 1 to any roll you make related to being intimidating."
   },
   'jump': {
     name: 'Jump',
     selectValue: 'jump',
     learn_sp: 4,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, and at the cost of 2 Stamina, you can attack flying enemies with melee attacks until the end of your turn. During Challenge Scenes, add 1 to any roll you make related to jumping."
   },
   'nullify': {
     name: 'Nullify',
     selectValue: 'nullify',
     learn_sp: 5,
+    learn_value: 1,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "As a Support Action, and at the cost of 5 Stamina, choose up to #{calc} ongoing temporary #{pluralize(effect)}. Make an Aura, Intuition, or Resolve roll against each effect's creator; they defend with whatever attribute they used to create it, or their choice of Aura, Intuition, or Resolve if the effect was created by an Active Skill. If you succeed, the effect ends immediately. Nullify can be used on Attack Nodes, Clones, Portals, Refraction Points, Seals, Boosts, Weakens, Barriers, Sapping Strikes, and Persistent Effects."
   },
   'portal': {
     name: 'Portal',
     selectValue: 'portal',
     learn_sp: 6,
+    learn_value: 2,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "As a Support Action, and at the cost of 5 Stamina per portal you create, create one Portal within #{range} spaces of you. Any space containing a Portal you created is considered adjacent to all other spaces containing a Portal you created for all purposes, including movement and technique targeting. If an enemy moves onto a Portal you created, you may immediately decide to move them to any Portal you created, including the one they just moved onto. The first time you use Portal during a battle, you may create two portals instead of one. You may have #{calc} #{pluralize(portals)} active at a time."
   },
   'provoke': {
     name: 'Provoke',
     selectValue: 'provoke',
     learn_sp: 4,
+    learn_value: 1,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 1,
+    description: "As a Support Action, make an opposed Resolve roll against #{calc} #{pluralize(enemy)} within #{range} spaces of you. If you succeed, the chosen enemy loses 1 Valor if it uses a Damage Core Technique that doesn't include you as a target. During Challenge Scenes, add 1 to any rolls related to being insulting or provocative."
   },
   'recharge': {
     name: 'Recharge',
     selectValue: 'recharge',
     learn_sp: 5,
+    learn_value: 1,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "As a Support Action, choose up to #{calc} active non-Ultimate Boost or Persistent Effect Techniques that were initiated by you or an ally within #{range} spaces. Spend Stamina equal to half the Technique's original Stamina cost, and the Technique's effects now end at the end of your turn two rounds from now."
   },
   'refraction-chain': {
     name: 'Feint',
     selectValue: 'refraction-chain',
     learn_sp: 6,
     season: 3,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "Whenever you use a Technique, and it passes through one of your Refraction Points, it deals #{di} extra damage if it hits."
   },
   'refraction-point': {
     name: 'Refraction Point',
     selectValue: 'refraction-point',
     learn_sp: 4,
+    learn_value: 1,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 1,
+    description: "As a Support Action, and at the cost of 3 Stamina, create a Refraction Point within #{range} spaces of you. Any of your Techniques can target the Refraction Point as if it were an enemy. If you do, recast the Technique as if you were in the same space as the Refraction Point. If you use a Technique with the Multiple Targets modifier through a Refraction Point, the Technique loses Multiple Targets when recast, although you may target the Refraction Point multiple times with it, redirecting it appropriately. No matter how many times a single enemy would be hit by a Technique, only one attack roll is made. You cannot use Techniques with Rush Attack or Ramming Attack with Refraction Points. Anyone can stand in the same space as a Refraction Point. You may have up to #{calc} #{pluralize(Refraction Points)} at any time."
   },
   'seal': {
     name: 'Seal',
     selectValue: 'seal',
     learn_sp: 6,
+    learn_value: 1,
     season: 2,
-    tags: ['Active']
+    tags: ['Active', 'Repeatable'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: "When you acquire this Skill, choose an Active Attribute. If you choose Resolve, then choose a second Active Attribute. As a Support Action, and at the cost of 5 Stamina, make an opposed roll using the Active Attribute you chose against an enemy within #{range} spaces of you. If you chose Muscle or Dexterity, the target defends with Muscle or Dexterity. If you chose Aura or Intuition, the target defends with Aura or Intuition. If you chose Resolve, the target defends with either Resolve or the other attribute you chose. If you succeed, choose a Technique or Active Skill you know the target possesses. The target cannot use that Technique or Skill until the end of your turn two rounds from now. If you disable a Skill that creates a persistent effect such as Attack Node, the persistent effects themselves are not dispelled, but the target cannot use them until the Seal's effects end. You may take multiple instances of Seal, choosing different Active Attributes to use it with for each instance."
   },
   'shadow-meld': {
     name: 'Shadow Meld',
     selectValue: 'shadow-meld',
     learn_sp: 6,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Move Action, and at the cost of 4 Stamina, you may meld into the shadows to hide, even if you are being directly observed. While one with the shadow, you cannot attack, but you add 1 to any stealth rolls. Maintaining a shadow meld costs 4 Stamina per round. Ending a shadow meld requires a Move Action."
   },
   'size-up': {
     name: 'Size Up',
     selectValue: 'size-up',
     learn_sp: 3,
+    learn_value: 1,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fast',
+    level_sp: 1,
+    level_value: 1,
+    description: "As a Support Action, make an Intuition roll against up to #{calc} #{pluralize(target)}. The target may defend with Intuition or Resolve. If you succeed, you learn the target's current Health, Stamina, Active Attributes, and Flaws."
   },
   'spirit-sight': {
     name: 'Spirit Sight',
     selectValue: 'spirit-sight',
     learn_sp: 5,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    description: "As a Support Action, and at the cost of 2 Stamina, you may activate your spiritual sense. While your spiritual sense is active, you know whether any enemies are Clones, you can see the location of any invisible or otherwise concealed targets and attack them without penalty, you ignore all penalties from darkness, and you add 1 to any roll you make to observe or notice. Maintaining Spirit Sight costs an additional 1 Stamina per round."
   },
   'stamina-transference': {
     name: 'Stamina Transference',
     selectValue: 'stamina-transference',
     learn_sp: 4,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Fixed',
+    //#{si} is Stamina Increment.
+    description: "As a Support Action, you may expend #{si} Stamina to restore an ally's Stamina by their Health Increment."
   },
   'swift-jump': {
     name: 'Swift Jump',
     selectValue: 'swift-jump',
     learn_sp: 3,
     season: 3,
-    tags: ['Active', 'Jump']
+    tags: ['Active', 'Jump'],
+    level_speed: 'Fixed',
+    description: "As a Free Action, and at the cost of 4 Stamina, you can attack flying enemies with melee attacks until the end of your turn."
   },
   'swift-step': {
     name: 'Swift Step',
     selectValue: 'swift-step',
     learn_sp: 5,
+    learn_value: 4,
     season: 2,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 1,
+    description: "As a Support Action or a Move Action, you may expend up to #{calc} Stamina and move an equal number of spaces. Swift Step movement is affected by Zone of Control. You may use Swift Step multiple times in one turn."
   },
   'toss': {
     name: 'Toss',
     selectValue: 'toss',
     learn_sp: 5,
+    learn_value: 4,
     season: 1,
-    tags: ['Active']
+    tags: ['Active'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 2,
+    description: "As a Support Action, move one ally in your Zone of Control to any open space within #{calc} spaces of you, ignoring any terrain or Zones of Control."
   },
   //The book classifies this as Reaction, but it works with something
   //you chose to do yourself; other skills that affect Swift Step
