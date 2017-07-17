@@ -43,14 +43,14 @@
     * RAW: "Rules as Written". This tag is applied to multiple-version skills only and reflects that this version of the skill is the original printing.
     * UE: "Unofficial Errata". This tag is applied to multiple-version skills only and reflects that this version of the skill is likely to appear in future errata.
     * Errata: This tag is applied to multiple-version skills only and reflects that this version of the skill is the version appearing in official errata...
-              of which there is none yet.
+              of which there is none yet. Soon(tm), though.
     * Houserule: Skill variant that has come up in several campaigns I've seen or otherwise been involved with.
   bonus: What character attributes this skill affects. Some bonuses are grouped up (e.g. Strength Attack and Agility Attack into "Physical Attack".)
   learn_value: The amount this skill affects its attribute by at skill level 1.
   level_speed: The rate at which new levels in this skill can be taken.
     Fixed skills can't be leveled.
     Fast skills can be leveled once every 3 levels (1, 4, 7, 10, etc.).
-    Slow skills can be leveled once every 5 levels (1, 6, 15, etc.).
+    Slow skills can be leveled once every 5 levels (1, 6, 11, etc.).
   level_sp: The amount of SP it costs to increase a skill's level beyond 1.
   level_value: The amount additional levels in this skill increase its effect.
   description: The text of the skill, here modified in many cases from the book text. #{calc} is substituted for (learn_value + (level_value * level-1)) during use.
@@ -1128,7 +1128,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 3,
     level_value: 1,
-    description: "As a Support Action, and at the cost of 5 Stamina, either create one illusionary copy of yourself in any space adjacent to you or move 1 space and create an illusionary copy of yourself in the space you just left. Whenever you move, you may also move your clones. You and your allies always know which you is real. If an enemy attacks a clone, it is destroyed immediately without needing an attack roll. You may have up to #{calc} #{pluralize(clones)} active at a time. If you hit an enemy with a Technique, that enemy immediately knows which you is real and will continue to know until you create another clone. Any enemy can attempt to discern which you is real with an opposed Aura or Intuition roll against you. If you have the Discreet Aura skill, add 2 to any rolls you make to defend against this. Your clones have Zones of Control only if the enemy doesn't know whether they're clones."
+    description: "As a Support Action, and at the cost of 5 Stamina, either create one illusionary copy of yourself in any space adjacent to you or move 1 space and create an illusionary copy of yourself in the space you just left. Whenever you move, you may also move your clones. You and your allies always know which you is real. If an enemy attacks a clone, it is destroyed immediately without needing an attack roll. You may have up to #{calc} #{pluralize(clone)} active at a time. If you hit an enemy with a Technique, that enemy immediately knows which you is real and will continue to know until you create another clone. Any enemy can attempt to discern which you is real with an opposed Aura or Intuition roll against you. If you have the Discreet Aura skill, add 2 to any rolls you make to defend against this. Your clones have Zones of Control only if the enemy doesn't know whether they're clones."
   },
   //Other limits on using?
   'dark-healing': {
@@ -1299,7 +1299,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 3,
     level_value: 1,
-    description: "As a Support Action, and at the cost of 5 Stamina per portal you create, create one Portal within #{range} spaces of you. Any space containing a Portal you created is considered adjacent to all other spaces containing a Portal you created for all purposes, including movement and technique targeting. If an enemy moves onto a Portal you created, you may immediately decide to move them to any Portal you created, including the one they just moved onto. The first time you use Portal during a battle, you may create two portals instead of one. You may have #{calc} #{pluralize(portals)} active at a time."
+    description: "As a Support Action, and at the cost of 5 Stamina per portal you create, create one Portal within #{range} spaces of you. Any space containing a Portal you created is considered adjacent to all other spaces containing a Portal you created for all purposes, including movement and technique targeting. If an enemy moves onto a Portal you created, you may immediately decide to move them to any Portal you created, including the one they just moved onto. The first time you use Portal during a battle, you may create two portals instead of one. You may have #{calc} #{pluralize(portal)} active at a time."
   },
   'provoke': {
     name: 'Provoke',
@@ -1344,7 +1344,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 2,
     level_value: 1,
-    description: "As a Support Action, and at the cost of 3 Stamina, create a Refraction Point within #{range} spaces of you. Any of your Techniques can target the Refraction Point as if it were an enemy. If you do, recast the Technique as if you were in the same space as the Refraction Point. If you use a Technique with the Multiple Targets modifier through a Refraction Point, the Technique loses Multiple Targets when recast, although you may target the Refraction Point multiple times with it, redirecting it appropriately. No matter how many times a single enemy would be hit by a Technique, only one attack roll is made. You cannot use Techniques with Rush Attack or Ramming Attack with Refraction Points. Anyone can stand in the same space as a Refraction Point. You may have up to #{calc} #{pluralize(Refraction Points)} at any time."
+    description: "As a Support Action, and at the cost of 3 Stamina, create a Refraction Point within #{range} spaces of you. Any of your Techniques can target the Refraction Point as if it were an enemy. If you do, recast the Technique as if you were in the same space as the Refraction Point. If you use a Technique with the Multiple Targets modifier through a Refraction Point, the Technique loses Multiple Targets when recast, although you may target the Refraction Point multiple times with it, redirecting it appropriately. No matter how many times a single enemy would be hit by a Technique, only one attack roll is made. You cannot use Techniques with Rush Attack or Ramming Attack with Refraction Points. Anyone can stand in the same space as a Refraction Point. You may have up to #{calc} #{pluralize(Refraction Point)} at any time."
   },
   'seal': {
     name: 'Seal',
@@ -1439,21 +1439,27 @@ module.exports = {
     selectValue: 'afterimage',
     learn_sp: 4,
     season: 2,
-    tags: ['Active', 'Swift Step']
+    tags: ['Active', 'Swift Step'],
+    level_speed: 'Fixed',
+    description: "When you use Swift Step, you may spend an additional 2 Stamina to leave a clone of yourself in the space you left. Alternatively, you can choose to stay where you are, placing the clone within range of the Swift Step movement. Clones created by using Afterimage don't count towards the number of Clones you can have active at once, but disappear at the beginning of your next turn."
   },
   'area-shield': {
     name: 'Area Shield',
     selectValue: 'area-shield',
     learn_sp: 4,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "When you make a defense roll using Aura against a Technique with the Blast Radius or Line Attack modifiers, you may spend 2 Stamina to extend your defense to an ally in your Zone of Control, making an additional defense roll for them. There is no limit to the number of allies that you can defend using Area Shield, but each requires 2 Stamina."
   },
   'clash': {
     name: 'Clash',
     selectValue: 'clash',
     learn_sp: 3,
     season: 2,
-    tags: ['Reaction', 'Counterattack']
+    tags: ['Reaction', 'Counterattack'],
+    level_speed: 'Fixed',
+    description: "If you have a prepared counterattack, you may instead use it to Clash with an enemy's attack. When an enemy declares an Attack Action against you, but before any rolls are made, you may use a prepared counterattack and make an attack roll against the enemy's attack roll. Both you and your enemy add the Core Power of the techniques you are using to your roll. Ultimate Damage Core techniques add an additional 5 to this roll. If your roll is higher than your enemy's, your attack negates theirs and your technique resolves. If your enemy's roll is higher than yours, their attack negates yours and their technique resolves normally. The loser of a Clash is hit automatically by the winner's attack; they do not get another chance to defend."
   },
   //RAW Combination Attack is horrendously overtuned and broken.
   //For one thing, you can't combination attack with someone whose
@@ -1465,7 +1471,9 @@ module.exports = {
     selectValue: 'combination-attack-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Reaction', 'RAW']
+    tags: ['Reaction', 'RAW'],
+    level_speed: 'Fixed',
+    description: "Once per round, you may delay your turn until one of your allies attacks, and attack the same target. If you do, set your Initiative to just before the other ally. When you roll your attacks, both you and your ally add 2 to your rolls. At the end of the round, reset your Initiative to its regular value for the scene."
   },
   //Fortunately, this has been discussed. This rough draft rewrite fixes the issues.
   'combination-attack-house': {
@@ -1473,126 +1481,175 @@ module.exports = {
     selectValue: 'combination-attack-house',
     learn_sp: 6,
     season: 1,
-    tags: ['Reaction', 'Houserule']
+    tags: ['Reaction', 'Houserule'],
+    level_speed: 'Fixed',
+    description: "You may expend an Attack Action to prepare a Damage Core Technique. When one of your allies attacks, you can release your prepared Technique. If you do, your Technique can only target enemies that your ally's Technique is targeting, and both you or your ally add 2 to all attack rolls this turn. You may prepare a Damage Core Technique that requires more than an Attack Action to use by expending the additional actions it requires as well. You may use Combination Attack once per scene."
   },
   'counterattack': {
     name: 'Counterattack',
     selectValue: 'counterattack',
     learn_sp: 6,
     season: 1,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "You may expend an Attack Action to prepare a Damage Core Technique. When an enemy declares a Damage Core Technique against you, you may use your prepared Technique, and it resolves before the enemy's does. The enemy attacking you must be a target of your Technique. If, after using your Technique, the enemy can no longer use the Technique they originally intended to, their Attack Action is refunded and they may resume their turn. A prepared Technique may be used this way once each time it is prepared. You may not use multiple prepared Techniques against the same attack. You may prepare a Damage Core Technique that requires more than an Attack Action to use by expending the additional actions it requires as well."
   },
   'cover': {
     name: 'Cover',
     selectValue: 'cover',
     learn_sp: 6,
+    learn_value: 1,
     season: 1,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fast',
+    level_sp: 2,
+    level_value: 1,
+    description: "Once per round, if an ally in your Zone of Control has been hit by an attack, you may choose to be hit by the technique instead of your ally. If you do, your ally is not hit by the Technique, and you are. You may use Cover to defend allies against Techniques that can hit multiple targets; if you do, you may be hit multiple times by the same Technique. If you have Counterattack, you may use prepared techniques in conjunction with Cover. You may use cover up to #{calc} #{pluralize(time)} per round."
   },
   'damage-feedback': {
     name: 'Damage Feedback',
     selectValue: 'damage-feedback',
     learn_sp: 5,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "When you make a defense roll using Muscle against a melee attack, and the defense is successful, the attacker takes #{di} damage. Damage caused by Damage Feedback ignores Defense and Resistance."
   },
   'defensive-clash': {
     name: 'Defensive Clash',
     selectValue: 'defensive-clash',
     learn_sp: 4,
     season: 3,
-    tags: ['Reaction', 'Clash']
+    tags: ['Reaction', 'Clash'],
+    level_speed: 'Fixed',
+    description: "You may use Clash when an ally is attacked if the attacking enemy is within range of your prepared Technique."
   },
   'deflecting-shield': {
     name: 'Deflecting Shield',
     selectValue: 'deflecting-shield',
     learn_sp: 4,
     season: 3,
-    tags: ['Reaction', 'Area Shield', 'Line Deflect']
+    tags: ['Reaction', 'Area Shield', 'Line Deflect'],
+    level_speed: 'Fixed',
+    description: "When you use the Area Shield skill against a Technique with the Line Attack modifier, and succeed at defending against the attack either for yourself or for any ally, you may use Line Deflect."
   },
   'diving-escape': {
     name: 'Diving Escape',
     selectValue: 'diving-escape',
     learn_sp: 5,
+    learn_value: 2,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 1,
+    description: "When you make a defense roll using Dexterity against a Technique with the Blast Radius or Line Attack modifier, and the defense is successful, you may move up to #{calc} spaces towards the nearest space outside of the target area."
   },
+  //this seems cheeseable if you use it with a heal
   'final-attack': {
     name: 'Final Attack',
     selectValue: 'final-attack',
     learn_sp: 6,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "If an enemy's Technique will reduce your Health to a level that will Incapacitate you, you may immediately use one non-Ultimate Technique. When you use Final Attack, ignore all Limits and do not expend Stamina."
   },
   'ignore-effect': {
     name: 'Ignore Effect',
     selectValue: 'ignore-effect',
     learn_sp: 5,
     season: 1,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "When you are targeted by an Active Skill, and you have 2 or more Valor, you may defend against it using Resolve."
   },
   'interrupt-attack': {
     name: 'Interrupt Attack',
     selectValue: 'interrupt-attack',
     learn_sp: 3,
+    learn_value: 2,
     season: 1,
-    tags: ['Reaction']
+    tags: ['Reaction', 'Counterattack'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 2,
+    description: "If you have a prepared counterattack, and an enemy moves into or through your Zone of Control, you may release your prepared counterattack. If your Technique hits, the enemy's Move is reduced by ${calc} for their current action in addition to its other effects."
   },
   'line-deflect': {
     name: 'Line Deflect',
     selectValue: 'line-deflect',
     learn_sp: 5,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "When you make a defense roll using Aura against a Technique with the Line Attack modifier, and the defense is successful, you may redirect the Technique starting from your space using the remaining distance the attack would have traveled. You may not redirect the Technique directly back at the attacker. If the Technique has the Line Variation modifier, the Technique's original user may redirect it as normal."
   },
   'mobile-cover': {
     name: 'Mobile Cover',
     selectValue: 'mobile-cover',
     learn_sp: 5,
     season: 2,
-    tags: ['Reaction', 'Cover']
+    tags: ['Reaction', 'Cover'],
+    level_speed: 'Fixed',
+    description: "You may expend a Move Action to prepare to Cover. When any ally within #{move} #{pluralize(space)} of you is attacked, you may move adjacent to them immediately, then use Cover as normal. If you also have Swift Step, you may use Cover in conjunction with Swift Step as well. Swift Step's Stamina cost is paid when preparing the action, not when moving."
   },
   'mobile-dodge': {
     name: 'Mobile Dodge',
     selectValue: 'mobile-dodge',
     learn_sp: 4,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "When you make a defense roll using Dexterity, and the defense is successful, you may move 1 space in any direction. If you have Swift Step, you may spend 1 Stamina and move an additional space. Using Swift Step with Mobile Dodge counts as a use of Swift Step for other Skills."
   },
   'opportunistic-dodge': {
     name: 'Opportunistic Dodge',
     selectValue: 'opportunistic-dodge',
     learn_sp: 6,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "When you make a defense roll using Intuition, and the defense is successful, add 1 to your next attack roll against that target. The bonus provided by Opportunistic Dodge does not stack with itself."
   },
   'push-away': {
     name: 'Push Away',
     selectValue: 'push-away',
     learn_sp: 4,
+    learn_value: 1,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 1,
+    description: "When you make a defense roll using Resolve against an enemy in your Zone of Control, and the defense is successful, push the attacking enemy #{calc} #{pluralize(space)} away from you."
   },
   'prepared': {
     name: 'Prepared',
     selectValue: 'prepared',
     learn_sp: 6,
     season: 3,
-    tags: ['Reaction', 'Counterattack']
+    tags: ['Reaction', 'Counterattack'],
+    level_speed: 'Fixed',
+    description: "You may prepare a Technique at the beginning of a combat scene. You may not use Prepared to prepare a technique that requires more than a single Attack Action to use. Pay all costs for the Technique being prepared at the beginning of the scene. The prepared Technique is considered to have been used once for the purposes of any Limits."
   },
   'ranged-interrupt': {
     name: 'Ranged Interrupt',
     selectValue: 'ranged-interrupt',
     learn_sp: 4,
     season: 2,
-    tags: ['Reaction', 'Interrupt Attack']
+    tags: ['Reaction', 'Interrupt Attack'],
+    level_speed: 'Fixed',
+    description: "You may use Interrupt Attack whenever an enemy is within range of the Technique you prepared."
   },
   'shrug-off': {
     name: 'Shrug Off',
     selectValue: 'shrug-off',
     learn_sp: 6,
     season: 2,
-    tags: ['Reaction']
+    tags: ['Reaction'],
+    level_speed: 'Fixed',
+    description: "If an enemy's attack would reduce your Health from 2 or more to 0, make an opposed Resolve roll against the attacker. If you succeed, you are reduced to 1 Health instead. You may use Shrug Off only once per scene, and never against damage inflicted by something other than a Technique, such as a collision with an obstacle."
   },
   'acceleration': {
     name: 'Acceleration',
