@@ -78,7 +78,6 @@ class SkillsContainer extends Component {
   }
 
   excludeByOpposites(excludes, tags) {
-    console.log(tags);
     const excluderTags = ['MaxHealth', 'MaxStamina', 'PhysicalAttack', 'EnergyAttack',
                           'Defense', 'Resistance', 'Movement', 'Initiative',
                           'StartingValor', 'Knockout', 'Size'];
@@ -99,7 +98,9 @@ class SkillsContainer extends Component {
               is_npc={this.props.is_npc}
               season={this.props.season}
               exclude={this.determineExcludes()}
-              freeSkillPoints={this.props.freeSkillPoints}/>;
+              flawCap = {this.props.flawCap}
+              freeSkillPoints={this.props.freeSkillPoints}
+              flawPoints={this.props.flawPoints}/>;
   }
 }
 

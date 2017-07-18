@@ -35,6 +35,13 @@ class SkillContainer extends Component {
     return this.props.freeSkillPoints + this.props.skill.cost;
   }
 
+  //The Flaw Points prop is the total negative SP cost of Flaws.
+  //Thus, here I subtract the cost of this skill back to Flaw Points for the purposes of retraining it.
+  //However, non-Flaws don't contribute SP to this cap (obviously).
+  flawPoints() {
+    return this.props.flawPoints - (this.props.skill.cost < 0 ? this.props.skill.cost : 0);
+  }
+
   render() {
     return <SkillView
               skillId = {this.props.id}
@@ -49,7 +56,9 @@ class SkillContainer extends Component {
               is_npc={this.props.is_npc}
               season={this.props.season}
               retrainSkillPoints={this.retrainSkillPoints()}
-              freeSkillPoints={this.props.freeSkillPoints}/>;
+              flawCap={this.props.flawCap}
+              freeSkillPoints={this.props.freeSkillPoints}
+              flawPoints={this.flawPoints()}/>;
   }
 }
 

@@ -213,6 +213,11 @@ class CharacterBuilder extends Component {
     }, 0);
   }
 
+  //A cap exists on the number of SP that can be gained from Flaws.
+  flawPoints() {
+    return this.state.skills.filter((skill) => skill.cost < 0).reduce((total, skill) => total + skill.cost, 0);
+  }
+
   //Add a new, blank skill to state.skills.
   addSkill() {
     var skills = this.state.skills;
@@ -270,7 +275,8 @@ class CharacterBuilder extends Component {
               removeSkill = {this.removeSkill.bind(this)}
               maxSp = {this.baseSkillPoints()}
               npc = {this.state.is_npc}
-              freeSkillPoints = {this.freeSkillPoints()}/>;
+              freeSkillPoints = {this.freeSkillPoints()}
+              flawPoints = {this.flawPoints()}/>;
   }
 }
 

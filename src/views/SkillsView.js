@@ -16,7 +16,9 @@ const SkillsView = (props) => {
               is_npc={props.is_npc}
               season={props.season}
               exclude={props.exclude}
-              freeSkillPoints={props.freeSkillPoints}/>
+              flawCap={props.flawCap}
+              freeSkillPoints={props.freeSkillPoints}
+              flawPoints={props.flawPoints}/>
   });
 
   return (

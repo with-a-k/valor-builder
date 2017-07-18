@@ -1574,7 +1574,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 2,
-    description: "If you have a prepared counterattack, and an enemy moves into or through your Zone of Control, you may release your prepared counterattack. If your Technique hits, the enemy's Move is reduced by ${calc} for their current action in addition to its other effects."
+    description: "If you have a prepared counterattack, and an enemy moves into or through your Zone of Control, you may release your prepared counterattack. If your Technique hits, the enemy's Move is reduced by #{calc} for their current action in addition to its other effects."
   },
   'line-deflect': {
     name: 'Line Deflect',

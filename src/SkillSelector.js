@@ -29,7 +29,12 @@ class SkillSelector extends Component {
 
   //does the skill cost less SP than is available to the player?
   skillCostsLessSPThanIsAvailable(skill) {
-    return skill.learn_sp < this.props.retrainSkillPoints;
+    return skill.learn_sp <= this.props.retrainSkillPoints;
+  }
+
+  //does the skill award less SP than it would take to go over the Flaw cap?
+  skillFitsWithinFlawCap(skill) {
+    return skill.learn_sp + this.props.flawPoints >= this.props.flawCap;
   }
 
   render() {
@@ -39,7 +44,8 @@ class SkillSelector extends Component {
       if (this.skillHasAnIncludeTag(skill) &&
           this.skillHasNoExcludeTags(skill) &&
           this.skillMeetsSeasonRequirement(skill) &&
-          this.skillCostsLessSPThanIsAvailable(skill)) {
+          this.skillCostsLessSPThanIsAvailable(skill) &&
+          this.skillFitsWithinFlawCap(skill)) {
         options.push({label: skill.name, value: skill.selectValue});
       }
     }, this);

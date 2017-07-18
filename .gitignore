@@ -19,3 +19,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# certain secret files
+src/constants/SkillsConstantsFulltext.js
