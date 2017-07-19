@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AttributeInput from './AttributeInput';
-import AttributeView from './AttributeView';
+import VBNumberInput from './VBNumberInput';
+import VBLabeledValue from './VBLabeledValue';
 import SelectorView from './SelectorView';
 import VBCheckbox from './VBCheckbox';
 import TextConstants from '../constants/TextConstants';
@@ -10,10 +10,10 @@ import Styles from '../styles';
 const CharacterAttributesView = (props) => {
   return (
     <div style={Styles.CharacterAttributesView}>
-        <AttributeInput
-          attributeName="Level"
-          attributeValue={props.characterAttributes.level}
-          changeAttribute={props.handleLevelChange}
+        <VBNumberInput
+          inputName="Level"
+          inputValue={props.characterAttributes.level}
+          changeHandler={props.handleLevelChange}
           position="level"/>
         <SelectorView
           selectorName="Type"
@@ -25,115 +25,115 @@ const CharacterAttributesView = (props) => {
           toggleState={props.is_npc}
           toggleChange={props.handleNPCChange}
           position="npc"/>
-        <AttributeInput
-          attributeName="Strength"
-          attributeValue={props.characterAttributes.strength}
-          changeAttribute={props.handleStrengthChange}
-          maxValue={props.level + 7}
+        <VBNumberInput
+          inputName="Strength"
+          inputValue={props.characterAttributes.strength}
+          changeHandler={props.handleStrengthChange}
+          maxlabeledValue={props.level + 7}
           position={"strength"}/>
-        <AttributeInput
-          attributeName="Agility"
-          attributeValue={props.characterAttributes.agility}
-          changeAttribute={props.handleAgilityChange}
-          maxValue={props.level + 7}
+        <VBNumberInput
+          inputName="Agility"
+          inputValue={props.characterAttributes.agility}
+          changeHandler={props.handleAgilityChange}
+          maxlabeledValue={props.level + 7}
           position={"agility"}/>
-        <AttributeInput
-          attributeName="Spirit"
-          attributeValue={props.characterAttributes.spirit}
-          changeAttribute={props.handleSpiritChange}
-          maxValue={props.level + 7}
+        <VBNumberInput
+          inputName="Spirit"
+          inputValue={props.characterAttributes.spirit}
+          changeHandler={props.handleSpiritChange}
+          maxlabeledValue={props.level + 7}
           position={"spirit"}/>
-        <AttributeInput
-          attributeName="Mind"
-          attributeValue={props.characterAttributes.mind}
-          changeAttribute={props.handleMindChange}
-          maxValue={props.level + 7}
+        <VBNumberInput
+          inputName="Mind"
+          inputValue={props.characterAttributes.mind}
+          changeHandler={props.handleMindChange}
+          maxlabeledValue={props.level + 7}
           position={"mind"}/>
-        <AttributeInput
-          attributeName="Guts"
-          attributeValue={props.characterAttributes.guts}
-          changeAttribute={props.handleGutsChange}
-          maxValue={props.level + 7}
+        <VBNumberInput
+          inputName="Guts"
+          inputValue={props.characterAttributes.guts}
+          changeHandler={props.handleGutsChange}
+          maxlabeledValue={props.level + 7}
           position={"guts"}/>
-        <AttributeView
-          attributeName="Muscle"
-          attributeValue={props.characterAttributes.muscle}
+        <VBLabeledValue
+          labeledName="Muscle"
+          labeledValue={props.characterAttributes.muscle}
           position="muscle"/>
-        <AttributeView
-          attributeName="Dexterity"
-          attributeValue={props.characterAttributes.dexterity}
+        <VBLabeledValue
+          labeledName="Dexterity"
+          labeledValue={props.characterAttributes.dexterity}
           position="dexterity"/>
-        <AttributeView
-          attributeName="Aura"
-          attributeValue={props.characterAttributes.aura}
+        <VBLabeledValue
+          labeledName="Aura"
+          labeledValue={props.characterAttributes.aura}
           position="aura"/>
-        <AttributeView
-          attributeName="Intuition"
-          attributeValue={props.characterAttributes.intuition}
+        <VBLabeledValue
+          labeledName="Intuition"
+          labeledValue={props.characterAttributes.intuition}
           position="intuition"/>
-        <AttributeView
-          attributeName="Resolve"
-          attributeValue={props.characterAttributes.resolve}
+        <VBLabeledValue
+          labeledName="Resolve"
+          labeledValue={props.characterAttributes.resolve}
           position="resolve"/>
-        <AttributeView
-          attributeName="Strength Attack"
-          attributeValue={props.characterAttributes.strengthAttack}
+        <VBLabeledValue
+          labeledName="Strength Attack"
+          labeledValue={props.characterAttributes.strengthAttack}
           position="strength_attack"/>
-        <AttributeView
-          attributeName="Agility Attack"
-          attributeValue={props.characterAttributes.agilityAttack}
+        <VBLabeledValue
+          labeledName="Agility Attack"
+          labeledValue={props.characterAttributes.agilityAttack}
           position="agility_attack"/>
-        <AttributeView
-          attributeName="Spirit Attack"
-          attributeValue={props.characterAttributes.spiritAttack}
+        <VBLabeledValue
+          labeledName="Spirit Attack"
+          labeledValue={props.characterAttributes.spiritAttack}
           position="spirit_attack"/>
-        <AttributeView
-          attributeName="Mind Attack"
-          attributeValue={props.characterAttributes.mindAttack}
+        <VBLabeledValue
+          labeledName="Mind Attack"
+          labeledValue={props.characterAttributes.mindAttack}
           position="mind_attack"/>
-        <AttributeView
-          attributeName="Damage Increment"
-          attributeValue={props.characterAttributes.damageIncrement}
+        <VBLabeledValue
+          labeledName="Damage Increment"
+          labeledValue={props.characterAttributes.damageIncrement}
           position="damage_increment"/>
-        <AttributeView
-          attributeName="Max Health"
-          attributeValue={props.characterAttributes.maxHealth}
+        <VBLabeledValue
+          labeledName="Max Health"
+          labeledValue={props.characterAttributes.maxHealth}
           position="maxhp"/>
-        <AttributeView
-          attributeName="Health Increment"
-          attributeValue={props.characterAttributes.healthIncrement}
+        <VBLabeledValue
+          labeledName="Health Increment"
+          labeledValue={props.characterAttributes.healthIncrement}
           position="hpincrement"/>
-        <AttributeView
-          attributeName="Critical Health"
-          attributeValue={props.characterAttributes.criticalHealth}
+        <VBLabeledValue
+          labeledName="Critical Health"
+          labeledValue={props.characterAttributes.criticalHealth}
           position="criticalhp"/>
-        <AttributeView
-          attributeName="Defense"
-          attributeValue={props.characterAttributes.defense}
+        <VBLabeledValue
+          labeledName="Defense"
+          labeledValue={props.characterAttributes.defense}
           position="defense"/>
-        <AttributeView
-          attributeName="Resistance"
-          attributeValue={props.characterAttributes.resistance}
+        <VBLabeledValue
+          labeledName="Resistance"
+          labeledValue={props.characterAttributes.resistance}
           position="resistance"/>
-        <AttributeView
-          attributeName="Max Stamina"
-          attributeValue={props.characterAttributes.maxStamina}
+        <VBLabeledValue
+          labeledName="Max Stamina"
+          labeledValue={props.characterAttributes.maxStamina}
           position="maxst"/>
-        <AttributeView
-          attributeName="Stamina Increment"
-          attributeValue={props.characterAttributes.staminaIncrement}
+        <VBLabeledValue
+          labeledName="Stamina Increment"
+          labeledValue={props.characterAttributes.staminaIncrement}
           position="stincrement"/>
-        <AttributeView
-          attributeName="Movement"
-          attributeValue={props.characterAttributes.move}
+        <VBLabeledValue
+          labeledName="Movement"
+          labeledValue={props.characterAttributes.move}
           position="movement"/>
-        <AttributeView
-          attributeName="Max Skill Points"
-          attributeValue={props.characterAttributes.skillPoints}
+        <VBLabeledValue
+          labeledName="Max Skill Points"
+          labeledValue={props.characterAttributes.skillPoints}
           position="maxsp"/>
-        <AttributeView
-          attributeName="Max Technique Points"
-          attributeValue={props.characterAttributes.techPoints}
+        <VBLabeledValue
+          labeledName="Max Technique Points"
+          labeledValue={props.characterAttributes.techPoints}
           position="maxtp"/>
     </div>
   )

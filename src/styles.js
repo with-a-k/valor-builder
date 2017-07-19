@@ -4,10 +4,10 @@ Positioning attributes are not included in these constants, as by design the vie
 (One exception is CharacterAttributesView.)
 */
 module.exports = {
-  'AttributeInput': {
+  'VBNumberInput': {
 
   },
-  'AttributeView': {
+  'VBLabeledValue': {
 
   },
   'CharacterAttributesView': {

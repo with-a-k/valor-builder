@@ -1,6 +1,6 @@
 import React from 'react';
 import VBButton from './VBButton';
-import AttributeView from './AttributeView';
+import VBLabeledValue from './VBLabeledValue';
 import SkillContainer from '../SkillContainer';
 
 //An FSC that views all Skills. This is a "high-level" FSC which
@@ -29,9 +29,9 @@ const SkillsView = (props) => {
       <VBButton
         buttonAction={function() {console.log('Autosort to be implemented later')}}
         buttonName="Automatic Sort"/>
-      <AttributeView
-        attributeName="Available SP"
-        attributeValue={props.freeSkillPoints}/>
+      <VBLabeledValue
+        labeledName="Available SP"
+        labeledValue={props.freeSkillPoints}/>
       {skillsDisplay}
     </div>
   )
