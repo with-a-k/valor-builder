@@ -1640,7 +1640,7 @@ module.exports = {
     season: 2,
     tags: ['Reaction', 'Interrupt Attack'],
     level_speed: 'Fixed',
-    description: "You may use Interrupt Attack whenever an enemy is within range of the Technique you prepared."
+    description: "You may use Interrupt Attack whenever an enemy is within range of a Technique you prepared."
   },
   'shrug-off': {
     name: 'Shrug Off',
@@ -1656,21 +1656,30 @@ module.exports = {
     selectValue: 'acceleration',
     learn_sp: 5,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive'],
+    level_speed: 'Fixed',
+    description: "As an Overdrive, you may increase your Dexterity by 1 until the end of the scene. You may use Acceleration only once per scene."
   },
   'analysis': {
     name: 'Analysis',
     selectValue: 'analysis',
     learn_sp: 5,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive'],
+    level_speed: 'Fixed',
+    description: "As an Overdrive, you may increase your Intuition by 1 until the end of the scene. You may use Analysis only once per scene."
   },
   'blazing-might-raw': {
     name: 'Blazing Might (RAW)',
     selectValue: 'blazing-might-raw',
-    learn_sp: 5,
+    learn_sp: 6,
+    learn_value: 8,
     season: 1,
-    tags: ['Overdrive', 'RAW']
+    tags: ['Overdrive', 'RAW'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 4,
+    description: "As an Overdrive, you may increase your Spirit Attack and Mind Attack by #{calc} until the end of the scene. You may use Blazing Might only once per scene."
   },
   //Reduced cost compared to the original, but in exchange
   //it can't be taken until Season 2.
@@ -1678,22 +1687,33 @@ module.exports = {
     name: 'Blazing Might (Unofficial Errata)',
     selectValue: 'blazing-might-ue',
     learn_sp: 4,
+    learn_value: 8,
     season: 2,
-    tags: ['Overdrive', 'UE']
+    tags: ['Overdrive', 'UE'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 4,
+    description: "As an Overdrive, you may increase your Spirit Attack and Mind Attack by #{calc} until the end of the scene. You may use Blazing Might only once per scene."
   },
   'burning-passion': {
     name: 'Burning Passion',
     selectValue: 'burning-passion',
     learn_sp: 5,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive'],
+    level_speed: 'Fixed',
+    description: "As an Overdrive, you may increase your Resolve by 1 until the end of the scene. You may use Burning Passion only once per scene."
   },
   'fighting-spirit-raw': {
     name: 'Fighting Spirit (RAW)',
     selectValue: 'fighting-spirit-raw',
-    learn_sp: 5,
+    learn_sp: 6,
     season: 1,
-    tags: ['Overdrive', 'RAW']
+    tags: ['Overdrive', 'RAW'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 4,
+    description: "As an Overdrive, you may increase your Strength Attack and Agility Attack by #{calc} until the end of the scene. You may use Fighting Spirit only once per scene."
   },
   //Reduced cost compared to the original, but in exchange
   //it can't be taken until Season 2.
@@ -1702,35 +1722,51 @@ module.exports = {
     selectValue: 'fighting-spirit-ue',
     learn_sp: 4,
     season: 2,
-    tags: ['Overdrive', 'UE']
+    tags: ['Overdrive', 'UE'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 4,
+    description: "As an Overdrive, you may increase your Strength Attack and Agility Attack by #{calc} until the end of the scene. You may use Fighting Spirit only once per scene."
   },
   'hardened-defense': {
     name: 'Hardened Defense',
     selectValue: 'hardened-defense',
     learn_sp: 6,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 4,
+    description: "As an Overdrive, you may increase your Defense by #{calc} until the end of the scene. You may use Hardened Defense only once per scene."
   },
   'hardened-resistance': {
     name: 'Hardened Resistance',
     selectValue: 'hardened-resistance',
     learn_sp: 6,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 4,
+    description: "As an Overdrive, you may increase your Resistance by #{calc} until the end of the scene. You may use Hardened Resistance only once per scene."
   },
   'resolute-aura': {
     name: 'Resolute Aura',
     selectValue: 'resolute-aura',
     learn_sp: 5,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive'],
+    level_speed: 'Fixed',
+    description: "As an Overdrive, you may increase your Aura by 1 until the end of the scene. You may use Resolute Aura only once per scene."
   },
   'strength-of-will': {
     name: 'Strength of Will',
     selectValue: 'strength-of-will',
     learn_sp: 5,
     season: 1,
-    tags: ['Overdrive']
+    tags: ['Overdrive'],
+    level_speed: 'Fixed',
+    description: "As an Overdrive, you may increase your Muscle by 1 until the end of the scene. You may use Strength of Will only once per scene."
   },
   'asset': {
     name: 'Asset',
