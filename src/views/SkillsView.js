@@ -19,7 +19,8 @@ const SkillsView = (props) => {
               flawCap={props.flawCap}
               freeSkillPoints={props.freeSkillPoints}
               flawPoints={props.flawPoints}
-              skillNames={props.skillNames}/>
+              skillNames={props.skillNames}
+              characterLevel={props.level}/>
   });
 
   return (

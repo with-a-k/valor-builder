@@ -17,7 +17,8 @@ class SkillContainer extends Component {
         {selectValue: newSkill,
          id: this.props.id,
          name: this.props.skill.name,
-         cost: Skills[newSkill.value].learn_sp}));
+         cost: Skills[newSkill.value].learn_sp,
+         level: 1}));
     } else {
       this.update({
         selectValue: '',
@@ -26,6 +27,20 @@ class SkillContainer extends Component {
         cost: 0
       });
     }
+  }
+
+  changeSkillLevel(event) {
+    var newLevel = parseInt(event.target.value, 10);
+    if (this.validSkillLevel(newLevel)) {
+      this.update(Object.assign(this.props.skill,
+        {
+          level: newLevel
+        }));
+    }
+  }
+
+  validSkillLevel(level) {
+    return 0 < level && level <= this.maxSkillLevel();
   }
 
   //The Free SP prop is the sum of the SP used for each skill.
@@ -42,6 +57,19 @@ class SkillContainer extends Component {
     return this.props.flawPoints - (this.props.skill.cost < 0 ? this.props.skill.cost : 0);
   }
 
+  maxSkillLevel() {
+    switch(Skills[this.props.skill.selectValue.value].level_speed) {
+      case 'Fixed':
+        return 1;
+      case 'Slow':
+        return Math.floor((this.props.characterLevel - 1) / 5) + 1;
+      case 'Fast':
+        return Math.floor((this.props.characterLevel - 1) / 3) + 1;
+      default:
+        throw new Error(`${this.props.skill.selectValue} is missing a level speed.`);
+    }
+  }
+
   render() {
     return <SkillView
               skillId = {this.props.id}
@@ -51,6 +79,7 @@ class SkillContainer extends Component {
               skillSelectValue = {this.props.skill.selectValue}
               remove = {this.remove.bind(this)}
               changeSkill = {this.changeSkill.bind(this)}
+              changeSkillLevel = {this.changeSkillLevel.bind(this)}
               includeTags = {['Flaw', 'Passive', 'Active', 'Situational', 'Challenge', 'Reaction', 'Overdrive']}
               excludeTags = {this.props.exclude}
               is_npc={this.props.is_npc}

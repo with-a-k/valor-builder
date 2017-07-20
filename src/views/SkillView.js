@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VBButton from './VBButton';
+import VBNumberInput from './VBNumberInput';
 import SkillSelector from '../SkillSelector';
 
 //An FSC that views a single Skill. This is a "high-level" FSC which
@@ -20,12 +21,16 @@ const SkillView = (props) => {
           flawCap={props.flawCap}
           flawPoints={props.flawPoints}
           ownedSkillNames={props.skillNames}/>
+      </div>
+      <div>
+        <VBNumberInput
+          inputName={"Skill Level"}
+          inputValue={props.skillLevel}
+          changeHandler={props.changeSkillLevel}
+          maxValue={props.maxLevel}/>
         <VBButton
           buttonAction={props.remove}
           buttonName="Remove this Skill"/>
-      </div>
-      <div>
-
       </div>
     </div>
   )

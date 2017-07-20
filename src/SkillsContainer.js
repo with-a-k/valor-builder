@@ -101,7 +101,8 @@ class SkillsContainer extends Component {
               flawCap = {this.props.flawCap}
               freeSkillPoints={this.props.freeSkillPoints}
               flawPoints={this.props.flawPoints}
-              skillNames={this.props.skills.map((skill) => skill.selectValue.value)}/>;
+              skillNames={this.props.skills.map((skill) => skill.selectValue.value)}
+              level={this.props.level}/>;
   }
 }
 
