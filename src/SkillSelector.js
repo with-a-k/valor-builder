@@ -37,6 +37,11 @@ class SkillSelector extends Component {
     return skill.learn_sp + this.props.flawPoints >= this.props.flawCap;
   }
 
+  skillIsRepeatableOrNotAlreadyOwned(skill) {
+    return skill.tags.includes('Repeatable') ||
+            !this.props.ownedSkillNames.includes(skill.selectValue);
+  }
+
   render() {
     //determine what to include/exclude based on those props
     var options = [];
@@ -45,7 +50,8 @@ class SkillSelector extends Component {
           this.skillHasNoExcludeTags(skill) &&
           this.skillMeetsSeasonRequirement(skill) &&
           this.skillCostsLessSPThanIsAvailable(skill) &&
-          this.skillFitsWithinFlawCap(skill)) {
+          this.skillFitsWithinFlawCap(skill) &&
+          this.skillIsRepeatableOrNotAlreadyOwned(skill)) {
         options.push({label: skill.name, value: skill.selectValue});
       }
     }, this);

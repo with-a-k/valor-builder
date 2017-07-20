@@ -58,7 +58,8 @@ class SkillContainer extends Component {
               retrainSkillPoints={this.retrainSkillPoints()}
               flawCap={this.props.flawCap}
               freeSkillPoints={this.props.freeSkillPoints}
-              flawPoints={this.flawPoints()}/>;
+              flawPoints={this.flawPoints()}
+              skillNames={this.props.skillNames}/>;
   }
 }
 

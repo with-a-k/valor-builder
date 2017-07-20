@@ -18,7 +18,8 @@ const SkillsView = (props) => {
               exclude={props.exclude}
               flawCap={props.flawCap}
               freeSkillPoints={props.freeSkillPoints}
-              flawPoints={props.flawPoints}/>
+              flawPoints={props.flawPoints}
+              skillNames={props.skillNames}/>
   });
 
   return (
@@ -26,9 +27,6 @@ const SkillsView = (props) => {
       <VBButton
         buttonAction={props.addSkill}
         buttonName="Add Skill"/>
-      <VBButton
-        buttonAction={function() {console.log('Autosort to be implemented later')}}
-        buttonName="Automatic Sort"/>
       <VBLabeledValue
         labeledName="Available SP"
         labeledValue={props.freeSkillPoints}/>

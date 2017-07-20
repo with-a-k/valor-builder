@@ -100,7 +100,8 @@ class SkillsContainer extends Component {
               exclude={this.determineExcludes()}
               flawCap = {this.props.flawCap}
               freeSkillPoints={this.props.freeSkillPoints}
-              flawPoints={this.props.flawPoints}/>;
+              flawPoints={this.props.flawPoints}
+              skillNames={this.props.skills.map((skill) => skill.selectValue.value)}/>;
   }
 }
 

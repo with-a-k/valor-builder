@@ -18,13 +18,14 @@ const SkillView = (props) => {
           season={props.season}
           retrainSkillPoints={props.retrainSkillPoints}
           flawCap={props.flawCap}
-          flawPoints={props.flawPoints}/>
+          flawPoints={props.flawPoints}
+          ownedSkillNames={props.skillNames}/>
         <VBButton
           buttonAction={props.remove}
           buttonName="Remove this Skill"/>
       </div>
       <div>
-        
+
       </div>
     </div>
   )
