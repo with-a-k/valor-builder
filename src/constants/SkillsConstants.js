@@ -1773,56 +1773,78 @@ module.exports = {
     selectValue: 'asset',
     learn_sp: 3,
     season: 1,
-    tags: ['Challenge', 'Character', 'Repeatable']
+    tags: ['Challenge', 'Character', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'challenge-technique': {
     name: 'Challenge Technique',
     selectValue: 'challenge-technique',
     learn_sp: 3,
     season: 1,
-    tags: ['Challenge', 'Character', 'Repeatable']
+    tags: ['Challenge', 'Character', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'favorable-insight': {
     name: 'Favorable Insight',
     selectValue: 'favorable-insight',
     learn_sp: 3,
     season: 1,
-    tags: ['Challenge', 'Character', 'Repeatable']
+    tags: ['Challenge', 'Character', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'favorable-success': {
     name: 'Favorable Success',
     selectValue: 'favorable-success',
     learn_sp: 4,
     season: 2,
-    tags: ['Challenge', 'Character', 'Repeatable']
+    tags: ['Challenge', 'Character', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'proficiency': {
     name: 'Proficiency',
     selectValue: 'proficiency',
     learn_sp: 2,
     season: 1,
-    tags: ['Challenge', 'Character', 'Repeatable']
+    tags: ['Challenge', 'Character', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'recovery': {
     name: 'Recovery',
     selectValue: 'recovery',
     learn_sp: 3,
     season: 1,
-    tags: ['Challenge', 'Character', 'Repeatable']
+    tags: ['Challenge', 'Character', 'Repeatable'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'companion': {
     name: 'Companion',
     selectValue: 'companion',
     learn_sp: 6,
+    learn_value: 1,
     season: 1,
-    tags: ['Passive', 'Repeatable']
+    tags: ['Passive'],
+    level_speed: 'Slow',
+    level_sp: 4,
+    level_value: 1,
+    description: ""
   },
   'ally-mount': {
     name: 'Ally Mount',
     selectValue: 'ally-mount',
-    learn_sp: 6,
+    learn_sp: 3,
+    learn_value: 1,
     season: 2,
-    tags: ['Active', 'Companion', 'Mount']
+    tags: ['Active', 'Companion', 'Mount'],
+    level_speed: 'Slow',
+    level_sp: 1,
+    level_value: 1,
+    description: ""
   },
   //Unlike most of these companion skills, Companion Sense applies
   //to ALL of your companions.
@@ -1831,126 +1853,180 @@ module.exports = {
     selectValue: 'companion-sense',
     learn_sp: 2,
     season: 3,
-    tags: ['Active', 'Companion']
+    tags: ['Active', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'companion-zoc': {
     name: 'Companion Zone of Control',
     selectValue: 'companion-zoc',
     learn_sp: 4,
+    learn_value: 1,
     season: 2,
-    tags: ['Passive', 'Companion']
+    tags: ['Passive', 'Companion'],
+    level_speed: 'Slow',
+    level_sp: 4,
+    level_value: 1,
+    description: ""
   },
   'extended-revival': {
     name: 'Extended Revival',
     selectValue: 'extended-revival',
     learn_sp: 4,
     season: 2,
-    tags: ['Active', 'Companion']
+    tags: ['Active', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'fast-companion': {
     name: 'Fast Companion',
     selectValue: 'fast-companion',
     learn_sp: 2,
+    learn_value: 1,
     season: 1,
-    tags: ['Passive', 'Companion']
+    tags: ['Passive', 'Companion'],
+    level_speed: 'Fast',
+    level_sp: 1,
+    level_value: 1,
+    description: ""
   },
   'flank-attack': {
     name: 'Flank Attack',
     selectValue: 'flank-attack',
     learn_sp: 4,
     season: 2,
-    tags: ['Situational', 'Companion']
+    tags: ['Situational', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'flying-companion': {
     name: 'Flying Companion',
     selectValue: 'flying-companion',
     learn_sp: 3,
+    learn_value: 1,
     season: 3,
-    tags: ['Passive', 'Companion']
+    tags: ['Passive', 'Companion'],
+    level_speed: 'Slow',
+    level_sp: 3,
+    level_value: 1,
+    description: ""
   },
   'hidden-companion': {
     name: 'Hidden Companion',
     selectValue: 'hidden-companion',
     learn_sp: 4,
     season: 1,
-    tags: ['Active', 'Companion']
+    tags: ['Active', 'Companion'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 1,
+    description: ""
   },
   'instant-mount': {
     name: 'Instant Mount',
     selectValue: 'instant-mount',
     learn_sp: 6,
     season: 3,
-    tags: ['Active', 'Companion', 'Mount']
+    tags: ['Active', 'Companion', 'Mount'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'mount': {
     name: 'Mount',
     selectValue: 'mount',
     learn_sp: 3,
     season: 1,
-    tags: ['Active', 'Companion']
+    tags: ['Active', 'Companion'],
+    level_speed: 'Slow',
+    level_sp: 1,
+    level_value: 1,
+    description: ""
   },
   'protect-ally': {
     name: 'Protect Ally',
     selectValue: 'protect-ally',
     learn_sp: 2,
     season: 2,
-    tags: ['Reaction', 'Companion', 'Protect Master']
+    tags: ['Reaction', 'Companion', 'Protect Master'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'protect-master': {
     name: 'Protect Master',
     selectValue: 'protect-master',
     learn_sp: 4,
     season: 2,
-    tags: ['Reaction', 'Companion']
+    tags: ['Reaction', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'ranged-revival': {
     name: 'Ranged Revival',
     selectValue: 'ranged-revival',
     learn_sp: 3,
     season: 2,
-    tags: ['Active', 'Companion']
+    tags: ['Active', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'reactive-companion': {
     name: 'Reactive Companion',
     selectValue: 'reactive-companion',
     learn_sp: 4,
     season: 3,
-    tags: ['Reaction', 'Companion']
+    tags: ['Reaction', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'sense-malice': {
     name: 'Sense Malice',
     selectValue: 'sense-malice',
     learn_sp: 2,
     season: 1,
-    tags: ['Situational', 'Companion']
+    tags: ['Situational', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'tossing-companion': {
     name: 'Tossing Companion',
     selectValue: 'tossing-companion',
     learn_sp: 3,
     season: 2,
-    tags: ['Active', 'Companion', 'Toss']
+    tags: ['Active', 'Companion', 'Toss'],
+    level_speed: 'Slow',
+    level_sp: 1,
+    level_value: 1,
+    description: ""
   },
   'trusting-companion': {
     name: 'Trusting Companion',
     selectValue: 'trusting-companion',
     learn_sp: 4,
     season: 2,
-    tags: ['Active', 'Companion']
+    tags: ['Active', 'Companion'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'change-attributes': {
     name: 'Change Attributes',
     selectValue: 'change-attributes',
     learn_sp: 2,
     season: 1,
-    tags: ['Boost']
+    tags: ['Boost'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'enhanced-range': {
     name: 'Enhanced Range',
     selectValue: 'enhanced-range',
     learn_sp: 2,
+    learn_value: 1,
     season: 1,
-    tags: ['Boost']
+    tags: ['Boost'],
+    level_speed: 'Slow',
+    level_sp: 2,
+    level_value: 1,
+    description: ""
   },
   //Like their Weaken Flaw counterparts, these are too strong.
   'great-accuracy-raw': {
@@ -1958,14 +2034,18 @@ module.exports = {
     selectValue: 'great-accuracy-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost', 'RAW']
+    tags: ['Boost', 'RAW'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'great-evasion-raw': {
     name: 'Great Evasion (RAW)',
     selectValue: 'great-evasion-raw',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost', 'RAW']
+    tags: ['Boost', 'RAW'],
+    level_speed: 'Fixed',
+    description: ""
   },
   //These cost more...
   'great-accuracy-ue': {
@@ -1973,14 +2053,18 @@ module.exports = {
     selectValue: 'great-accuracy-ue',
     learn_sp: 8,
     season: 1,
-    tags: ['Boost', 'UE']
+    tags: ['Boost', 'UE'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'great-evasion-ue': {
     name: 'Great Evasion (Unofficial Errata)',
     selectValue: 'great-evasion-ue',
     learn_sp: 8,
     season: 1,
-    tags: ['Boost', 'UE']
+    tags: ['Boost', 'UE'],
+    level_speed: 'Fixed',
+    description: ""
   },
   //...and these are half as effective.
   'great-physical-accuracy': {
@@ -1988,27 +2072,53 @@ module.exports = {
     selectValue: 'great-physical-accuracy',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost', 'Houserule']
+    tags: ['Boost', 'Houserule'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'great-physical-evasion': {
     name: 'Great Physical Evasion',
     selectValue: 'great-physical-evasion',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost', 'Houserule']
+    tags: ['Boost', 'Houserule'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'great-energy-accuracy': {
     name: 'Great Energy Accuracy',
     selectValue: 'great-energy-accuracy',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost', 'Houserule']
+    tags: ['Boost', 'Houserule'],
+    level_speed: 'Fixed',
+    description: ""
   },
   'great-energy-evasion': {
     name: 'Great Energy Evasion',
     selectValue: 'great-energy-evasion',
     learn_sp: 6,
     season: 1,
-    tags: ['Boost', 'Houserule']
+    tags: ['Boost', 'Houserule'],
+    level_speed: 'Fixed',
+    description: ""
   },
+  'long-reach': {
+    name: 'Long Reach',
+    selectValue: 'long-reach',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost'],
+    level_speed: 'Fixed',
+    description: ""
+  },
+  'powerful-blow': {
+    name: 'Powerful Blow',
+    selectValue: 'powerful-blow',
+    learn_sp: 6,
+    season: 1,
+    tags: ['Boost'],
+    level_speed: 'Fixed',
+    description: ""
+  }
 };
