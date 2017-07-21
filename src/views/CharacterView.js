@@ -19,7 +19,7 @@ const CharacterView = (props) => {
         spirit = {props.character.attributes.spirit}
         mind = {props.character.attributes.mind}
         guts = {props.character.attributes.guts}
-        skill_bonuses = {props.character.attributes.skill_bonuses}
+        skillBonuses = {props.character.attributes.skillBonuses}
         character_type = {props.character_type}
         is_npc = {props.character.is_npc}
         maxSp = {props.maxSp}

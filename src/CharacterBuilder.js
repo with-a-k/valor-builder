@@ -196,7 +196,7 @@ class CharacterBuilder extends Component {
         spirit: this.state.spirit,
         mind: this.state.mind,
         guts: this.state.guts,
-        skill_bonuses: this.state.skill_bonuses
+        skillBonuses: this.state.skillBonuses
       },
     }
   }
@@ -279,7 +279,6 @@ class CharacterBuilder extends Component {
               handleTypeChange = {this.handleTypeChange.bind(this)}
               handleNPCChange = {this.handleNPCChange.bind(this)}
               handleRename = {this.handleRename.bind(this)}
-              skillBonuses = {this.state.skillBonuses}
               skills = {this.state.skills}
               addSkill = {this.addSkill.bind(this)}
               updateSkill = {this.updateSkill.bind(this)}

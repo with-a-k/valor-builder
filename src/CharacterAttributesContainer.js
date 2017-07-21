@@ -56,9 +56,27 @@ class CharacterAttributesContainer extends Component {
       (4 + Math.floor((level - 1) / 5) + ultimateAdjustment + AttributeConstants.TP_GAIN_ADJUSTMENT[this.props.character_type]));
   }
 
+  highestActiveAttribute() {
+    return Math.max(...arguments);
+  }
+
+  balanceBonus(active, highActive) {
+    if (active < highActive) {
+      //0 or 1
+      return this.props.skillBonuses.balancedFighter;
+    }
+    return 0;
+  }
+
   objectify() {
-    var maxHealth = this.naturalMaxHealth();
-    var maxStamina = this.naturalMaxStamina();
+    var maxHealth = this.naturalMaxHealth() + this.props.skillBonuses.maxHealth;
+    var maxStamina = this.naturalMaxStamina() + this.props.skillBonuses.maxStamina;
+    var muscle = this.naturalActiveAttribute(this.props.strength);
+    var dexterity = this.naturalActiveAttribute(this.props.agility);
+    var aura = this.naturalActiveAttribute(this.props.spirit);
+    var intuition = this.naturalActiveAttribute(this.props.mind);
+    var resolve = this.naturalActiveAttribute(this.props.guts);
+    var highActive = this.highestActiveAttribute(muscle, dexterity, aura, intuition, resolve);
     return {
       name : this.props.name,
       level : this.props.level,
@@ -68,26 +86,26 @@ class CharacterAttributesContainer extends Component {
       mind : this.props.mind,
       guts : this.props.guts,
       unused : this.unusedBaseAttributePoints,
-      muscle : this.naturalActiveAttribute(this.props.strength),
-      dexterity : this.naturalActiveAttribute(this.props.agility),
-      aura : this.naturalActiveAttribute(this.props.spirit),
-      intuition : this.naturalActiveAttribute(this.props.mind),
-      resolve : this.naturalActiveAttribute(this.props.guts),
-      strengthAttack : this.naturalAttackScore(this.props.strength),
-      agilityAttack : this.naturalAttackScore(this.props.agility),
-      spiritAttack : this.naturalAttackScore(this.props.spirit),
-      mindAttack : this.naturalAttackScore(this.props.mind),
+      muscle : muscle + this.balanceBonus(muscle, highActive),
+      dexterity : dexterity + this.balanceBonus(dexterity, highActive),
+      aura : aura + this.balanceBonus(aura, highActive),
+      intuition : intuition + this.balanceBonus(intuition, highActive),
+      resolve : resolve + this.balanceBonus(resolve, highActive),
+      strengthAttack : this.naturalAttackScore(this.props.strength) + this.props.skillBonuses.physicalAttack,
+      agilityAttack : this.naturalAttackScore(this.props.agility) + this.props.skillBonuses.physicalAttack,
+      spiritAttack : this.naturalAttackScore(this.props.spirit) + this.props.skillBonuses.energyAttack,
+      mindAttack : this.naturalAttackScore(this.props.mind) + this.props.skillBonuses.energyAttack,
       maxHealth : maxHealth,
       healthIncrement : Math.ceil(maxHealth / 5),
       criticalHealth : Math.ceil(maxHealth * 2 / 5),
-      damageIncrement : this.naturalDamageIncrement(),
+      damageIncrement : this.naturalDamageIncrement() + this.props.skillBonuses.damageIncrement,
       maxStamina : maxStamina,
       staminaIncrement : (Math.ceil(maxStamina / 5)),
-      move : this.naturalMovement(),
-      defense : this.naturalDefense(),
-      resistance : this.naturalResistance(),
+      move : this.naturalMovement() + this.props.skillBonuses.movement,
+      defense : this.naturalDefense() + this.props.skillBonuses.defense,
+      resistance : this.naturalResistance() + this.props.skillBonuses.resistance,
       skillPoints : this.props.maxSp,
-      techPoints : this.naturalTechniquePoints(this.props.level)
+      techPoints : this.naturalTechniquePoints(this.props.level) + this.props.skillBonuses.techniquePoints
     }
   }
 
