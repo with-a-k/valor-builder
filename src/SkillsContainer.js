@@ -80,7 +80,7 @@ class SkillsContainer extends Component {
   excludeByOpposites(excludes, tags) {
     const excluderTags = ['MaxHealth', 'MaxStamina', 'PhysicalAttack', 'EnergyAttack',
                           'Defense', 'Resistance', 'Movement', 'Initiative',
-                          'StartingValor', 'Knockout', 'Size'];
+                          'StartingValor', 'Knockout', 'Size', 'DamageIncrement'];
     excluderTags.forEach(function(tag) {
       if (tags.has(tag)) {
         excludes.push(tag);

@@ -137,6 +137,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: -2,
     level_value: -15,
+    bonus: 'maxHealth',
     description: "Reduces Maximum Health by #{calc}.",
     technique: "Applying this Flaw does not reduce the target's current Health unless the target's current Health is below their new Maximum Health. Any Health lost this way is regained when the Technique's effect ends."
   },
@@ -150,6 +151,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: -1,
     level_value: -6,
+    bonus: 'maxStamina',
     description: "Reduces Maximum Stamina by #{calc}.",
     technique: "Applying this Flaw does not reduce the target's current Stamina unless the target's current Stamina is below their new Maximum Stamina. Any Stamina lost this way is regained when the Technique's effect ends."
   },
@@ -251,7 +253,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: -2,
     level_value: -3,
-    bonus: 'energy_attack',
+    bonus: 'energyAttack',
     description: "Reduces Spirit Attack and Mind Attack by #{calc} each."
   },
   'weak-physical-attacker': {
@@ -264,7 +266,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: -2,
     level_value: -3,
-    bonus: 'physical_attack',
+    bonus: 'physicalAttack',
     description: "Reduces Strength Attack and Agility Attack by #{calc} each."
   },
   'weak-aura': {
@@ -392,7 +394,7 @@ module.exports = {
     season: 1,
     tags: ['Passive'],
     level_speed: 'Fixed',
-    bonus: 'actives',
+    bonus: 'balancedFighter',
     description: "Increase all of your Active Attributes lower than your highest one by 1."
   },
   'break-valor-limit': {
@@ -470,7 +472,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 3,
     level_value: 3,
-    bonus: 'energy_attack',
+    bonus: 'energyAttack',
     description: "Increase Spirit Attack and Mind Attack by #{calc} each."
   },
   'expanded-reach': {
@@ -507,10 +509,11 @@ module.exports = {
     learn_sp: 5,
     learn_value: 2,
     season: 1,
-    tags: ['Passive'],
+    tags: ['Passive', 'DamageIncrement'],
     level_speed: 'Slow',
     level_sp: 3,
     level_value: 1,
+    bonus: 'damageIncrement',
     description: "Increase Damage Increment by #{calc}."
   },
   //Unlike most of the other UE skills, this is a straight buff.
@@ -520,10 +523,11 @@ module.exports = {
     learn_sp: 4,
     learn_value: 4,
     season: 1,
-    tags: ['Passive'],
+    tags: ['Passive', 'DamageIncrement'],
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 2,
+    bonus: 'damageIncrement',
     description: "Increase Damage Increment by #{calc}."
   },
   'increased-size': {
@@ -549,19 +553,20 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 2,
+    bonus: 'defense',
     description: "Increase Defense by #{calc}."
   },
   'physical-attacker': {
     name: 'Physical Attacker',
     selectValue: 'physical-attacker',
     learn_sp: 6,
-    learn_value: 3,
+    learn_value: 6,
     season: 1,
     tags: ['Passive', 'PhysicalAttack'],
     level_speed: 'Slow',
     level_sp: 3,
     level_value: 3,
-    bonus: 'energy_attack',
+    bonus: 'physicalAttack',
     description: "Increase Strength Attack and Agility Attack by #{calc} each."
   },
   'regeneration': {
@@ -586,6 +591,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 2,
+    bonus: 'resistance',
     description: "Increase Resistance by #{calc}."
   },
   //The book classifies this as Permanent, but it only affects airborne targets.
@@ -608,6 +614,7 @@ module.exports = {
     level_speed: 'Slow',
     level_sp: 2,
     level_value: 1,
+    bonus: 'movement',
     description: "Increase Movement by #{calc}."
   },
   'stamina-recovery': {
@@ -641,6 +648,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 2,
     level_value: 6,
+    bonus: 'maxStamina',
     description: "Increase Maximum Stamina by #{calc}.",
     technique: "Applying this Skill also increases the target's current Stamina. Any Stamina gained this way is lost when the Technique's effect ends."
   },
@@ -654,6 +662,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 2,
     level_value: 15,
+    bonus: 'maxHealth',
     description: "Increase Maximum Health by #{calc}.",
     technique: "Applying this Skill also increases the target's current Health. Any Health gained this way is lost when the Technique's effect ends."
   },
@@ -699,6 +708,7 @@ module.exports = {
     level_speed: 'Fast',
     level_sp: 3,
     level_value: 2,
+    bonus: 'techniquePoints',
     description: "Increase maximum Technique Points by #{calc}.",
     technique: "The targets of this Technique may freely and immediately assign the TP gained this way to their Techniques or make new ones, though the changes last only for the duration of the Technique's effect."
   },
@@ -905,9 +915,11 @@ module.exports = {
     name: 'Quick to Act',
     selectValue: 'quick-to-act',
     learn_sp: 3,
+    learn_value: 2,
     season: 1,
     tags: ['Situational', 'Passive', 'Initiative'],
     level_speed: 'Fixed',
+    bonus: 'initiative',
     description: "Increase your Initiative modifier by 2."
   },
   'reckless-attack': {

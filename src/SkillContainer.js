@@ -12,30 +12,43 @@ class SkillContainer extends Component {
   }
 
   changeSkill(newSkill) {
+    let data = {};
     if (newSkill) {
-      this.update(Object.assign(this.props.skill,
+      data = Object.assign(this.props.skill,
         {selectValue: newSkill,
          id: this.props.id,
-         name: this.props.skill.name,
          cost: Skills[newSkill.value].learn_sp,
-         level: 1}));
+         level: 1});
+      if (Skills[newSkill.value].bonus) {
+        data['bonus'][Skills[newSkill.value].bonus] = Skills[newSkill.value].learn_value;
+      } else {
+        data['bonus'] = {};
+      }
     } else {
-      this.update({
+      data = {
         selectValue: '',
         id: this.props.id,
         name: '',
         cost: 0
-      });
+      };
     }
+    this.update(data);
   }
 
   changeSkillLevel(event) {
-    var newLevel = parseInt(event.target.value, 10);
+    const newLevel = parseInt(event.target.value, 10);
+    const currentSkill = Skills[this.props.skill.selectValue.value];
+    const bonusCategory = currentSkill.bonus || false;
     if (this.validSkillLevel(newLevel)) {
-      this.update(Object.assign(this.props.skill,
+      let data = Object.assign(this.props.skill,
         {
           level: newLevel
-        }));
+        });
+      if (bonusCategory) {
+        data['bonus'][bonusCategory] = currentSkill.learn_value +
+          ((newLevel - 1) * currentSkill.level_value);
+      }
+      this.update(data);
     }
   }
 

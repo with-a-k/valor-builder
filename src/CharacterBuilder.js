@@ -10,7 +10,7 @@ class CharacterBuilder extends Component {
       //Name doesn't affect any of the numbers, so it can stand alone.
       character_type: "Elite",
       //Character Type affects certain attribute calculations, handling Ultimate Techniques, and has other effects.
-      //The only values it can have are "Elite", "Master", "Swarm", "Soldier", and "Flunky".
+      //The only values it can have, barring updates to the system, are "Elite", "Master", "Swarm", "Soldier", and "Flunky".
       is_npc: false,
       //This flag affects whether or not NPC-only Skills and Modifiers will show up in the skill selector.
       //Level and the five Base Attributes are the only things that will be top-level for now.
@@ -25,7 +25,7 @@ class CharacterBuilder extends Component {
       //This Skill Bonuses sub-object holds static values that come from attribute-increasing Passive Skills.
       //Some of these skills have a diametrically opposed Flaw, but not all.
       skillBonuses: {
-        balancedFighter: false, //from the "Balanced Fighter" skill
+        balancedFighter: 0, //from the "Balanced Fighter" skill
         maxHealth: 0, //from the "Tough" or "Fragile" skills
         maxStamina: 0, //from the "Tireless" or "Lack of Control" skills
         physicalAttack: 0, //from the "Physical Attacker" or "Weak Physical Attacker" skills
@@ -33,6 +33,7 @@ class CharacterBuilder extends Component {
         defense: 0, //from the "Iron Defense" or "Weak Defender" skills
         resistance: 0, //from the "Resistant" or "Energy Vulnerability" skills
         movement: 0, //from the "Sprinter" or "Slow" skills
+        initiative: 0, //from the "Quick to Act" or "Slow to Act" skills
         techniquePoints: 0, //from the "Versatile Fighter" skill
         damageIncrement: 0, //from the "Improved Damage Increment" skill
         healingPower: 0, //from the "Healer" skill
@@ -47,7 +48,7 @@ class CharacterBuilder extends Component {
       //Each Skill is an object that looks like this:
       /*
       {
-        key: Integer - this is here so React can iterate over character skills smoothly.
+        id: Integer - this is here so React can iterate over character skills smoothly.
         selectValue: Object - this has the skill's label and selector internal value.
         cost: Integer - The amount of SP it uses.
         level: Integer - What level the skill is. Fixed Skills stay at Level 1.
@@ -233,6 +234,7 @@ class CharacterBuilder extends Component {
     });
     this.setState({nextSkillId: this.state.nextSkillId + 1});
     this.setState({skills: skills});
+    this.changeBonuses();
   }
 
   //Takes a data object from SkillContainer and updates the skills array in the state.
@@ -247,6 +249,7 @@ class CharacterBuilder extends Component {
       }
     });
     this.setState({skills: skills});
+    this.changeBonuses();
   }
 
   removeSkill(id) {
@@ -254,6 +257,13 @@ class CharacterBuilder extends Component {
       return skill.id !== id;
     });
     this.setState({skills: skills});
+    this.changeBonuses();
+  }
+
+  changeBonuses() {
+    let newBonuses = this.state.skillBonuses;
+    this.state.skills.map((skill) => skill.bonus).forEach((bonus) => Object.assign(newBonuses, bonus));
+    this.setState({skillBonuses: newBonuses});
   }
 
   render() {
@@ -269,6 +279,7 @@ class CharacterBuilder extends Component {
               handleTypeChange = {this.handleTypeChange.bind(this)}
               handleNPCChange = {this.handleNPCChange.bind(this)}
               handleRename = {this.handleRename.bind(this)}
+              skillBonuses = {this.state.skillBonuses}
               skills = {this.state.skills}
               addSkill = {this.addSkill.bind(this)}
               updateSkill = {this.updateSkill.bind(this)}
