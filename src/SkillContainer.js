@@ -79,7 +79,7 @@ class SkillContainer extends Component {
       case 'Fast':
         return Math.floor((this.props.characterLevel - 1) / 3) + 1;
       default:
-        throw new Error(`${this.props.skill.selectValue} is missing a level speed.`);
+        throw new Error(`${this.props.skill.selectValue.name} is missing a level speed.`);
     }
   }
 
