@@ -64,7 +64,7 @@ class CharacterBuilder extends Component {
       */
       nextSkillId: 0,
       //Tells the CB what to use as the next key when adding a Skill.
-      techniques: []
+      techniques: [],
       //Each Technique is an object that looks like this:
       /*
         {
@@ -81,8 +81,17 @@ class CharacterBuilder extends Component {
             description: String - The Modifier's description. This can't be changed.
             level: Integer - The Modifier's level. This can't be reduced below 0.
           }]
+          limits: [Objects: {
+            name: String - The Limit's name. Can't be changed.
+            description: String - The Limit's description. Can't be changed.
+            level: Integer - The Limit's level. Can't be reduced below 0.
+            costDown: The amount the Limit reduces the Technique's stamina cost.
+          }]
+          cost: The Technique's Stamina cost, calculated using its level, core, and limits.
         }
       */
+      nextTechId: 0,
+      //Tells the CB what to use as the next key when adding a Technique.
     }
   }
 
@@ -264,6 +273,24 @@ class CharacterBuilder extends Component {
     let newBonuses = this.state.skillBonuses;
     this.state.skills.map((skill) => skill.bonus).forEach((bonus) => Object.assign(newBonuses, bonus));
     this.setState({skillBonuses: newBonuses});
+  }
+
+  //Add a new, blank skill to state.skills.
+  addTechnique() {
+    var techniques = this.state.techniques;
+    techniques.push({
+      id: this.state.nextTechId,
+      name: '',
+      level: 0,
+      attribute: '',
+      core: {},
+      modifiers: [],
+      limits: [],
+      cost: 0,
+    });
+    this.setState({nextTechId: this.state.nextTechId + 1});
+    this.setState({techniques: techniques});
+    this.changeBonuses();
   }
 
   render() {

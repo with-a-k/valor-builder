@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import VBTextfield from './VBTextfield';
 import CharacterAttributesContainer from '../CharacterAttributesContainer';
 import SkillsContainer from '../SkillsContainer';
+import TechniquesContainer from '../TechniquesContainer';
 
 const CharacterView = (props) => {
   return (
@@ -42,6 +43,11 @@ const CharacterView = (props) => {
         freeSkillPoints = {props.freeSkillPoints}
         flawPoints = {props.flawPoints}
         level = {props.character.attributes.level}/>
+      <TechniquesContainer
+        techniques = {props.techniques}
+        addTechnique = {props.addTechnique}
+        is_npc = {props.character.is_npc}
+        season = {Math.floor((props.character.attributes.level - 1) / 5) + 1}/>
     </div>
   )
 }
