@@ -23,7 +23,8 @@ const SelectorView = (props) => {
 SelectorView.propTypes = {
   selectorName: PropTypes.string.isRequired,
   selectorOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  position: PropTypes.string
 };
 
 export default SelectorView;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VirtualizedSelect from 'react-virtualized-select';
+import PropTypes from 'prop-types';
 import Skills from './constants/SkillsConstants';
 
 import 'react-select/dist/react-select.css';
@@ -61,6 +62,19 @@ class SkillSelector extends Component {
               onChange={this.props.changeSkill}
               value={this.props.value}/>
   }
+}
+
+SkillSelector.propTypes = {
+  changeSkill: PropTypes.function.isRequired,
+  excludeTags: PropTypes.arrayOf(PropTypes.string),
+  flawCap: PropTypes.number.isRequired,
+  flawPoints: PropTypes.number.isRequired,
+  includeTags: PropTypes.arrayOf(PropTypes.string),
+  is_npc: PropTypes.boolean.isRequired,
+  ownedSkillNames: PropTypes.arrayOf(PropTypes.string),
+  retrainSkillPoints: PropTypes.number.isRequired,
+  season: PropTypes.number.isRequired,
+  value: PropTypes.object.isRequired,
 }
 
 export default SkillSelector;

@@ -3,43 +3,43 @@ import CharacterView from './views/CharacterView';
 import AttributeConstants from './constants/AttributeConstants';
 
 class CharacterBuilder extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
-      name: "",
-      //Name doesn't affect any of the numbers, so it can stand alone.
-      character_type: "Elite",
-      //Character Type affects certain attribute calculations, handling Ultimate Techniques, and has other effects.
-      //The only values it can have, barring updates to the system, are "Elite", "Master", "Swarm", "Soldier", and "Flunky".
+      name: '',
+      // Name doesn't affect any of the numbers, so it can stand alone.
+      character_type: 'Elite',
+      // Character Type affects certain attribute calculations, handling Ultimate Techniques, and has other effects.
+      // The only values it can have, barring updates to the system, are "Elite", "Master", "Swarm", "Soldier", and "Flunky".
       is_npc: false,
-      //This flag affects whether or not NPC-only Skills and Modifiers will show up in the skill selector.
-      //Level and the five Base Attributes are the only things that will be top-level for now.
-      //When Techniques are implemented, they will need the Active Attributes, Attack values,
-      //Damage Increment (Reposition, etc.), and Health Increment (Ultimate Health Limit).
+      // This flag affects whether or not NPC-only Skills and Modifiers will show up in the skill selector.
+      // Level and the five Base Attributes are the only things that will be top-level for now.
+      // When Techniques are implemented, they will need the Active Attributes, Attack values,
+      // Damage Increment (Reposition, etc.), and Health Increment (Ultimate Health Limit).
       level: 1,
       strength: 1,
       agility: 1,
       spirit: 1,
       mind: 1,
       guts: 1,
-      //This Skill Bonuses sub-object holds static values that come from attribute-increasing Passive Skills.
-      //Some of these skills have a diametrically opposed Flaw, but not all.
+      // This Skill Bonuses sub-object holds static values that come from attribute-increasing Passive Skills.
+      // Some of these skills have a diametrically opposed Flaw, but not all.
       skillBonuses: {
-        balancedFighter: 0, //from the "Balanced Fighter" skill
-        maxHealth: 0, //from the "Tough" or "Fragile" skills
-        maxStamina: 0, //from the "Tireless" or "Lack of Control" skills
-        physicalAttack: 0, //from the "Physical Attacker" or "Weak Physical Attacker" skills
-        energyAttack: 0, //from the "Energy Attacker" or "Weak Energy Attacker" skills
-        defense: 0, //from the "Iron Defense" or "Weak Defender" skills
-        resistance: 0, //from the "Resistant" or "Energy Vulnerability" skills
-        movement: 0, //from the "Sprinter" or "Slow" skills
-        initiative: 0, //from the "Quick to Act" or "Slow to Act" skills
-        techniquePoints: 0, //from the "Versatile Fighter" skill
-        damageIncrement: 0, //from the "Improved Damage Increment" skill
-        healingPower: 0, //from the "Healer" skill
+        balancedFighter: 0, // from the "Balanced Fighter" skill
+        maxHealth: 0, // from the "Tough" or "Fragile" skills
+        maxStamina: 0, // from the "Tireless" or "Lack of Control" skills
+        physicalAttack: 0, // from the "Physical Attacker" or "Weak Physical Attacker" skills
+        energyAttack: 0, // from the "Energy Attacker" or "Weak Energy Attacker" skills
+        defense: 0, // from the "Iron Defense" or "Weak Defender" skills
+        resistance: 0, // from the "Resistant" or "Energy Vulnerability" skills
+        movement: 0, // from the "Sprinter" or "Slow" skills
+        initiative: 0, // from the "Quick to Act" or "Slow to Act" skills
+        techniquePoints: 0, // from the "Versatile Fighter" skill
+        damageIncrement: 0, // from the "Improved Damage Increment" skill
+        healingPower: 0 // from the "Healer" skill
       },
-      //Overrides allow for ignoring certain rules and gaining the ability to directly modify attributes.
-      //No overrides are currently implemented, although the Max Health override has been requested.
+      // Overrides allow for ignoring certain rules and gaining the ability to directly modify attributes.
+      // No overrides are currently implemented, although the Max Health override has been requested.
       overrides: {
 
       },
@@ -95,46 +95,46 @@ class CharacterBuilder extends Component {
     }
   }
 
-  handleLevelChange(event) {
+  handleLevelChange (event) {
     var value = parseInt(event.target.value, 10);
     if ((this.state.is_npc || value <= 20) && value >= 0) {
       this.setState({'level': value});
     }
   }
 
-  //Handles a change event for Strength.
-  handleStrengthChange(event) {
+  // Handles a change event for Strength.
+  handleStrengthChange (event) {
     var value = parseInt(event.target.value, 10);
     if (this.validAttributeChange('strength', value)) {
       this.setState({'strength': value});
     }
   }
 
-  //Handles a change event for Agility.
-  handleAgilityChange(event) {
+  // Handles a change event for Agility.
+  handleAgilityChange (event) {
     var value = parseInt(event.target.value, 10);
     if (this.validAttributeChange('agility', value)) {
       this.setState({'agility': value});
     }
   }
 
-  //Handles a change event for Spirit.
-  handleSpiritChange(event) {
+  // Handles a change event for Spirit.
+  handleSpiritChange (event) {
     var value = parseInt(event.target.value, 10);
     if (this.validAttributeChange('spirit', value)) {
       this.setState({'spirit': value});
     }
   }
 
-  //Handles a change event for Mind.
-  handleMindChange(event) {
+  // Handles a change event for Mind.
+  handleMindChange (event) {
     var value = parseInt(event.target.value, 10);
     if (this.validAttributeChange('mind', value)) {
       this.setState({'mind': value});
     }
   }
 
-  //Handles a change event for Guts.
+  // Handles a change event for Guts.
   handleGutsChange(event) {
     var value = parseInt(event.target.value, 10);
     if (this.validAttributeChange('guts', value)) {
@@ -142,20 +142,20 @@ class CharacterBuilder extends Component {
     }
   }
 
-  handleTypeChange(event) {
+  handleTypeChange (event) {
     this.setState({'character_type': event.target.value})
     if (this.mustBeAnNPC(event.target.value)) {
       this.setState({'is_npc': true});
     }
   }
 
-  validAttributeChange(attribute, value) {
+  validAttributeChange (attribute, value) {
     return (value <= this.state.level + 7 &&
         value >= 1 &&
-        (this.unusedBaseAttributePoints() > 0 || value < this.state[attribute]));
+        (this.unusedBaseAttributePoints() > 0 || value < this.state[attribute]))
   }
 
-  handleNPCChange(event) {
+  handleNPCChange (event) {
     if (this.mustBeAnNPC(this.state.character_type)) {
       this.setState({'is_npc': true});
       return;
@@ -163,18 +163,18 @@ class CharacterBuilder extends Component {
     this.setState({'is_npc': event.target.checked});
   }
 
-  handleRename(event) {
-    this.setState({'name': event.target.value})
+  handleRename (event) {
+    this.setState({'name': event.target.value});
   }
 
-  //Masters, Swarms, and Flunkies should always have is_npc set to true.
-  mustBeAnNPC(type) {
-    return (type === "Master" ||
-            type === "Swarm" ||
-            type === "Flunky");
+  // Masters, Swarms, and Flunkies should always have is_npc set to true.
+  mustBeAnNPC (type) {
+    return (type === 'Master' ||
+            type === 'Swarm' ||
+            type === 'Flunky');
   }
 
-  baseAttributes() {
+  baseAttributes () {
     return [
       this.state.strength,
       this.state.agility,
@@ -184,17 +184,17 @@ class CharacterBuilder extends Component {
     ]
   }
 
-  baseAttributesSum() {
-    return this.baseAttributes().reduce(function(total, next) {
+  baseAttributesSum () {
+    return this.baseAttributes().reduce(function (total, next) {
       return total + next;
-    }, 0);
+    }, 0)
   }
 
-  unusedBaseAttributePoints() {
+  unusedBaseAttributePoints () {
     return (22 + 3 * this.state.level) - this.baseAttributesSum();
   }
 
-  objectify() {
+  objectify () {
     return {
       is_npc: this.state.is_npc,
       attributes: {
