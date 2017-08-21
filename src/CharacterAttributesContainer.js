@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import CharacterAttributesView from './views/CharacterAttributesView';
 import AttributeConstants from './constants/AttributeConstants';
 
@@ -122,6 +123,39 @@ class CharacterAttributesContainer extends Component {
               handleTypeChange = {this.props.handleTypeChange}
               handleNPCChange = {this.props.handleNPCChange}/>;
   }
+}
+
+CharacterAttributesContainer.propTypes = {
+  name: PropTypes.string.isRequired,
+  character_type: PropTypes.string.isRequired,
+  handleNPCChange: PropTypes.func.isRequired,
+  handleStrengthChange: PropTypes.func.isRequired,
+  handleAgilityChange: PropTypes.func.isRequired,
+  handleSpiritChange: PropTypes.func.isRequired,
+  handleMindChange: PropTypes.func.isRequired,
+  handleGutsChange: PropTypes.func.isRequired,
+  handleLevelChange: PropTypes.func.isRequired,
+  handleTypeChange: PropTypes.func.isRequired,
+  level: PropTypes.number.isRequired,
+  strength: PropTypes.number.isRequired,
+  agility: PropTypes.number.isRequired,
+  spirit: PropTypes.number.isRequired,
+  mind: PropTypes.number.isRequired,
+  guts: PropTypes.number.isRequired,
+  is_npc: PropTypes.bool.isRequired,
+  maxSp: PropTypes.number.isRequired,
+  skillBonuses: PropTypes.shape({
+    balancedFighter: PropTypes.number,
+    maxHealth: PropTypes.number,
+    maxStamina: PropTypes.number,
+    physicalAttack: PropTypes.number,
+    energyAttack: PropTypes.number,
+    damageIncrement: PropTypes.number,
+    defense: PropTypes.number,
+    resistance: PropTypes.number,
+    movement: PropTypes.number,
+    techniquePoints: PropTypes.number
+  })
 }
 
 export default CharacterAttributesContainer;
