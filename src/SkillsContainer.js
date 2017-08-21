@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import SkillsView from './views/SkillsView';
 import Skills from './constants/SkillsConstants';
 
@@ -104,6 +105,19 @@ class SkillsContainer extends Component {
               skillNames={this.props.skills.map((skill) => skill.selectValue.value)}
               level={this.props.level}/>;
   }
+}
+
+SkillsContainer.propTypes = {
+  skills: PropTypes.array,
+  is_npc: PropTypes.bool.isRequired,
+  addSkill: PropTypes.func.isRequired,
+  updateSkill: PropTypes.func.isRequired,
+  removeSkill: PropTypes.func.isRequired,
+  season: PropTypes.number.isRequired,
+  flawCap: PropTypes.number.isRequired,
+  freeSkillPoints: PropTypes.number.isRequired,
+  flawPoints: PropTypes.number.isRequired,
+  level: PropTypes.number.isRequired
 }
 
 export default SkillsContainer;

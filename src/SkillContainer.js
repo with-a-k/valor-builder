@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import SkillView from './views/SkillView';
 import Skills from './constants/SkillsConstants';
 
@@ -103,6 +104,29 @@ class SkillContainer extends Component {
               flawPoints={this.flawPoints()}
               skillNames={this.props.skillNames}/>;
   }
+}
+
+SkillContainer.propTypes = {
+  id: PropTypes.number.isRequired,
+  skill: PropTypes.shape({
+    selectValue: PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.string,
+    }),
+    cost: PropTypes.number,
+    name: PropTypes.string,
+    level: PropTypes.number,
+  }),
+  updateSkill: PropTypes.func.isRequired,
+  removeSkill: PropTypes.func.isRequired,
+  freeSkillPoints: PropTypes.number,
+  skillNames: PropTypes.array,
+  flawCap: PropTypes.number,
+  flawPoints: PropTypes.number,
+  characterLevel: PropTypes.number.isRequired,
+  season: PropTypes.number.isRequired,
+  exclude: PropTypes.array,
+  is_npc: PropTypes.bool.isRequired
 }
 
 export default SkillContainer;
