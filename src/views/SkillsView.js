@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import VBButton from './VBButton';
 import VBLabeledValue from './VBLabeledValue';
 import SkillContainer from '../SkillContainer';
@@ -34,6 +35,21 @@ const SkillsView = (props) => {
       {skillsDisplay}
     </div>
   )
+}
+
+SkillsView.propTypes = {
+  skills: PropTypes.array,
+  addSkill: PropTypes.number.isRequired,
+  removeSkill: PropTypes.func.isRequired,
+  updateSkill: PropTypes.func.isRequired,
+  is_npc: PropTypes.bool.isRequired,
+  season: PropTypes.number.isRequired,
+  exclude: PropTypes.array,
+  flawCap: PropTypes.number.isRequired,
+  flawPoints: PropTypes.number.isRequired,
+  freeSkillPoints: PropTypes.number.isRequired,
+  skillNames: PropTypes.array.isRequired,
+  level: PropTypes.number.isRequired
 }
 
 export default SkillsView;
