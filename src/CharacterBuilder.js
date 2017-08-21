@@ -275,7 +275,7 @@ class CharacterBuilder extends Component {
     this.setState({skillBonuses: newBonuses});
   }
 
-  //Add a new, blank skill to state.skills.
+  //Add a new, blank techniqe to state.techniques.
   addTechnique() {
     var techniques = this.state.techniques;
     techniques.push({
@@ -290,7 +290,43 @@ class CharacterBuilder extends Component {
     });
     this.setState({nextTechId: this.state.nextTechId + 1});
     this.setState({techniques: techniques});
-    this.changeBonuses();
+  }
+
+  removeTechnique(id) {
+    var techniques = this.state.techniques.filter(function(technique) {
+      return technique.id !== id;
+    });
+    this.setState({techniques: techniques});
+  }
+
+  updateTechnique(new_data) {
+    var techniques = this.state.techniques;
+    techniques.map(function(technique) {
+      //if the key of the new data is the same
+      if (technique.id === new_data.id) {
+        return new_data;
+      } else {
+        return technique;
+      }
+    });
+    this.setState({techniques: techniques});
+  }
+
+  naturalTechniquePoints(level = 1) {
+    if (level === 1) {
+      return Math.ceil((12 + AttributeConstants.BASE_TP_ADJUSTMENT[this.state.character_type]) *
+        AttributeConstants.TP_MULTIPLIERS[this.state.character_type]);
+    }
+    //Ultimate Techniques "don't use any TP when gained", but...
+    //how about we just add extra TP instead?
+    var ultimateAdjustment = 0;
+    //Every level multiple of 5, add level+3, but only if the character type
+    //is allowed to have Ultimate Techniques.
+    if (level % 5 === 0 && AttributeConstants.INCLUDE_ULTIMATES[this.state.character_type]) {
+      ultimateAdjustment = level + 3;
+    }
+    return Math.ceil(this.naturalTechniquePoints(level - 1) + AttributeConstants.TP_MULTIPLIERS[this.state.character_type] *
+      (4 + Math.floor((level - 1) / 5) + ultimateAdjustment + AttributeConstants.TP_GAIN_ADJUSTMENT[this.state.character_type]));
   }
 
   render() {
@@ -313,7 +349,13 @@ class CharacterBuilder extends Component {
               maxSp = {this.baseSkillPoints()}
               npc = {this.state.is_npc}
               freeSkillPoints = {this.freeSkillPoints()}
-              flawPoints = {this.flawPoints()}/>;
+              flawPoints = {this.flawPoints()}
+              addTechnique = {this.addTechnique.bind(this)}
+              removeTechnique = {this.removeTechnique.bind(this)}
+              updateTechnique = {this.updateTechnique.bind(this)}
+              techniques = {this.state.techniques}
+              tp = {this.naturalTechniquePoints(this.state.level) +
+                this.state.skillBonuses.techniquePoints}/>;
   }
 }
 

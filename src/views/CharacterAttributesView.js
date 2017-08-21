@@ -133,7 +133,7 @@ const CharacterAttributesView = (props) => {
           position="maxsp"/>
         <VBLabeledValue
           labeledName="Max Technique Points"
-          labeledValue={props.characterAttributes.techPoints}
+          labeledValue={props.tp}
           position="maxtp"/>
     </div>
   )
@@ -165,9 +165,9 @@ CharacterAttributesView.propTypes = {
     maxStamina: PropTypes.number.isRequired,
     staminaIncrement: PropTypes.number.isRequired,
     move: PropTypes.number.isRequired,
-    skillPoints: PropTypes.number.isRequired,
-    techPoints: PropTypes.number.isRequired
+    skillPoints: PropTypes.number.isRequired
   }),
+  tp: PropTypes.number.isRequired,
   is_npc: PropTypes.bool.isRequired,
   handleLevelChange: PropTypes.func.isRequired,
   handleTypeChange: PropTypes.func.isRequired,

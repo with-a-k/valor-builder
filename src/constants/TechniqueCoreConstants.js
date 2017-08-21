@@ -5,7 +5,8 @@ module.exports = {
     baseStaminaCost: 1,
     levelStaminaCost: 1,
     attributeOptions: ['Spirit', 'Mind'],
-    ultimate: false
+    ultimate: false,
+    skills: false
   },
   'boost': {
     name: 'Boost Core',
@@ -13,7 +14,8 @@ module.exports = {
     baseStaminaCost: 0,
     levelStaminaCost: 2,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind', 'Guts'],
-    ultimate: false
+    ultimate: false,
+    skills: true
   },
   'damage': {
     name: 'Damage Core',
@@ -21,7 +23,8 @@ module.exports = {
     baseStaminaCost: 2,
     levelStaminaCost: 1,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind'],
-    ultimate: false
+    ultimate: false,
+    skills: false
   },
   'healing': {
     name: 'Healing Core',
@@ -29,7 +32,8 @@ module.exports = {
     baseStaminaCost: 1,
     levelStaminaCost: 1,
     attributeOptions: ['Spirit', 'Mind', 'Guts'],
-    ultimate: false
+    ultimate: false,
+    skills: false
   },
   'mimic': {
     name: 'Mimic Core',
@@ -37,7 +41,8 @@ module.exports = {
     baseStaminaCost: 0,
     levelStaminaCost: 0,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind', 'Guts'],
-    ultimate: false
+    ultimate: false,
+    skills: false
   },
   'summon': {
     name: 'Summoning Core',
@@ -45,7 +50,8 @@ module.exports = {
     baseStaminaCost: 3,
     levelStaminaCost: 2,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind', 'Guts'],
-    ultimate: false
+    ultimate: false,
+    skills: false
   },
   'weaken': {
     name: 'Weaken Core',
@@ -53,7 +59,8 @@ module.exports = {
     baseStaminaCost: 1,
     levelStaminaCost: 1,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind', 'Guts'],
-    ultimate: false
+    ultimate: false,
+    skills: true
   },
   'ultimate-damage': {
     name: 'Ultimate Damage Core',
@@ -61,7 +68,8 @@ module.exports = {
     baseStaminaCost: 4,
     levelStaminaCost: 2,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind'],
-    ultimate: true
+    ultimate: true,
+    skills: false
   },
   'ultimate-transformation': {
     name: 'Transformation Core',
@@ -69,6 +77,7 @@ module.exports = {
     baseStaminaCost: 0,
     levelStaminaCost: 3,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind', 'Guts'],
-    ultimate: true
+    ultimate: true,
+    skills: false
   }
 }

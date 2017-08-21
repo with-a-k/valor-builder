@@ -24,6 +24,7 @@ const CharacterView = (props) => {
         character_type = {props.character_type}
         is_npc = {props.character.is_npc}
         maxSp = {props.maxSp}
+        tp = {props.tp}
         handleStrengthChange = {props.handleStrengthChange}
         handleAgilityChange = {props.handleAgilityChange}
         handleSpiritChange = {props.handleSpiritChange}
@@ -45,7 +46,10 @@ const CharacterView = (props) => {
         level = {props.character.attributes.level}/>
       <TechniquesContainer
         techniques = {props.techniques}
+        tp = {props.tp}
         addTechnique = {props.addTechnique}
+        removeTechnique = {props.removeTechnique}
+        updateTechnique = {props.updateTechnique}
         is_npc = {props.character.is_npc}
         season = {Math.floor((props.character.attributes.level - 1) / 5) + 1}/>
     </div>
@@ -60,6 +64,8 @@ CharacterView.propTypes = {
   updateSkill: PropTypes.func.isRequired,
   removeSkill: PropTypes.func.isRequired,
   addTechnique: PropTypes.func.isRequired,
+  removeTechnique: PropTypes.func.isRequired,
+  updateTechnique: PropTypes.func.isRequired,
   character_type: PropTypes.string.isRequired,
   character: PropTypes.shape({
     attributes: PropTypes.shape({
@@ -87,7 +93,8 @@ CharacterView.propTypes = {
   flawPoints: PropTypes.number.isRequired,
   freeSkillPoints: PropTypes.number.isRequired,
   skills: PropTypes.array,
-  techniques: PropTypes.array
+  techniques: PropTypes.array,
+  tp: PropTypes.number.isRequired
 };
 
 export default CharacterView;

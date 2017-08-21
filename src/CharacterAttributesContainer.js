@@ -40,23 +40,6 @@ class CharacterAttributesContainer extends Component {
     return this.props.level * 2 + this.props.spirit + this.props.mind;
   }
 
-  naturalTechniquePoints(level = 1) {
-    if (level === 1) {
-      return Math.ceil((12 + AttributeConstants.BASE_TP_ADJUSTMENT[this.props.character_type]) *
-        AttributeConstants.TP_MULTIPLIERS[this.props.character_type]);
-    }
-    //Ultimate Techniques "don't use any TP when gained", but...
-    //how about we just add extra TP instead?
-    var ultimateAdjustment = 0;
-    //Every level multiple of 5, add level+3, but only if the character type
-    //is allowed to have Ultimate Techniques.
-    if (level % 5 === 0 && AttributeConstants.INCLUDE_ULTIMATES[this.props.character_type]) {
-      ultimateAdjustment = level + 3;
-    }
-    return Math.ceil(this.naturalTechniquePoints(level - 1) + AttributeConstants.TP_MULTIPLIERS[this.props.character_type] *
-      (4 + Math.floor((level - 1) / 5) + ultimateAdjustment + AttributeConstants.TP_GAIN_ADJUSTMENT[this.props.character_type]));
-  }
-
   highestActiveAttribute() {
     return Math.max(...arguments);
   }
@@ -105,8 +88,7 @@ class CharacterAttributesContainer extends Component {
       move : this.naturalMovement() + this.props.skillBonuses.movement,
       defense : this.naturalDefense() + this.props.skillBonuses.defense,
       resistance : this.naturalResistance() + this.props.skillBonuses.resistance,
-      skillPoints : this.props.maxSp,
-      techPoints : this.naturalTechniquePoints(this.props.level) + this.props.skillBonuses.techniquePoints
+      skillPoints : this.props.maxSp
     }
   }
 
@@ -121,7 +103,8 @@ class CharacterAttributesContainer extends Component {
               handleGutsChange = {this.props.handleGutsChange}
               handleLevelChange = {this.props.handleLevelChange}
               handleTypeChange = {this.props.handleTypeChange}
-              handleNPCChange = {this.props.handleNPCChange}/>;
+              handleNPCChange = {this.props.handleNPCChange}
+              tp = {this.props.tp}/>;
   }
 }
 
@@ -144,6 +127,7 @@ CharacterAttributesContainer.propTypes = {
   guts: PropTypes.number.isRequired,
   is_npc: PropTypes.bool.isRequired,
   maxSp: PropTypes.number.isRequired,
+  tp: PropTypes.number.isRequired,
   skillBonuses: PropTypes.shape({
     balancedFighter: PropTypes.number,
     maxHealth: PropTypes.number,
