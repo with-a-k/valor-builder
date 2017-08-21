@@ -65,12 +65,12 @@ class SkillSelector extends Component {
 }
 
 SkillSelector.propTypes = {
-  changeSkill: PropTypes.function.isRequired,
+  changeSkill: PropTypes.func.isRequired,
   excludeTags: PropTypes.arrayOf(PropTypes.string),
   flawCap: PropTypes.number.isRequired,
   flawPoints: PropTypes.number.isRequired,
   includeTags: PropTypes.arrayOf(PropTypes.string),
-  is_npc: PropTypes.boolean.isRequired,
+  is_npc: PropTypes.bool.isRequired,
   ownedSkillNames: PropTypes.arrayOf(PropTypes.string),
   retrainSkillPoints: PropTypes.number.isRequired,
   season: PropTypes.number.isRequired,

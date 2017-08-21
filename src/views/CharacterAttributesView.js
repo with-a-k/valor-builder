@@ -29,31 +29,31 @@ const CharacterAttributesView = (props) => {
           inputName="Strength"
           inputValue={props.characterAttributes.strength}
           changeHandler={props.handleStrengthChange}
-          maxlabeledValue={props.level + 7}
+          maxlabeledValue={props.characterAttributes.level + 7}
           position={"strength"}/>
         <VBNumberInput
           inputName="Agility"
           inputValue={props.characterAttributes.agility}
           changeHandler={props.handleAgilityChange}
-          maxlabeledValue={props.level + 7}
+          maxlabeledValue={props.characterAttributes.level + 7}
           position={"agility"}/>
         <VBNumberInput
           inputName="Spirit"
           inputValue={props.characterAttributes.spirit}
           changeHandler={props.handleSpiritChange}
-          maxlabeledValue={props.level + 7}
+          maxlabeledValue={props.characterAttributes.level + 7}
           position={"spirit"}/>
         <VBNumberInput
           inputName="Mind"
           inputValue={props.characterAttributes.mind}
           changeHandler={props.handleMindChange}
-          maxlabeledValue={props.level + 7}
+          maxlabeledValue={props.characterAttributes.level + 7}
           position={"mind"}/>
         <VBNumberInput
           inputName="Guts"
           inputValue={props.characterAttributes.guts}
           changeHandler={props.handleGutsChange}
-          maxlabeledValue={props.level + 7}
+          maxlabeledValue={props.characterAttributes.level + 7}
           position={"guts"}/>
         <VBLabeledValue
           labeledName="Muscle"
@@ -167,7 +167,16 @@ CharacterAttributesView.propTypes = {
     move: PropTypes.number.isRequired,
     skillPoints: PropTypes.number.isRequired,
     techPoints: PropTypes.number.isRequired
-  })
+  }),
+  is_npc: PropTypes.bool.isRequired,
+  handleLevelChange: PropTypes.func.isRequired,
+  handleTypeChange: PropTypes.func.isRequired,
+  handleNPCChange: PropTypes.func.isRequired,
+  handleStrengthChange: PropTypes.func.isRequired,
+  handleAgilityChange: PropTypes.func.isRequired,
+  handleSpiritChange: PropTypes.func.isRequired,
+  handleMindChange: PropTypes.func.isRequired,
+  handleGutsChange: PropTypes.func.isRequired
 };
 
 export default CharacterAttributesView;
