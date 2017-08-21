@@ -56,6 +56,10 @@ const CharacterView = (props) => {
 //<TechniquesContainer/>
 
 CharacterView.propTypes = {
+  addSkill: PropTypes.function.isRequired,
+  updateSkill: PropTypes.function.isRequired,
+  removeSkill: PropTypes.function.isRequired,
+  addTechnique: PropTypes.function.isRequired,
   character_type: PropTypes.string.isRequired,
   character: PropTypes.shape({
     attributes: PropTypes.shape({
@@ -65,9 +69,25 @@ CharacterView.propTypes = {
       agility: PropTypes.number.isRequired,
       spirit: PropTypes.number.isRequired,
       mind: PropTypes.number.isRequired,
-      guts: PropTypes.number.isRequired
-    })
-  })
+      guts: PropTypes.number.isRequired,
+      skillBonuses: PropTypes.object.isRequired
+    }),
+    is_npc: PropTypes.boolean.isRequired
+  }),
+  handleRename: PropTypes.function.isRequired,
+  handleLevelChange: PropTypes.function.isRequired,
+  handleTypeChange: PropTypes.function.isRequired,
+  handleNPCChange: PropTypes.function.isRequired,
+  handleStrengthChange: PropTypes.function.isRequired,
+  handleAgilityChange: PropTypes.function.isRequired,
+  handleSpiritChange: PropTypes.function.isRequired,
+  handleMindChange: PropTypes.function.isRequired,
+  handleGutsChange: PropTypes.function.isRequired,
+  maxSp: PropTypes.number.isRequired,
+  flawPoints: PropTypes.number.isRequired,
+  freeSkillPoints: PropTypes.number.isRequired,
+  skills: PropTypes.array,
+  techniques: PropTypes.array
 };
 
 export default CharacterView;
