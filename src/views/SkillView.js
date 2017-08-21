@@ -38,9 +38,19 @@ const SkillView = (props) => {
 
 SkillView.propTypes = {
   changeSkill: PropTypes.func.isRequired,
+  changeSkillLevel: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
   includeTags: PropTypes.array.isRequired,
   excludeTags: PropTypes.array.isRequired,
-  season: PropTypes.number.isRequired
+  season: PropTypes.number.isRequired,
+  skillSelectValue: PropTypes.object,
+  is_npc: PropTypes.bool.isRequired,
+  retrainSkillPoints: PropTypes.number.isRequired,
+  flawCap: PropTypes.number.isRequired,
+  flawPoints: PropTypes.number.isRequired,
+  skillNames: PropTypes.arrayOf(PropTypes.string),
+  skillLevel: PropTypes.number.isRequired,
+  maxLevel: PropTypes.number
 };
 
 export default SkillView;

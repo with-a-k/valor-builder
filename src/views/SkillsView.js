@@ -39,7 +39,7 @@ const SkillsView = (props) => {
 
 SkillsView.propTypes = {
   skills: PropTypes.array,
-  addSkill: PropTypes.number.isRequired,
+  addSkill: PropTypes.func.isRequired,
   removeSkill: PropTypes.func.isRequired,
   updateSkill: PropTypes.func.isRequired,
   is_npc: PropTypes.bool.isRequired,

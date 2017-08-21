@@ -126,7 +126,7 @@ class CharacterAttributesContainer extends Component {
 }
 
 CharacterAttributesContainer.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   character_type: PropTypes.string.isRequired,
   handleNPCChange: PropTypes.func.isRequired,
   handleStrengthChange: PropTypes.func.isRequired,
