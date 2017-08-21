@@ -17,7 +17,8 @@ const VBTextfield = (props) => {
 VBTextfield.propTypes = {
   fieldName: PropTypes.string.isRequired,
   fieldValue: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  position: PropTypes.string
 };
 
 export default VBTextfield;

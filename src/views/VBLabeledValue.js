@@ -12,7 +12,8 @@ const VBLabeledValue = (props) => {
 
 VBLabeledValue.propTypes = {
   labeledName: PropTypes.string.isRequired,
-  labeledValue: PropTypes.number.isRequired
+  labeledValue: PropTypes.number.isRequired,
+  position: PropTypes.string
 };
 
 export default VBLabeledValue;

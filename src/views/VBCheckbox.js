@@ -15,7 +15,8 @@ const VBCheckbox = (props) => {
 VBCheckbox.propTypes = {
   toggleName: PropTypes.string.isRequired,
   toggleState: PropTypes.bool.isRequired,
-  toggleChange: PropTypes.func.isRequired
+  toggleChange: PropTypes.func.isRequired,
+  position: PropTypes.string
 };
 
 export default VBCheckbox;

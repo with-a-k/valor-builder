@@ -18,7 +18,8 @@ VBNumberInput.propTypes = {
   inputName: PropTypes.string.isRequired,
   inputValue: PropTypes.number.isRequired,
   changeHandler: PropTypes.func.isRequired,
-  maxValue: PropTypes.number
+  maxValue: PropTypes.number,
+  position: PropTypes.string
 };
 
 export default VBNumberInput;
