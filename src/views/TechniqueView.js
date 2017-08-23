@@ -40,8 +40,7 @@ TechniqueView.propTypes = {
   changeName: PropTypes.func.isRequired,
   changeCore: PropTypes.func.isRequired,
   changePower: PropTypes.func.isRequired,
-  coreNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-  power: PropTypes.number.isRequired
+  coreNames: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default TechniqueView;

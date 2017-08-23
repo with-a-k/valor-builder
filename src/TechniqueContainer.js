@@ -49,7 +49,8 @@ class TechniqueContainer extends Component {
   }
 
   powerIsValid(power) {
-    return power >= 0 && this.calculateLevel(power) <= this.props.techLevelCap;
+    return power >= 0 && this.calculateLevel(power) <= this.props.techLevelCap &&
+      (this.props.freeTp > 0 || power < this.props.technique.core.power);
   }
 
   //Modifiers also contribute to level, but they're for Later
@@ -77,7 +78,8 @@ TechniqueContainer.propTypes = {
   removeTechnique: PropTypes.func.isRequired,
   updateTechnique: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  techLevelCap: PropTypes.number.isRequired
+  techLevelCap: PropTypes.number.isRequired,
+  freeTp: PropTypes.number.isRequired
 }
 
 export default TechniqueContainer;
