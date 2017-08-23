@@ -74,7 +74,7 @@ class CharacterBuilder extends Component {
           core: Object: {
             name: String - The Core's name. This can't be changed.
             description: String - The Core's description. This also can't be changed.
-            level: Integer - The Core's level. This can't be reduced below 0.
+            power: Integer - The Core's power. This can't be reduced below 0.
           }
           modifiers: [Objects: {
             name: String - The Modifier's name. This can't be changed.
@@ -243,7 +243,7 @@ class CharacterBuilder extends Component {
     });
     this.setState({nextSkillId: this.state.nextSkillId + 1});
     this.setState({skills: skills});
-    this.changeBonuses();
+    this.changeBonuses(skills);
   }
 
   //Takes a data object from SkillContainer and updates the skills array in the state.
@@ -258,7 +258,7 @@ class CharacterBuilder extends Component {
       }
     });
     this.setState({skills: skills});
-    this.changeBonuses();
+    this.changeBonuses(skills);
   }
 
   removeSkill(id) {
@@ -266,12 +266,13 @@ class CharacterBuilder extends Component {
       return skill.id !== id;
     });
     this.setState({skills: skills});
-    this.changeBonuses();
+    this.changeBonuses(skills);
   }
 
-  changeBonuses() {
+  changeBonuses(skills) {
     let newBonuses = this.state.skillBonuses;
-    this.state.skills.map((skill) => skill.bonus).forEach((bonus) => Object.assign(newBonuses, bonus));
+    Object.keys(newBonuses).forEach((type) => newBonuses[type] = 0);
+    skills.map((skill) => skill.bonus).forEach((bonus) => Object.assign(newBonuses, bonus));
     this.setState({skillBonuses: newBonuses});
   }
 
@@ -283,7 +284,11 @@ class CharacterBuilder extends Component {
       name: '',
       level: 0,
       attribute: '',
-      core: {},
+      core: {
+        name: "",
+        level: 0,
+        power: 0
+      },
       modifiers: [],
       limits: [],
       cost: 0,
@@ -327,6 +332,14 @@ class CharacterBuilder extends Component {
     }
     return Math.ceil(this.naturalTechniquePoints(level - 1) + AttributeConstants.TP_MULTIPLIERS[this.state.character_type] *
       (4 + Math.floor((level - 1) / 5) + ultimateAdjustment + AttributeConstants.TP_GAIN_ADJUSTMENT[this.state.character_type]));
+  }
+
+  freeTechniquePoints() {
+    return this.naturalTechniquePoints(this.state.level) +
+      this.state.skillBonuses.techniquePoints -
+      this.state.techniques.reduce(function(total, technique) {
+        return total + technique.level;
+      }, 0);
   }
 
   render() {

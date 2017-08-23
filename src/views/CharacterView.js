@@ -51,7 +51,8 @@ const CharacterView = (props) => {
         removeTechnique = {props.removeTechnique}
         updateTechnique = {props.updateTechnique}
         is_npc = {props.character.is_npc}
-        season = {Math.floor((props.character.attributes.level - 1) / 5) + 1}/>
+        season = {Math.floor((props.character.attributes.level - 1) / 5) + 1}
+        techLevelCap = {props.character.attributes.level + 3}/>
     </div>
   )
 }

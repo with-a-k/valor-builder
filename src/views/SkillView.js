@@ -26,7 +26,7 @@ const SkillView = (props) => {
         <VBNumberInput
           inputName={"Skill Level"}
           inputValue={props.skillLevel}
-          changeHandler={props.changeSkillLevel}
+          handleChange={props.changeSkillLevel}
           maxValue={props.maxLevel}/>
         <VBButton
           buttonAction={props.remove}

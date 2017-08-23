@@ -8,7 +8,7 @@ const VBNumberInput = (props) => {
   return (
     <div style={style}>
       {props.inputName}: <input type="number" min="1" max={props.maxValue} value={props.inputValue}
-        onChange={props.changeHandler}
+        onChange={props.handleChange}
         style={{width: '50px'}}/>
     </div>
   )
@@ -17,7 +17,7 @@ const VBNumberInput = (props) => {
 VBNumberInput.propTypes = {
   inputName: PropTypes.string.isRequired,
   inputValue: PropTypes.number.isRequired,
-  changeHandler: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
   maxValue: PropTypes.number,
   position: PropTypes.string
 };

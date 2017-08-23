@@ -11,7 +11,8 @@ const TechniquesView = (props) => {
               id={technique.id}
               technique={technique}
               removeTechnique={props.removeTechnique}
-              updateTechnique={props.updateTechnique}/>
+              updateTechnique={props.updateTechnique}
+              techLevelCap={props.techLevelCap}/>
   });
 
   return (
@@ -32,7 +33,8 @@ TechniquesView.propTypes = {
   tp: PropTypes.number,
   addTechnique: PropTypes.func.isRequired,
   removeTechnique: PropTypes.func.isRequired,
-  updateTechnique: PropTypes.func.isRequired
+  updateTechnique: PropTypes.func.isRequired,
+  techLevelCap: PropTypes.number.isRequired
 }
 
 export default TechniquesView;

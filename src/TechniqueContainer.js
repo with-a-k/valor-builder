@@ -21,21 +21,61 @@ class TechniqueContainer extends Component {
     this.update(data);
   }
 
+  changeCore(event) {
+    const newCore = event.target.value;
+    this.setState({core: Cores[newCore]});
+    let data = Object.assign(this.props.technique,
+      {
+        core: {
+          name: newCore,
+          power: 0
+        }
+      });
+    this.update(data);
+  }
+
+  changePower(event) {
+    const newPower = event.target.value;
+    if (!this.powerIsValid(newPower)) return;
+    let data = Object.assign(this.props.technique,
+      {
+        core: {
+          power: newPower
+        }
+      });
+    this.update(data);
+  }
+
+  powerIsValid(power) {
+    return power >= 0 && power <= this.props.techLevelCap;
+  }
+
+  //Modifiers also contribute to level, but they're for Later
+  calculateLevel(power) {
+    return power;
+  }
+
   render () {
     return (
       <TechniqueView
         technique = {this.props.technique}
         remove = {this.remove.bind(this)}
-        changeName = {this.changeName.bind(this)}/>
+        changeName = {this.changeName.bind(this)}
+        changeCore = {this.changeCore.bind(this)}
+        changePower = {this.changePower.bind(this)}
+        coreNames = {this.coreNames}/>
     );
   }
 }
+
+TechniqueContainer.prototype.coreNames = Object.values(Cores).map((core) => core.name);
 
 TechniqueContainer.propTypes = {
   technique: PropTypes.object,
   removeTechnique: PropTypes.func.isRequired,
   updateTechnique: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  techLevelCap: PropTypes.number.isRequired
 }
 
 export default TechniqueContainer;

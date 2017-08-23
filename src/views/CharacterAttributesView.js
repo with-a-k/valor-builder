@@ -13,7 +13,7 @@ const CharacterAttributesView = (props) => {
         <VBNumberInput
           inputName="Level"
           inputValue={props.characterAttributes.level}
-          changeHandler={props.handleLevelChange}
+          handleChange={props.handleLevelChange}
           position="level"/>
         <SelectorView
           selectorName="Type"
@@ -28,31 +28,31 @@ const CharacterAttributesView = (props) => {
         <VBNumberInput
           inputName="Strength"
           inputValue={props.characterAttributes.strength}
-          changeHandler={props.handleStrengthChange}
+          handleChange={props.handleStrengthChange}
           maxlabeledValue={props.characterAttributes.level + 7}
           position={"strength"}/>
         <VBNumberInput
           inputName="Agility"
           inputValue={props.characterAttributes.agility}
-          changeHandler={props.handleAgilityChange}
+          handleChange={props.handleAgilityChange}
           maxlabeledValue={props.characterAttributes.level + 7}
           position={"agility"}/>
         <VBNumberInput
           inputName="Spirit"
           inputValue={props.characterAttributes.spirit}
-          changeHandler={props.handleSpiritChange}
+          handleChange={props.handleSpiritChange}
           maxlabeledValue={props.characterAttributes.level + 7}
           position={"spirit"}/>
         <VBNumberInput
           inputName="Mind"
           inputValue={props.characterAttributes.mind}
-          changeHandler={props.handleMindChange}
+          handleChange={props.handleMindChange}
           maxlabeledValue={props.characterAttributes.level + 7}
           position={"mind"}/>
         <VBNumberInput
           inputName="Guts"
           inputValue={props.characterAttributes.guts}
-          changeHandler={props.handleGutsChange}
+          handleChange={props.handleGutsChange}
           maxlabeledValue={props.characterAttributes.level + 7}
           position={"guts"}/>
         <VBLabeledValue
