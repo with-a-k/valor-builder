@@ -12,7 +12,8 @@ const TechniquesView = (props) => {
               technique={technique}
               removeTechnique={props.removeTechnique}
               updateTechnique={props.updateTechnique}
-              techLevelCap={props.techLevelCap}/>
+              techLevelCap={props.techLevelCap}
+              freeTp={props.freeTp}/>
   });
 
   return (
@@ -22,7 +23,7 @@ const TechniquesView = (props) => {
         buttonName="Add Technique"/>
       <VBLabeledValue
         labeledName="Available TP"
-        labeledValue={props.tp}/>
+        labeledValue={props.freeTp}/>
       {techniquesDisplay}
     </div>
   )
@@ -30,7 +31,7 @@ const TechniquesView = (props) => {
 
 TechniquesView.propTypes = {
   techniques: PropTypes.array,
-  tp: PropTypes.number,
+  freeTp: PropTypes.number,
   addTechnique: PropTypes.func.isRequired,
   removeTechnique: PropTypes.func.isRequired,
   updateTechnique: PropTypes.func.isRequired,

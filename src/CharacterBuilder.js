@@ -367,8 +367,9 @@ class CharacterBuilder extends Component {
               removeTechnique = {this.removeTechnique.bind(this)}
               updateTechnique = {this.updateTechnique.bind(this)}
               techniques = {this.state.techniques}
-              tp = {this.naturalTechniquePoints(this.state.level) +
-                this.state.skillBonuses.techniquePoints}/>;
+              maxTp = {this.naturalTechniquePoints(this.state.level) +
+                this.state.skillBonuses.techniquePoints}
+              freeTechniquePoints = {this.freeTechniquePoints(this.state.level)}/>;
   }
 }
 

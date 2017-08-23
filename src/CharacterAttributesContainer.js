@@ -104,7 +104,7 @@ class CharacterAttributesContainer extends Component {
               handleLevelChange = {this.props.handleLevelChange}
               handleTypeChange = {this.props.handleTypeChange}
               handleNPCChange = {this.props.handleNPCChange}
-              tp = {this.props.tp}/>;
+              tp = {this.props.maxTp}/>;
   }
 }
 
@@ -127,7 +127,7 @@ CharacterAttributesContainer.propTypes = {
   guts: PropTypes.number.isRequired,
   is_npc: PropTypes.bool.isRequired,
   maxSp: PropTypes.number.isRequired,
-  tp: PropTypes.number.isRequired,
+  maxTp: PropTypes.number.isRequired,
   skillBonuses: PropTypes.shape({
     balancedFighter: PropTypes.number,
     maxHealth: PropTypes.number,

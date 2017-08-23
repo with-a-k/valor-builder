@@ -4,6 +4,15 @@ import SkillView from './views/SkillView';
 import Skills from './constants/SkillsConstants';
 
 class SkillContainer extends Component {
+  constructor() {
+    super()
+    this.state = {
+      skill: {
+
+      }
+    }
+  }
+
   remove() {
     this.props.removeSkill(this.props.id);
   }
@@ -14,14 +23,16 @@ class SkillContainer extends Component {
 
   changeSkill(newSkill) {
     let data = {};
-    if (newSkill) {
+    if (!(newSkill instanceof Array)) {
+      const nextSkill = Skills[newSkill.value];
+      this.setState({skill: nextSkill});
       data = Object.assign(this.props.skill,
         {selectValue: newSkill,
          id: this.props.id,
-         cost: Skills[newSkill.value].learn_sp,
+         cost: nextSkill.learn_sp,
          level: 1});
-      if (Skills[newSkill.value].bonus) {
-        data['bonus'][Skills[newSkill.value].bonus] = Skills[newSkill.value].learn_value;
+      if (nextSkill.bonus) {
+        data['bonus'][nextSkill.bonus] = nextSkill.learn_value;
       } else {
         data['bonus'] = {};
       }
@@ -32,29 +43,31 @@ class SkillContainer extends Component {
         name: '',
         cost: 0
       };
+      this.setState({skill: {}});
     }
     this.update(data);
   }
 
   changeSkillLevel(event) {
     const newLevel = parseInt(event.target.value, 10);
-    const currentSkill = Skills[this.props.skill.selectValue.value];
-    const bonusCategory = currentSkill.bonus || false;
+    const bonusCategory = this.state.skill.bonus || false;
     if (this.validSkillLevel(newLevel)) {
       let data = Object.assign(this.props.skill,
         {
-          level: newLevel
+          level: newLevel,
+          cost: this.state.skill.learn_sp + (this.state.skill.level_sp * (newLevel - 1))
         });
       if (bonusCategory) {
-        data['bonus'][bonusCategory] = currentSkill.learn_value +
-          ((newLevel - 1) * currentSkill.level_value);
+        data['bonus'][bonusCategory] = this.state.skill.learn_value +
+          ((newLevel - 1) * this.state.skill.level_value);
       }
       this.update(data);
     }
   }
 
   validSkillLevel(level) {
-    return 0 < level && level <= this.maxSkillLevel();
+    return 0 < level && level <= this.maxSkillLevel() &&
+      this.state.skill.learn_sp + (this.state.skill.level_sp * (level - 1)) < this.retrainSkillPoints();
   }
 
   //The Free SP prop is the sum of the SP used for each skill.

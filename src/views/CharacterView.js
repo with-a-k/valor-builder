@@ -24,7 +24,7 @@ const CharacterView = (props) => {
         character_type = {props.character_type}
         is_npc = {props.character.is_npc}
         maxSp = {props.maxSp}
-        tp = {props.tp}
+        maxTp = {props.maxTp}
         handleStrengthChange = {props.handleStrengthChange}
         handleAgilityChange = {props.handleAgilityChange}
         handleSpiritChange = {props.handleSpiritChange}
@@ -46,7 +46,7 @@ const CharacterView = (props) => {
         level = {props.character.attributes.level}/>
       <TechniquesContainer
         techniques = {props.techniques}
-        tp = {props.tp}
+        freeTp = {props.freeTechniquePoints}
         addTechnique = {props.addTechnique}
         removeTechnique = {props.removeTechnique}
         updateTechnique = {props.updateTechnique}
@@ -95,7 +95,8 @@ CharacterView.propTypes = {
   freeSkillPoints: PropTypes.number.isRequired,
   skills: PropTypes.array,
   techniques: PropTypes.array,
-  tp: PropTypes.number.isRequired
+  maxTp: PropTypes.number.isRequired,
+  freeTechniquePoints: PropTypes.number.isRequired
 };
 
 export default CharacterView;

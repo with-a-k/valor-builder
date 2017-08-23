@@ -29,25 +29,27 @@ class TechniqueContainer extends Component {
         core: {
           name: newCore,
           power: 0
-        }
+        },
+        level: 0
       });
     this.update(data);
   }
 
   changePower(event) {
-    const newPower = event.target.value;
+    const newPower = parseInt(event.target.value, 10);
     if (!this.powerIsValid(newPower)) return;
     let data = Object.assign(this.props.technique,
       {
         core: {
           power: newPower
-        }
+        },
+        level: this.calculateLevel(newPower)
       });
     this.update(data);
   }
 
   powerIsValid(power) {
-    return power >= 0 && power <= this.props.techLevelCap;
+    return power >= 0 && this.calculateLevel(power) <= this.props.techLevelCap;
   }
 
   //Modifiers also contribute to level, but they're for Later

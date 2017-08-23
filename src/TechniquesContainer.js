@@ -11,7 +11,7 @@ class TechniquesContainer extends Component {
               updateTechnique={this.props.updateTechnique}
               is_npc={this.props.is_npc}
               season={this.props.season}
-              tp={this.props.tp}
+              freeTp={this.props.freeTp}
               techLevelCap={this.props.techLevelCap}/>;
   }
 }
@@ -32,7 +32,7 @@ TechniquesContainer.propTypes = {
     limits: PropTypes.array,
     cost: PropTypes.number
   })),
-  tp: PropTypes.number.isRequired,
+  freeTp: PropTypes.number.isRequired,
   techLevelCap: PropTypes.number.isRequired
 }
 
