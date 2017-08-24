@@ -17,7 +17,7 @@ class SkillsContainer extends Component {
     }).reduce(function(tagCollection, skill){
       return tagCollection.concat(Skills[skill.selectValue.value].tags);
     }, []));
-    var excludes = ['Boost', 'Weaken'];
+    var excludes = this.props.excludes;
     if (!this.props.is_npc) {
       excludes.push('NPC');
     }
@@ -117,7 +117,8 @@ SkillsContainer.propTypes = {
   flawCap: PropTypes.number.isRequired,
   freeSkillPoints: PropTypes.number.isRequired,
   flawPoints: PropTypes.number.isRequired,
-  level: PropTypes.number.isRequired
+  level: PropTypes.number.isRequired,
+  excludes: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default SkillsContainer;

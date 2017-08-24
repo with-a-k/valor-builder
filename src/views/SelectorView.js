@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 //for an HTML select element to be practical).
 const SelectorView = (props) => {
   var options = props.selectorOptions.map(function(option, index) {
-    return <option key={index}>{option}</option>
+    return <option key={index} value={option.value} label={option.label}/>
   });
   return (
     <div style={{gridArea: props.position}}>
@@ -22,7 +22,10 @@ const SelectorView = (props) => {
 
 SelectorView.propTypes = {
   selectorName: PropTypes.string.isRequired,
-  selectorOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectorOptions: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
+  })).isRequired,
   handleChange: PropTypes.func.isRequired,
   position: PropTypes.string
 };

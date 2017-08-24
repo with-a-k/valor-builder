@@ -4,7 +4,7 @@ import VBButton from './VBButton';
 import VBTextfield from './VBTextfield';
 import VBNumberInput from './VBNumberInput';
 import SelectorView from './SelectorView';
-import SkillSelector from '../SkillSelector';
+import SkillsContainer from '../SkillsContainer';
 
 const TechniqueView = (props) => {
   return (
@@ -18,12 +18,18 @@ const TechniqueView = (props) => {
       <div>
         <SelectorView
           selectorName="Technique Core"
-          selectorOptions={props.coreNames}
+          selectorOptions={props.coreOptions}
           handleChange={props.changeCore}/>
         <VBNumberInput
           inputName="Core Power"
           inputValue={props.technique.core.power}
           handleChange={props.changePower}/>
+        {props.chooseSkills ?
+          <SkillsContainer
+            skills={props.technique.skills}
+            excludes={['Challenge', 'Character']}
+            is_npc={props.is_npc}
+            season={props.season}/> : null}
       </div>
       <div>
         <VBButton
@@ -40,7 +46,13 @@ TechniqueView.propTypes = {
   changeName: PropTypes.func.isRequired,
   changeCore: PropTypes.func.isRequired,
   changePower: PropTypes.func.isRequired,
-  coreNames: PropTypes.arrayOf(PropTypes.string).isRequired
+  coreOptions: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
+  })).isRequired,
+  chooseSkills: PropTypes.bool.isRequired,
+  is_npc: PropTypes.bool.isRequired,
+  season: PropTypes.number.isRequired
 }
 
 export default TechniqueView;

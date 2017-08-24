@@ -4,7 +4,6 @@ import VBNumberInput from './VBNumberInput';
 import VBLabeledValue from './VBLabeledValue';
 import SelectorView from './SelectorView';
 import VBCheckbox from './VBCheckbox';
-import TextConstants from '../constants/TextConstants';
 import Styles from '../styles';
 
 const CharacterAttributesView = (props) => {
@@ -17,7 +16,7 @@ const CharacterAttributesView = (props) => {
           position="level"/>
         <SelectorView
           selectorName="Type"
-          selectorOptions={TextConstants.ENTITY_TYPES}
+          selectorOptions={props.entityTypes}
           handleChange={props.handleTypeChange}
           position="type"/>
         <VBCheckbox
@@ -176,7 +175,8 @@ CharacterAttributesView.propTypes = {
   handleAgilityChange: PropTypes.func.isRequired,
   handleSpiritChange: PropTypes.func.isRequired,
   handleMindChange: PropTypes.func.isRequired,
-  handleGutsChange: PropTypes.func.isRequired
+  handleGutsChange: PropTypes.func.isRequired,
+  entityTypes: PropTypes.array.isRequired
 };
 
 export default CharacterAttributesView;

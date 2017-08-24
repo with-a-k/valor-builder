@@ -7,9 +7,7 @@ class SkillContainer extends Component {
   constructor() {
     super()
     this.state = {
-      skill: {
-
-      }
+      skill: {}
     }
   }
 

@@ -43,7 +43,8 @@ const CharacterView = (props) => {
         flawCap = {-1 * (props.character.attributes.level + 7)}
         freeSkillPoints = {props.freeSkillPoints}
         flawPoints = {props.flawPoints}
-        level = {props.character.attributes.level}/>
+        level = {props.character.attributes.level}
+        excludes = {['Boost', 'Weaken']}/>
       <TechniquesContainer
         techniques = {props.techniques}
         freeTp = {props.freeTechniquePoints}

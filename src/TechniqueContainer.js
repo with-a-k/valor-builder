@@ -4,6 +4,24 @@ import TechniqueView from './views/TechniqueView';
 import Cores from './constants/TechniqueCoreConstants';
 
 class TechniqueContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      core: {
+        skills: false
+      }
+    };
+  }
+
+  coreOptions() {
+    return Object.keys(Cores).map(function(key) {
+      return {
+        label: Cores[key].name,
+        value: key
+      }
+    });
+  }
+
   remove() {
     this.props.removeTechnique(this.props.id);
   }
@@ -30,7 +48,8 @@ class TechniqueContainer extends Component {
           name: newCore,
           power: 0
         },
-        level: 0
+        level: 0,
+        skills: []
       });
     this.update(data);
   }
@@ -66,7 +85,10 @@ class TechniqueContainer extends Component {
         changeName = {this.changeName.bind(this)}
         changeCore = {this.changeCore.bind(this)}
         changePower = {this.changePower.bind(this)}
-        coreNames = {this.coreNames}/>
+        coreOptions = {this.coreOptions()}
+        chooseSkills = {this.state.core.skills || false}
+        is_npc = {this.props.is_npc}
+        season = {this.props.season}/>
     );
   }
 }
@@ -79,7 +101,9 @@ TechniqueContainer.propTypes = {
   updateTechnique: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   techLevelCap: PropTypes.number.isRequired,
-  freeTp: PropTypes.number.isRequired
+  freeTp: PropTypes.number.isRequired,
+  is_npc: PropTypes.bool.isRequired,
+  season: PropTypes.number.isRequired
 }
 
 export default TechniqueContainer;

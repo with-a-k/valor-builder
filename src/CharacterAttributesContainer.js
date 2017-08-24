@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CharacterAttributesView from './views/CharacterAttributesView';
 import AttributeConstants from './constants/AttributeConstants';
+import TextConstants from './constants/TextConstants';
 
 class CharacterAttributesContainer extends Component {
   naturalActiveAttribute(baseAttributeValue) {
@@ -92,6 +93,15 @@ class CharacterAttributesContainer extends Component {
     }
   }
 
+  getEntityTypes() {
+    return TextConstants.ENTITY_TYPES.map(function(type) {
+      return {
+        value: type,
+        label: type
+      }
+    });
+  }
+
   render() {
     return <CharacterAttributesView
               characterAttributes = {this.objectify()}
@@ -104,7 +114,8 @@ class CharacterAttributesContainer extends Component {
               handleLevelChange = {this.props.handleLevelChange}
               handleTypeChange = {this.props.handleTypeChange}
               handleNPCChange = {this.props.handleNPCChange}
-              tp = {this.props.maxTp}/>;
+              tp = {this.props.maxTp}
+              entityTypes = {this.getEntityTypes()}/>;
   }
 }
 
