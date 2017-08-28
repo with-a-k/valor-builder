@@ -77,6 +77,19 @@ class TechniqueContainer extends Component {
     return power;
   }
 
+  excludeTypes() {
+    //Challenge and Character skills should never be on Techniques.
+    let tags = ['Character', 'Challenge'];
+    //Boost skills shouldn't appear for Weaken techniques.
+    if (this.core.name === "Weaken") {
+      tags.push('Boost');
+    } else {
+      //but Flaws shouldn't appear for other kinds of Techniques.
+      //(Domain will skip this once it's finalized.)
+      tags.push('Flaw');
+    }
+  }
+
   render () {
     return (
       <TechniqueView

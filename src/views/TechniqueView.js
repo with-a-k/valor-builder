@@ -27,9 +27,13 @@ const TechniqueView = (props) => {
         {props.chooseSkills ?
           <SkillsContainer
             skills={props.technique.skills}
-            excludes={['Challenge', 'Character']}
+            excludes={props.exclude}
             is_npc={props.is_npc}
-            season={props.season}/> : null}
+            //Boost Techniques have access to skills from the next season.
+            //Transformation Techniques have access to all skills regardless of season.
+            season={props.technique.core.name === "Boost" ? props.season + 1 :
+              props.technique.core.name === "Transform" ? 4 : props.season}/>
+          : null}
       </div>
       <div>
         <VBButton
@@ -52,7 +56,8 @@ TechniqueView.propTypes = {
   })).isRequired,
   chooseSkills: PropTypes.bool.isRequired,
   is_npc: PropTypes.bool.isRequired,
-  season: PropTypes.number.isRequired
+  season: PropTypes.number.isRequired,
+  exclude: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default TechniqueView;
