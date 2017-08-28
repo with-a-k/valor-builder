@@ -15,7 +15,8 @@ const TechniquesView = (props) => {
               techLevelCap={props.techLevelCap}
               freeTp={props.freeTp}
               is_npc={props.is_npc}
-              season={props.season}/>
+              season={props.season}
+              characterLevel={props.characterLevel}/>
   });
 
   return (
@@ -39,7 +40,8 @@ TechniquesView.propTypes = {
   updateTechnique: PropTypes.func.isRequired,
   techLevelCap: PropTypes.number.isRequired,
   is_npc: PropTypes.bool.isRequired,
-  season: PropTypes.number.isRequired
+  season: PropTypes.number.isRequired,
+  characterLevel: PropTypes.number.isRequired
 }
 
 export default TechniquesView;

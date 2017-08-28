@@ -8,8 +8,10 @@ class TechniqueContainer extends Component {
     super();
     this.state = {
       core: {
+        name: "",
         skills: false
-      }
+      },
+      nextSkillId: 1
     };
   }
 
@@ -80,14 +82,70 @@ class TechniqueContainer extends Component {
   excludeTypes() {
     //Challenge and Character skills should never be on Techniques.
     let tags = ['Character', 'Challenge'];
-    //Boost skills shouldn't appear for Weaken techniques.
-    if (this.core.name === "Weaken") {
-      tags.push('Boost');
+    //Positive skills shouldn't appear for Weaken techniques.
+    if (this.state.core.name === "Weaken") {
+      tags.push('Positive');
     } else {
       //but Flaws shouldn't appear for other kinds of Techniques.
-      //(Domain will skip this once it's finalized.)
+      //(Domain will skip this once it's finalized; to my understanding it can use both.)
       tags.push('Flaw');
     }
+    return tags;
+  }
+
+  maxSp() {
+    if (this.spMap[this.state.core.name]) {
+      return this.props.technique.core.power * this.spMap[this.state.core.name];
+    } else {
+      return 0;
+    }
+  }
+
+  freeSkillPoints() {
+    return this.maxSp() - this.props.technique.skills.reduce(function(total, skill) {
+      return total + skill.cost;
+    }, 0);
+  }
+
+  flawPoints() {
+    return this.props.technique.skills.filter((skill) => skill.cost < 0).reduce((total, skill) => total + skill.cost, 0);
+  }
+
+  addSkill() {
+    var data = this.props.technique;
+    data.skills.push({
+      id: this.state.nextSkillId,
+      selectValue: {
+        label: '',
+        value: ''
+      },
+      cost: 0,
+      level: 0,
+      bonus: {}
+    });
+    this.setState({nextSkillId: this.state.nextSkillId + 1});
+    this.update(data);
+  }
+
+  updateSkill(new_data) {
+    var data = this.props.technique;
+    data.skills = data.skills.map(function(skill) {
+      //if the key of the new data is the same
+      if (skill.id === new_data.id) {
+        return new_data;
+      } else {
+        return skill;
+      }
+    });
+    this.update(data);
+  }
+
+  removeSkill(id) {
+    var data = this.props.technique;
+    data.skills = this.props.technique.skills.filter(function(skill) {
+      return skill.id !== id;
+    });
+    this.update(data);
   }
 
   render () {
@@ -101,12 +159,26 @@ class TechniqueContainer extends Component {
         coreOptions = {this.coreOptions()}
         chooseSkills = {this.state.core.skills || false}
         is_npc = {this.props.is_npc}
-        season = {this.props.season}/>
+        season = {this.props.season}
+        exclude = {this.excludeTypes()}
+        maxSp = {this.maxSp()}
+        freeSp = {this.freeSkillPoints()}
+        flawPoints = {this.flawPoints()}
+        characterLevel = {this.props.characterLevel}
+        addSkill = {this.addSkill.bind(this)}
+        updateSkill = {this.updateSkill.bind(this)}
+        removeSkill = {this.removeSkill.bind(this)}/>
     );
   }
 }
 
 TechniqueContainer.prototype.coreNames = Object.values(Cores).map((core) => core.name);
+
+TechniqueContainer.prototype.spMap = {
+  "Boost Core": 2,
+  "Weaken Core": -1,
+  "Transformation Core": 2
+};
 
 TechniqueContainer.propTypes = {
   technique: PropTypes.object,
@@ -116,7 +188,8 @@ TechniqueContainer.propTypes = {
   techLevelCap: PropTypes.number.isRequired,
   freeTp: PropTypes.number.isRequired,
   is_npc: PropTypes.bool.isRequired,
-  season: PropTypes.number.isRequired
+  season: PropTypes.number.isRequired,
+  characterLevel: PropTypes.number.isRequired
 }
 
 export default TechniqueContainer;

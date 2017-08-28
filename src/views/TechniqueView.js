@@ -28,11 +28,19 @@ const TechniqueView = (props) => {
           <SkillsContainer
             skills={props.technique.skills}
             excludes={props.exclude}
+            level={props.characterLevel}
             is_npc={props.is_npc}
             //Boost Techniques have access to skills from the next season.
             //Transformation Techniques have access to all skills regardless of season.
-            season={props.technique.core.name === "Boost" ? props.season + 1 :
-              props.technique.core.name === "Transform" ? 4 : props.season}/>
+            season={props.technique.core.name === "Boost Core" ? props.season + 1 :
+              props.technique.core.name === "Transformation Core" ? 4 : props.season}
+            //Non-Weaken Techniques should not take Flaws under any circumstance.
+            flawCap={props.technique.core.name === "Weaken Core" ? props.technique.core.power : 0}
+            flawPoints={props.flawPoints}
+            freeSkillPoints={props.freeSp}
+            addSkill={props.addSkill}
+            updateSkill={props.updateSkill}
+            removeSkill={props.removeSkill}/>
           : null}
       </div>
       <div>
@@ -57,7 +65,13 @@ TechniqueView.propTypes = {
   chooseSkills: PropTypes.bool.isRequired,
   is_npc: PropTypes.bool.isRequired,
   season: PropTypes.number.isRequired,
-  exclude: PropTypes.arrayOf(PropTypes.string)
+  characterLevel: PropTypes.number.isRequired,
+  exclude: PropTypes.arrayOf(PropTypes.string),
+  freeSp: PropTypes.number.isRequired,
+  flawPoints: PropTypes.number.isRequired,
+  addSkill: PropTypes.func.isRequired,
+  updateSkill: PropTypes.func.isRequired,
+  removeSkill: PropTypes.func.isRequired
 }
 
 export default TechniqueView;

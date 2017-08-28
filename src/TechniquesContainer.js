@@ -12,12 +12,14 @@ class TechniquesContainer extends Component {
               is_npc={this.props.is_npc}
               season={this.props.season}
               freeTp={this.props.freeTp}
-              techLevelCap={this.props.techLevelCap}/>;
+              techLevelCap={this.props.techLevelCap}
+              characterLevel={this.props.level}/>;
   }
 }
 
 TechniquesContainer.propTypes = {
   season: PropTypes.number.isRequired,
+  level: PropTypes.number.isRequired,
   is_npc: PropTypes.bool.isRequired,
   addTechnique: PropTypes.func.isRequired,
   removeTechnique: PropTypes.func.isRequired,

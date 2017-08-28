@@ -289,6 +289,7 @@ class CharacterBuilder extends Component {
         level: 0,
         power: 0
       },
+      skills: [],
       modifiers: [],
       limits: [],
       cost: 0,

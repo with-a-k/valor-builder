@@ -21,7 +21,7 @@ class SkillContainer extends Component {
 
   changeSkill(newSkill) {
     let data = {};
-    if (!(newSkill instanceof Array)) {
+    if (!(newSkill instanceof Array) && newSkill !== null) {
       const nextSkill = Skills[newSkill.value];
       this.setState({skill: nextSkill});
       data = Object.assign(this.props.skill,

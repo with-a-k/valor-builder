@@ -78,6 +78,6 @@ module.exports = {
     levelStaminaCost: 3,
     attributeOptions: ['Strength', 'Agility', 'Spirit', 'Mind', 'Guts'],
     ultimate: true,
-    skills: false
+    skills: true
   }
 }
