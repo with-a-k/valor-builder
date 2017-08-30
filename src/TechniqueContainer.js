@@ -59,13 +59,11 @@ class TechniqueContainer extends Component {
   changePower(event) {
     const newPower = parseInt(event.target.value, 10);
     if (!this.powerIsValid(newPower)) return;
-    let data = Object.assign(this.props.technique,
-      {
-        core: {
-          power: newPower
-        },
-        level: this.calculateLevel(newPower)
-      });
+    let data = this.props.technique;
+    data.core = Object.assign(data.core, {
+      power: newPower
+    });
+    data.level = this.calculateLevel(newPower);
     this.update(data);
   }
 

@@ -26,7 +26,7 @@ class SkillsContainer extends Component {
     return excludes;
   }
 
-  //Add tags to the excludes array based on the names of the character's skills.
+  //Add tags to the excludes array based on the names of the parent's skills.
   excludeByPrerequisites(excludes, names) {
     if (!names.includes('Companion')) {
       excludes.push('Companion');

@@ -32,10 +32,10 @@ const TechniqueView = (props) => {
             is_npc={props.is_npc}
             //Boost Techniques have access to skills from the next season.
             //Transformation Techniques have access to all skills regardless of season.
-            season={props.technique.core.name === "Boost Core" ? props.season + 1 :
-              props.technique.core.name === "Transformation Core" ? 4 : props.season}
+            season={props.technique.core.name === "boost" ? props.season + 1 :
+              props.technique.core.name === "ultimate-transformation" ? 4 : props.season}
             //Non-Weaken Techniques should not take Flaws under any circumstance.
-            flawCap={props.technique.core.name === "Weaken Core" ? props.technique.core.power : 0}
+            flawCap={props.technique.core.name === "weaken" ? props.technique.core.power : 0}
             flawPoints={props.flawPoints}
             freeSkillPoints={props.freeSp}
             addSkill={props.addSkill}
