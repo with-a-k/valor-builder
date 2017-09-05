@@ -11,7 +11,9 @@ class TechniqueContainer extends Component {
         name: "",
         skills: false
       },
-      nextSkillId: 1
+      nextSkillId: 1,
+      nextModId: 1,
+      nextLimitId: 1,
     };
   }
 
@@ -142,6 +144,35 @@ class TechniqueContainer extends Component {
     var data = this.props.technique;
     data.skills = this.props.technique.skills.filter(function(skill) {
       return skill.id !== id;
+    });
+    this.update(data);
+  }
+
+  addModifier() {
+    var data = this.props.technique;
+    data.modifiers.push({
+      id: this.state.nextModId,
+    });
+    this.setState({nextModId: this.state.nextModId + 1});
+    this.update(data);
+  }
+
+  updateModifier(new_data) {
+    var data = this.props.technique;
+    data.modifiers = data.modifiers.map(function(mod) {
+      if (mod.id === new_data.id) {
+        return new_data;
+      } else {
+        return mod;
+      }
+    });
+    this.update(data);
+  }
+
+  removeModifier(id) {
+    var data = this.props.technique;
+    data.modifiers = this.props.technique.modifiers.filter(function(mod) {
+      return mod.id !== id;
     });
     this.update(data);
   }

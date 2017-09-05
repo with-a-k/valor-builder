@@ -18,6 +18,7 @@ module.exports = {
     cost: -3,
     season: 1,
     //can be ranked up, up to rank 3
+    //if at rank 3, can't be taken with Reload or Cooldown
     //unavailable for Ultimate techniques
   },
   'clone': {
@@ -31,7 +32,7 @@ module.exports = {
     applies: ['barrier', 'boost', 'damage', 'healing', 'weaken', 'summon', 'ultimate-damage', 'ultimate-transformation'],
     cost: -2,
     season: 1,
-    //unavailable unless the character has a Companion
+    //unavailable unless the character has a Companion skill instance
   },
   'cooldown': {
     name: 'Cooldown Limit',
@@ -39,6 +40,7 @@ module.exports = {
     cost: -2,
     season: 1
     //can be ranked up, up to rank 3
+    //can't be taken with Ammunition rank 3
     //unavailable for Ultimate techniques
   },
   'dark-power': {
@@ -109,6 +111,7 @@ module.exports = {
     cost: -2,
     season: 1,
     //can be ranked up up to rank 5
+    //if at rank 3 or higher, can't be taken with Vitality
   },
   'landbound': {
     name: 'Landbound Limit',
@@ -116,6 +119,7 @@ module.exports = {
     cost: -1,
     season: 1,
     //also requires a Modifier that allows the Technique to hit flying enemies
+    //(Ranged, Line, Blast Rd., Indirect)
   },
   'mercy': {
     name: 'Mercy Limit',
@@ -152,6 +156,7 @@ module.exports = {
     cost: -1,
     season: 1,
     //also requires the Reposition modifier
+    //can't be taken with Push
   },
   'push': {
     name: 'Push Limit',
@@ -159,6 +164,7 @@ module.exports = {
     cost: -1,
     season: 1,
     //also requires the Reposition modifier
+    //can't be taken with Pull
   },
   'reaction': {
     name: 'Reaction Limit',
@@ -255,6 +261,7 @@ module.exports = {
     applies: ['barrier', 'boost', 'damage', 'healing', 'weaken', 'summon', 'ultimate-damage', 'ultimate-transformation'],
     cost: -3,
     season: 1,
+    //can't be taken with Injury rank 3 or higher
   },
   'valor-consumption': {
     name: 'Valor Consumption Limit',
@@ -281,6 +288,7 @@ module.exports = {
     applies: ['ultimate-damage'],
     cost: -Infinity,
     season: 3,
+    //add 5 to the attack roll bonus
   },
   'ultimate-cooldown': {
     name: 'Ultimate Cooldown Limit',
