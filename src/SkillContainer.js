@@ -49,6 +49,9 @@ class SkillContainer extends Component {
   changeSkillLevel(event) {
     const newLevel = parseInt(event.target.value, 10);
     const bonusCategory = this.state.skill.bonus || false;
+    if (this.props.skill.level === 0) {
+      return;
+    }
     if (this.validSkillLevel(newLevel)) {
       let data = Object.assign(this.props.skill,
         {
