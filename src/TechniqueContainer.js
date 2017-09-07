@@ -149,6 +149,7 @@ class TechniqueContainer extends Component {
     data.modifiers.push({
       id: this.state.nextModId,
       levelAdjustment: 0,
+      traits: {}
     });
     this.setState({nextModId: this.state.nextModId + 1});
     this.update(data);

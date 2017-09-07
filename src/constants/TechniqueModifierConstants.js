@@ -17,6 +17,21 @@ module.exports = {
     rankLevelPlus: 2,
     //The season requirement for this modifier.
     season: 1,
+    //What does this do to the technique?
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    //special alterations to the technique based on its key stat
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {
+        finalLevel: -1
+      },
+      mind: {},
+      guts: {}
+    }
     //should reduce final level additions by 1 if the Technique is Spirit-based
   },
   'chain-attack': {
@@ -28,6 +43,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'line-attack': {
     order: 'Targeting',
@@ -38,6 +64,23 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        lengthPerRank: -1
+      },
+      agility: {
+        lengthPerRank: -1
+      },
+      spirit: {
+        finalLength: 1
+      },
+      mind: {},
+      guts: {}
+    }
   },
   'line-variation': {
     order: 'Targeting',
@@ -48,6 +91,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {
+        finalTurns: 1
+      },
+      guts: {}
+    }
   },
   'multiple-targets': {
     order: 'Targeting',
@@ -58,6 +114,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {
+        finalTargets: 1
+      },
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'indirect-attack': {
     order: 'Targeting',
@@ -69,6 +138,25 @@ module.exports = {
     //A rankLevelPlus of 0 indicates that the modifier is binary and can't be ranked up.
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        invalid: true
+      },
+      agility: {
+        invalid: true
+      },
+      spirit: {
+        invalid: true
+      },
+      mind: {},
+      guts: {
+        invalid: true
+      }
+    }
   },
   'ranged-technique': {
     order: 'Targeting',
@@ -79,6 +167,23 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        rangePerRank: -1
+      },
+      agility: {
+        rangePerRank: 1
+      },
+      spirit: {
+        rangePerRank: 1
+      },
+      mind: {},
+      guts: {}
+    }
   },
   'rush-attack': {
     order: 'Targeting',
@@ -89,6 +194,21 @@ module.exports = {
     learnLevelPlus: 3,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        finalLevel: -1
+      },
+      agility: {
+        finalLevel: -1
+      },
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'smart-area-of-effect': {
     order: 'Targeting',
@@ -99,6 +219,20 @@ module.exports = {
     learnLevelPlus: 2,
     rankLevelPlus: 0,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {
+        season: 1,
+        finalLevel: -1
+      },
+      guts: {}
+    }
     //should reduce final level increase by 1 if the technique is Mind-based
     //should be available in season 1 if the technique is Mind-based
   },
@@ -112,6 +246,21 @@ module.exports = {
     learnLevelPlus: 2,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        finalLevel: -1
+      },
+      agility: {
+        finalLevel: -1
+      },
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
     //should reduce level increase by 1 if the technique is based on Strength or Agility.
   },
   'debilitating-strike': {
@@ -125,6 +274,19 @@ module.exports = {
     learnLevelPlus: 0,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {
+        skills: true
+      },
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'drain': {
     order: 'Special Attack',
@@ -135,6 +297,17 @@ module.exports = {
     learnLevelPlus: 0,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'persistent-effect': {
     order: 'Special Attack',
@@ -145,6 +318,17 @@ module.exports = {
     learnLevelPlus: 0,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'piercing-strike': {
     order: 'Special Attack',
@@ -155,6 +339,17 @@ module.exports = {
     learnLevelPlus: 0,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'sapping-strike': {
     order: 'Special Attack',
@@ -165,6 +360,17 @@ module.exports = {
     learnLevelPlus: 0,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'accurate-strike': {
     order: 'Alteration',
@@ -175,7 +381,22 @@ module.exports = {
     learnLevelPlus: 4,
     rankLevelPlus: 0,
     season: 1,
-    //should reduce level increase by 1 if the technique is Agility-based
+    traits: {
+      static: {
+        toHit: 2
+      },
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {
+        //except for Weaken
+        finalLevel: -1
+      },
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'aura-strike': {
     order: 'Alteration',
@@ -186,6 +407,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {
+        invalid: true
+      },
+      mind: {},
+      guts: {}
+    }
     //should be unavailable for Spirit-based techniques
   },
   'damage-shift': {
@@ -197,6 +431,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'darkness-zone': {
     order: 'Alteration',
@@ -207,6 +452,17 @@ module.exports = {
     learnLevelPlus: 2,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'dash': {
     order: 'Alteration',
@@ -217,6 +473,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {
+        moveDistance: 1
+      },
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'destruction': {
     order: 'Alteration',
@@ -227,6 +496,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'dexterous-strike': {
     order: 'Alteration',
@@ -237,6 +517,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {
+        invalid: true
+      },
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
     //should be unavailable for Agility-based techniques
   },
   'drop-attack': {
@@ -248,6 +541,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'high-barrier': {
     order: 'Alteration',
@@ -258,6 +562,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'immobilizing-strike': {
     order: 'Alteration',
@@ -268,6 +583,17 @@ module.exports = {
     learnLevelPlus: 3,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'intuitive-strike': {
     order: 'Alteration',
@@ -278,6 +604,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {
+        invalid: true
+      },
+      guts: {}
+    }
     //should be unavailable for Mind-based techniques
   },
   'knock-down': {
@@ -289,6 +628,17 @@ module.exports = {
     learnLevelPlus: 3,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'launching-attack': {
     order: 'Alteration',
@@ -299,6 +649,17 @@ module.exports = {
     learnLevelPlus: 3,
     rankLevelPlus: 0,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'light-zone': {
     order: 'Alteration',
@@ -309,6 +670,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'muscular-strike': {
     order: 'Alteration',
@@ -319,6 +691,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        invalid: true
+      },
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
     //should be unavailable to Strength-based techniques
   },
   'phasing-attack': {
@@ -330,6 +715,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'quick-summon': {
     order: 'Alteration',
@@ -340,6 +736,17 @@ module.exports = {
     learnLevelPlus: 3,
     rankLevelPlus: 0,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'ramming-attack': {
     order: 'Alteration',
@@ -350,6 +757,19 @@ module.exports = {
     learnLevelPlus: 2,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        finalLevel: -1
+      },
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
     //should reduce the level increase by 1 for Strength-based techniques
   },
   'reposition': {
@@ -361,6 +781,19 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 1,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {
+        moveDistance: 1
+      },
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'selective-barrier': {
     order: 'Alteration',
@@ -371,6 +804,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'terrain-disruption': {
     order: 'Alteration',
@@ -381,6 +825,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'terrain-repair': {
     order: 'Alteration',
@@ -391,6 +846,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 2,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'throw': {
     order: 'Alteration',
@@ -401,6 +867,17 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   },
   'violent-barrier': {
     order: 'Alteration',
@@ -411,5 +888,16 @@ module.exports = {
     learnLevelPlus: 1,
     rankLevelPlus: 0,
     season: 1,
+    traits: {
+      static: {},
+      perLevel: {}
+    },
+    special: {
+      strength: {},
+      agility: {},
+      spirit: {},
+      mind: {},
+      guts: {}
+    }
   }
 }
